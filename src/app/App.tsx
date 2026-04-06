@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Lenis from "lenis";
 import svgPaths from "../imports/Piloto-1/svg-ncf91yh9cy";
 import { OptimizedImage } from "./components/OptimizedImage";
 import { GrainOverlay } from "./components/GrainOverlay";
@@ -225,23 +226,15 @@ function AboutSection() {
 
   return (
     <section ref={ref} className="relative bg-[#041221] overflow-hidden min-h-screen flex items-center">
-      {/* Vertical grid lines background */}
-      <div aria-hidden="true" className="absolute inset-0 pointer-events-none max-w-[1293px] mx-auto left-0 right-0">
-        <div className="absolute inset-y-0 left-0 w-px bg-[#E1DCD0]/8" />
-        <div className="absolute inset-y-0 left-1/4 w-px bg-[#E1DCD0]/8" />
-        <div className="absolute inset-y-0 left-1/2 w-px bg-[#E1DCD0]/8" />
-        <div className="absolute inset-y-0 left-3/4 w-px bg-[#E1DCD0]/8" />
-        <div className="absolute inset-y-0 right-0 w-px bg-[#E1DCD0]/8" />
-      </div>
 
-      <div className="relative w-full max-w-[1440px] mx-auto px-5 md:px-[7.78%] py-20">
-        <div className="grid grid-cols-1 md:grid-cols-[40.4%_20.2%_1fr] items-center gap-8 md:gap-[4.2%]">
+      <div className="relative w-full max-w-[1920px] mx-auto px-5 md:px-[7.78%] py-20">
+        <div className="grid grid-cols-1 md:grid-cols-[auto_1fr_1fr] items-center gap-8 md:gap-[3%]">
           {/* Left: Headline — Figma: 492/1216 = 40.4% */}
           <div className="about-heading">
-            <h2 className="font-['Archivo_Expanded',sans-serif] font-extrabold text-[#e1dcd0] text-[clamp(1.5rem,2.78vw,2.5rem)] tracking-[-1.2px] uppercase leading-[1.127]">
+            <h2 className="font-['Archivo_Expanded',sans-serif] font-extrabold text-[#e1dcd0] text-[clamp(1.5rem,2.78vw,2.5rem)] tracking-[-1.2px] uppercase leading-[1.127] whitespace-nowrap">
               Alta<br />performance<br />não é só correr.
             </h2>
-            <div className="about-accent flex items-center gap-3 mt-3 ml-[0.5em]">
+            <div className="about-accent flex items-center gap-2 -mt-0.5 ml-[3.3em]">
               <Diamond />
               <p className="font-['Archivo_Expanded',sans-serif] font-extrabold text-[#d86527] text-[clamp(1.5rem,2.78vw,2.5rem)] tracking-[-1.2px] uppercase leading-[1.127]">
                 É dominar
@@ -249,9 +242,9 @@ function AboutSection() {
             </div>
           </div>
 
-          {/* Center: Oval helmet image — Figma: 246/1216 = 20.2% */}
-          <div className="flex justify-center">
-            <div className="relative w-full max-w-[246.3px] aspect-[246.3/140.8] rounded-[179.5px] pointer-events-none">
+          {/* Center: Oval helmet image */}
+          <div className="flex justify-center items-center">
+            <div className="relative w-full max-w-[320px] aspect-[246.3/140.8] rounded-[179.5px] pointer-events-none">
               <div aria-hidden="true" className="absolute inset-0 rounded-[179.5px] overflow-hidden">
                 <div className="absolute bg-[#07315f] inset-0 rounded-[179.5px]" />
                 <OptimizedImage name="helmet-dramatic" alt="Capacete" sizes="246px" imgClassName="absolute inset-0 object-cover size-full rounded-[179.5px]" />
@@ -338,6 +331,7 @@ function MindsetSection() {
 
   return (
     <section ref={ref} className="relative bg-gradient-to-b from-[#041221] to-[#072a51] overflow-hidden" style={{ aspectRatio: "1440/1073", minHeight: "900px" }}>
+
       {/* Full-bleed pilot image — Figma: 1797×1316, centered, bottom: -341px */}
       <div className="mindset-bg absolute inset-0 pointer-events-none z-[0] overflow-hidden">
         <div className="absolute left-1/2 -translate-x-1/2 bottom-[-32%] w-[124.8%] h-[122.6%]">
@@ -389,11 +383,44 @@ function MindsetSection() {
 }
 
 /* ─── Stats Section ─── */
+function CountUp({ value, suffix = "" }: { value: number; suffix?: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const hasAnimated = useRef(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated.current) {
+          hasAnimated.current = true;
+          const duration = 2000;
+          const start = performance.now();
+          const animate = (now: number) => {
+            const progress = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = `${Math.round(eased * value)}${suffix}`;
+            if (progress < 1) requestAnimationFrame(animate);
+          };
+          requestAnimationFrame(animate);
+        }
+      },
+      { threshold: 0.5 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [value, suffix]);
+
+  return <span ref={ref}>0{suffix}</span>;
+}
+
 function StatItem({ value, label }: { value: string; label: string }) {
+  const num = parseInt(value);
+  const suffix = value.replace(/\d/g, "");
   return (
     <div className="stat-item flex flex-col">
       <p className="font-['Archivo_Expanded',sans-serif] font-light text-[#d86527] text-[clamp(3rem,6.67vw,96px)] tracking-[-2.88px] uppercase leading-[1.127]">
-        {value}
+        <CountUp value={num} suffix={suffix} />
       </p>
       <div className="w-[217px] h-px bg-white/18 mt-4 mb-3" />
       <p className="font-['Inter',sans-serif] font-medium text-[14px] text-[rgba(238,235,228,0.83)] uppercase leading-[1.54]">
@@ -433,14 +460,6 @@ function StatsSection() {
 
   return (
     <section ref={ref} className="relative bg-[#041221] py-20 md:py-32 overflow-hidden">
-      {/* Vertical grid lines */}
-      <div aria-hidden="true" className="absolute inset-0 pointer-events-none max-w-[1293px] mx-auto left-0 right-0">
-        <div className="absolute inset-y-0 left-0 w-px bg-[#E1DCD0]/8" />
-        <div className="absolute inset-y-0 left-1/4 w-px bg-[#E1DCD0]/8" />
-        <div className="absolute inset-y-0 left-1/2 w-px bg-[#E1DCD0]/8" />
-        <div className="absolute inset-y-0 left-3/4 w-px bg-[#E1DCD0]/8" />
-        <div className="absolute inset-y-0 right-0 w-px bg-[#E1DCD0]/8" />
-      </div>
 
       {/* Trajectory heading */}
       <div className="relative text-center max-w-[689px] mx-auto px-5 mb-20 md:mb-28">
@@ -454,7 +473,7 @@ function StatsSection() {
       </div>
 
       {/* Stats + car */}
-      <div className="relative max-w-[1440px] mx-auto px-5 md:px-[7.78%]">
+      <div className="relative max-w-[1920px] mx-auto px-5 md:px-[7.78%]">
         {/* Row 1: 50+ left | 12+ right */}
         <div className="flex justify-between">
           <StatItem value="50+" label="Categorias disputadas" />
@@ -513,22 +532,14 @@ function GallerySection() {
   ];
 
   return (
-    <section ref={ref} className="relative bg-[#041221] py-20 md:py-32 overflow-hidden">
-      {/* Vertical grid lines */}
-      <div aria-hidden="true" className="absolute inset-0 pointer-events-none max-w-[1293px] mx-auto left-0 right-0">
-        <div className="absolute inset-y-0 left-0 w-px bg-[#E1DCD0]/8" />
-        <div className="absolute inset-y-0 left-1/4 w-px bg-[#E1DCD0]/8" />
-        <div className="absolute inset-y-0 left-1/2 w-px bg-[#E1DCD0]/8" />
-        <div className="absolute inset-y-0 left-3/4 w-px bg-[#E1DCD0]/8" />
-        <div className="absolute inset-y-0 right-0 w-px bg-[#E1DCD0]/8" />
-      </div>
+    <section ref={ref} className="relative bg-[#041221] overflow-hidden h-screen flex flex-col justify-center">
 
       <div className="gallery-grid relative">
         {/* Top row ticker — scrolls RIGHT */}
         <div className="overflow-hidden">
-          <div className="flex gap-4 md:gap-6 animate-gallery-right w-max">
+          <div className="flex gap-3 md:gap-6 animate-gallery-right w-max">
             {[...topRow, ...topRow, ...topRow, ...topRow].map((img, i) => (
-              <div key={`top-${i}`} className="gallery-item aspect-video w-[45vw] md:w-[612px] shrink-0 rounded-xl overflow-hidden relative bg-[#192a3c]">
+              <div key={`top-${i}`} className="gallery-item aspect-video w-[70vw] sm:w-[45vw] md:w-[612px] shrink-0 rounded-lg md:rounded-xl overflow-hidden relative bg-[#192a3c]">
                 <OptimizedImage name={img.name} alt={img.alt} sizes="612px" imgClassName="absolute inset-0 object-cover size-full" />
               </div>
             ))}
@@ -537,19 +548,19 @@ function GallerySection() {
 
         {/* Title overlay — mix-blend-difference */}
         <div className="absolute inset-0 z-[3] flex items-center justify-center pointer-events-none" style={{ mixBlendMode: "difference" }}>
-          <h2 className="gallery-title font-['Archivo_Expanded',sans-serif] font-extrabold text-[#e1dcd0] text-3xl md:text-5xl lg:text-[58px] text-center tracking-[-1.76px] uppercase leading-[1.127] max-w-[533px] px-5">
+          <h2 className="gallery-title font-['Archivo_Expanded',sans-serif] font-extrabold text-[#e1dcd0] text-[clamp(1.5rem,4vw,58px)] text-center tracking-[-1.76px] uppercase leading-[1.127] max-w-[533px] px-5">
             Entre velocidade e precisão
           </h2>
         </div>
 
         {/* Gap between rows */}
-        <div className="h-4 md:h-6" />
+        <div className="h-3 md:h-6" />
 
         {/* Bottom row ticker — scrolls LEFT */}
         <div className="overflow-hidden">
-          <div className="flex gap-4 md:gap-6 animate-gallery-left w-max">
+          <div className="flex gap-3 md:gap-6 animate-gallery-left w-max">
             {[...bottomRow, ...bottomRow, ...bottomRow, ...bottomRow].map((img, i) => (
-              <div key={`bot-${i}`} className="gallery-item aspect-video w-[45vw] md:w-[612px] shrink-0 rounded-xl overflow-hidden relative bg-[#192a3c]">
+              <div key={`bot-${i}`} className="gallery-item aspect-video w-[70vw] sm:w-[45vw] md:w-[612px] shrink-0 rounded-lg md:rounded-xl overflow-hidden relative bg-[#192a3c]">
                 <OptimizedImage name={img.name} alt={img.alt} sizes="612px" imgClassName="absolute inset-0 object-cover size-full" />
               </div>
             ))}
@@ -611,7 +622,7 @@ function SponsorsSection() {
   }, []);
 
   return (
-    <section ref={ref} className="relative bg-[#041221] px-5 md:px-10 py-10">
+    <section ref={ref} className="relative bg-[#041221] px-5 md:px-10 py-20 md:py-32">
       <div className="bg-[#f9f6ee] rounded-2xl md:rounded-3xl py-16 md:py-20 px-5 md:px-10 mx-auto overflow-hidden">
         {/* Heading */}
         <div className="text-center max-w-[669px] mx-auto mb-12 md:mb-16">
@@ -697,10 +708,10 @@ function FollowSection() {
   }, []);
 
   return (
-    <section ref={ref} className="relative bg-gradient-to-b from-[#041221] to-[#07294f] overflow-hidden h-screen max-h-[935px] min-h-[600px]">
-      {/* Portrait image — Figma: 878×724, centered with offset, top 26% */}
-      <div className="follow-bg absolute left-[calc(50%+3.4%)] -translate-x-1/2 top-[26%] w-[61%] max-w-[878px] h-[77.4%] pointer-events-none">
-        <OptimizedImage name="portrait-cinematic" alt="Retrato do piloto" sizes="878px" imgClassName="absolute inset-0 object-cover size-full" />
+    <section ref={ref} className="relative bg-gradient-to-b from-[#041221] to-[#07294f] overflow-hidden h-screen min-h-[600px]">
+      {/* Portrait image — centered */}
+      <div className="follow-bg absolute top-[25%] bottom-0 left-0 right-0 pointer-events-none flex justify-center overflow-hidden">
+        <OptimizedImage name="portrait-cinematic" alt="Retrato do piloto" sizes="100vw" imgClassName="absolute inset-0 object-cover object-top opacity-70 h-full w-auto max-w-[900px] 2xl:max-w-[65%] mx-auto" />
       </div>
 
       {/* Title */}
@@ -731,15 +742,10 @@ function FollowSection() {
           </div>
         </div>
       </div>
-    </section>
-  );
-}
 
-/* ─── Footer ─── */
-function Footer() {
-  return (
-    <footer className="bg-[#041221] py-3">
-      <div className="max-w-[1430px] mx-auto px-[38px] flex items-center justify-between">
+      {/* Footer inside FollowSection */}
+      <div className="absolute bottom-0 left-0 right-0 z-[2] py-3">
+        <div className="max-w-[1920px] mx-auto px-[38px] flex items-center justify-between">
         <p className="font-['Geist',sans-serif] font-normal text-[12px] text-white leading-normal whitespace-nowrap">
           Copyright &copy; 2026 Hugo Netto. Todos os direitos reservados
         </p>
@@ -754,13 +760,32 @@ function Footer() {
             </div>
           </div>
         </button>
+        </div>
       </div>
-    </footer>
+    </section>
   );
 }
 
+
 /* ─── App ─── */
 export default function App() {
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    });
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+    // Sync Lenis with GSAP ScrollTrigger
+    lenis.on("scroll", ScrollTrigger.update);
+    gsap.ticker.add((time) => lenis.raf(time * 1000));
+    gsap.ticker.lagSmoothing(0);
+    return () => lenis.destroy();
+  }, []);
+
   return (
     <div className="bg-[#041221] overflow-x-hidden">
       <GrainOverlay />
@@ -771,7 +796,6 @@ export default function App() {
       <GallerySection />
       <SponsorsSection />
       <FollowSection />
-      <Footer />
     </div>
   );
 }
