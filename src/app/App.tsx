@@ -234,14 +234,14 @@ function AboutSection() {
         <div className="absolute inset-y-0 right-0 w-px bg-[#E1DCD0]/8" />
       </div>
 
-      <div className="relative max-w-[1440px] mx-auto px-5 md:px-[7.78%]">
+      <div className="relative w-full max-w-[1440px] mx-auto px-5 md:px-[7.78%] py-20">
         <div className="grid grid-cols-1 md:grid-cols-[40.4%_20.2%_1fr] items-center gap-8 md:gap-[4.2%]">
           {/* Left: Headline — Figma: 492/1216 = 40.4% */}
           <div className="about-heading">
             <h2 className="font-['Archivo_Expanded',sans-serif] font-extrabold text-[#e1dcd0] text-[clamp(1.5rem,2.78vw,2.5rem)] tracking-[-1.2px] uppercase leading-[1.127]">
-              Alta performance não é só correr.
+              Alta<br />performance<br />não é só correr.
             </h2>
-            <div className="about-accent flex items-center gap-3 mt-5">
+            <div className="about-accent flex items-center gap-3 mt-3 ml-[0.5em]">
               <Diamond />
               <p className="font-['Archivo_Expanded',sans-serif] font-extrabold text-[#d86527] text-[clamp(1.5rem,2.78vw,2.5rem)] tracking-[-1.2px] uppercase leading-[1.127]">
                 É dominar
@@ -391,12 +391,12 @@ function MindsetSection() {
 /* ─── Stats Section ─── */
 function StatItem({ value, label }: { value: string; label: string }) {
   return (
-    <div className="stat-item flex flex-col items-center">
-      <p className="font-['Archivo_Expanded',sans-serif] font-light text-[#d86527] text-6xl md:text-8xl lg:text-[96px] tracking-[-2.88px] uppercase leading-[1.127]">
+    <div className="stat-item flex flex-col">
+      <p className="font-['Archivo_Expanded',sans-serif] font-light text-[#d86527] text-[clamp(3rem,6.67vw,96px)] tracking-[-2.88px] uppercase leading-[1.127]">
         {value}
       </p>
       <div className="w-[217px] h-px bg-white/18 mt-4 mb-3" />
-      <p className="font-['Inter',sans-serif] font-medium text-sm text-[rgba(238,235,228,0.83)] uppercase">
+      <p className="font-['Inter',sans-serif] font-medium text-[14px] text-[rgba(238,235,228,0.83)] uppercase leading-[1.54]">
         {label}
       </p>
     </div>
@@ -453,31 +453,23 @@ function StatsSection() {
         </p>
       </div>
 
-      {/* Stats + car: 2 rows, stats at left/right edges, car centered */}
-      <div className="relative max-w-[1200px] mx-auto px-5 md:px-10">
-        {/* Row 1: 50+ | 12+ */}
-        <div className="grid grid-cols-2 gap-4">
-          <div className="flex justify-start md:justify-center">
-            <StatItem value="50+" label="Categorias disputadas" />
-          </div>
-          <div className="flex justify-end md:justify-center">
-            <StatItem value="12+" label="Pódios" />
-          </div>
+      {/* Stats + car */}
+      <div className="relative max-w-[1440px] mx-auto px-5 md:px-[7.78%]">
+        {/* Row 1: 50+ left | 12+ right */}
+        <div className="flex justify-between">
+          <StatItem value="50+" label="Categorias disputadas" />
+          <StatItem value="12+" label="Pódios" />
         </div>
 
-        {/* Car image in center between stat rows */}
-        <div className="car-parallax relative mx-auto my-8 md:my-10 max-w-[1198px] aspect-[1198/684] mix-blend-screen">
+        {/* Car image centered between stat rows */}
+        <div className="car-parallax relative mx-auto -mt-8 md:-mt-16 max-w-[1198px] aspect-[1198/684] mix-blend-screen pointer-events-none">
           <OptimizedImage name="car-360-view" alt="Carro de corrida 360" sizes="(max-width: 768px) 100vw, 1198px" imgClassName="absolute inset-0 object-contain size-full" />
         </div>
 
-        {/* Row 2: 15+ | 10+ */}
-        <div className="grid grid-cols-2 gap-4">
-          <div className="flex justify-start md:justify-center">
-            <StatItem value="15+" label="Autódromos" />
-          </div>
-          <div className="flex justify-end md:justify-center">
-            <StatItem value="10+" label="Primeiro Lugar" />
-          </div>
+        {/* Row 2: 15+ left | 10+ right */}
+        <div className="flex justify-between -mt-8 md:-mt-16">
+          <StatItem value="15+" label="Autódromos" />
+          <StatItem value="10+" label="Primeiro Lugar" />
         </div>
       </div>
     </section>
@@ -531,43 +523,56 @@ function GallerySection() {
         <div className="absolute inset-y-0 right-0 w-px bg-[#E1DCD0]/8" />
       </div>
 
-      {/* Staggered gallery rows */}
-      <div className="gallery-grid relative space-y-4 md:space-y-6">
-        {/* Top row: shifted left */}
-        <div className="flex gap-4 md:gap-6 md:-ml-[20%] lg:-ml-[30%]">
-          {topRow.map((img) => (
-            <div key={img.name} className="gallery-item aspect-video w-[45%] md:w-[612px] shrink-0 rounded-xl overflow-hidden relative bg-[#192a3c] group">
-              <OptimizedImage
-                name={img.name}
-                alt={img.alt}
-                sizes="612px"
-                imgClassName="absolute inset-0 object-cover size-full transition-transform duration-700 ease-out group-hover:scale-105"
-              />
-            </div>
-          ))}
+      <div className="gallery-grid relative">
+        {/* Top row ticker — scrolls RIGHT */}
+        <div className="overflow-hidden">
+          <div className="flex gap-4 md:gap-6 animate-gallery-right w-max">
+            {[...topRow, ...topRow, ...topRow, ...topRow].map((img, i) => (
+              <div key={`top-${i}`} className="gallery-item aspect-video w-[45vw] md:w-[612px] shrink-0 rounded-xl overflow-hidden relative bg-[#192a3c]">
+                <OptimizedImage name={img.name} alt={img.alt} sizes="612px" imgClassName="absolute inset-0 object-cover size-full" />
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Title overlay between rows */}
-        <div className="relative z-[3] mix-blend-difference py-6 md:py-10">
-          <h2 className="gallery-title font-['Archivo_Expanded',sans-serif] font-extrabold text-[#e1dcd0] text-3xl md:text-5xl lg:text-[58px] text-center tracking-[-1.76px] uppercase leading-[1.127] max-w-[533px] mx-auto px-5">
+        {/* Title overlay — mix-blend-difference */}
+        <div className="absolute inset-0 z-[3] flex items-center justify-center pointer-events-none" style={{ mixBlendMode: "difference" }}>
+          <h2 className="gallery-title font-['Archivo_Expanded',sans-serif] font-extrabold text-[#e1dcd0] text-3xl md:text-5xl lg:text-[58px] text-center tracking-[-1.76px] uppercase leading-[1.127] max-w-[533px] px-5">
             Entre velocidade e precisão
           </h2>
         </div>
 
-        {/* Bottom row: shifted right */}
-        <div className="flex gap-4 md:gap-6 md:-mr-[20%] lg:-mr-[30%] justify-end">
-          {bottomRow.map((img) => (
-            <div key={img.name} className="gallery-item aspect-video w-[45%] md:w-[612px] shrink-0 rounded-xl overflow-hidden relative bg-[#192a3c] group">
-              <OptimizedImage
-                name={img.name}
-                alt={img.alt}
-                sizes="612px"
-                imgClassName="absolute inset-0 object-cover size-full transition-transform duration-700 ease-out group-hover:scale-105"
-              />
-            </div>
-          ))}
+        {/* Gap between rows */}
+        <div className="h-4 md:h-6" />
+
+        {/* Bottom row ticker — scrolls LEFT */}
+        <div className="overflow-hidden">
+          <div className="flex gap-4 md:gap-6 animate-gallery-left w-max">
+            {[...bottomRow, ...bottomRow, ...bottomRow, ...bottomRow].map((img, i) => (
+              <div key={`bot-${i}`} className="gallery-item aspect-video w-[45vw] md:w-[612px] shrink-0 rounded-xl overflow-hidden relative bg-[#192a3c]">
+                <OptimizedImage name={img.name} alt={img.alt} sizes="612px" imgClassName="absolute inset-0 object-cover size-full" />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes galleryRight {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes galleryLeft {
+          0% { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
+        }
+        .animate-gallery-right {
+          animation: galleryRight 30s linear infinite;
+        }
+        .animate-gallery-left {
+          animation: galleryLeft 30s linear infinite;
+        }
+      `}</style>
     </section>
   );
 }
@@ -607,7 +612,7 @@ function SponsorsSection() {
 
   return (
     <section ref={ref} className="relative bg-[#041221] px-5 md:px-10 py-10">
-      <div className="bg-[#f9f6ee] rounded-2xl md:rounded-3xl py-16 md:py-20 px-5 md:px-10 max-w-[1323px] mx-auto overflow-hidden">
+      <div className="bg-[#f9f6ee] rounded-2xl md:rounded-3xl py-16 md:py-20 px-5 md:px-10 mx-auto overflow-hidden">
         {/* Heading */}
         <div className="text-center max-w-[669px] mx-auto mb-12 md:mb-16">
           <p className="font-['Archivo_Expanded',sans-serif] font-bold text-[#d86527] text-[10px] tracking-[-0.3px] uppercase leading-[1.127]">PATROCÍNIO</p>
@@ -619,13 +624,29 @@ function SponsorsSection() {
           </p>
         </div>
 
-        {/* Sponsor cards grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-12 md:mb-16">
-          {[0, 1, 2, 3, 4].map((i) => (
-            <div key={i} className="sponsor-card bg-black/4 rounded aspect-[340/269] flex items-center justify-center">
-              <LogoSvg clipId={`clip_logo_${i}`} />
-            </div>
-          ))}
+        {/* Sponsor logos ticker */}
+        <div className="relative mb-12 md:mb-16 overflow-hidden" style={{ mask: "linear-gradient(90deg, transparent, black 5%, black 95%, transparent)", WebkitMask: "linear-gradient(90deg, transparent, black 5%, black 95%, transparent)" }}>
+          <div className="flex animate-ticker gap-4 w-max">
+            {[...Array(2)].map((_, set) =>
+              [0, 1, 2, 3, 4].map((i) => (
+                <div key={`${set}-${i}`} className="sponsor-card bg-black/4 rounded w-[240px] md:w-[280px] aspect-[340/269] flex items-center justify-center flex-shrink-0">
+                  <LogoSvg clipId={`clip_logo_${set}_${i}`} />
+                </div>
+              ))
+            )}
+          </div>
+          <style>{`
+            @keyframes ticker {
+              0% { transform: translateX(0); }
+              100% { transform: translateX(-50%); }
+            }
+            .animate-ticker {
+              animation: ticker 20s linear infinite;
+            }
+            .animate-ticker:hover {
+              animation-play-state: paused;
+            }
+          `}</style>
         </div>
 
         {/* CTA */}
@@ -676,39 +697,37 @@ function FollowSection() {
   }, []);
 
   return (
-    <section ref={ref} className="relative bg-gradient-to-b from-[#041221] to-[#07294f] py-20 md:py-32 overflow-hidden min-h-[80vh]">
-      {/* Background image */}
-      <div className="follow-bg absolute inset-0 scale-110">
-        <OptimizedImage name="portrait-cinematic" alt="Retrato do piloto" sizes="100vw" imgClassName="absolute inset-0 object-cover size-full opacity-60" />
+    <section ref={ref} className="relative bg-gradient-to-b from-[#041221] to-[#07294f] overflow-hidden h-screen max-h-[935px] min-h-[600px]">
+      {/* Portrait image — Figma: 878×724, centered with offset, top 26% */}
+      <div className="follow-bg absolute left-[calc(50%+3.4%)] -translate-x-1/2 top-[26%] w-[61%] max-w-[878px] h-[77.4%] pointer-events-none">
+        <OptimizedImage name="portrait-cinematic" alt="Retrato do piloto" sizes="878px" imgClassName="absolute inset-0 object-cover size-full" />
       </div>
 
-      <div className="relative z-[1] max-w-[1200px] mx-auto px-5 md:px-10">
-        {/* Title */}
-        <div className="follow-title text-center mb-16 md:mb-24">
-          <h2 className="font-['Archivo_Expanded',sans-serif] text-[#e1dcd0] text-5xl md:text-[70px] text-center tracking-[-2.11px] uppercase leading-[0.87]">
-            <span className="font-light block">ACOMPANHE</span>
-            <span className="font-light">HUGO </span>
-            <span className="font-extrabold text-[#d86527]">netto</span>
-          </h2>
-        </div>
+      {/* Title */}
+      <div className="follow-title absolute top-[10%] left-1/2 -translate-x-1/2 text-center z-[1] max-w-[90vw]">
+        <h2 className="font-['Archivo_Expanded',sans-serif] text-[#e1dcd0] text-[clamp(2rem,4.9vw,70.4px)] text-center tracking-[-2.11px] uppercase leading-[0.867]">
+          <span className="font-light block">ACOMPANHE</span>
+          <span className="font-light">HUGO </span>
+          <span className="font-extrabold text-[#d86527]">netto</span>
+        </h2>
+      </div>
 
-        {/* Links */}
-        <div className="follow-links flex flex-col sm:flex-row justify-between gap-12 md:gap-0 max-w-[900px] mx-auto">
-          <div className="text-center sm:text-left">
-            <SectionLabel>REDES SOCIAIS</SectionLabel>
-            <div className="flex flex-col gap-2 mt-4 font-['Archivo_Expanded',sans-serif] font-extrabold text-[#e1dcd0] text-xl md:text-2xl tracking-[-0.72px] uppercase">
-              <a href="#" className="hover:text-[#d86527] transition-colors leading-[1.127]">INSTAGRAM</a>
-              <a href="#" className="hover:text-[#d86527] transition-colors leading-[1.127]">YOUTUBE</a>
-              <a href="#" className="hover:text-[#d86527] transition-colors leading-[1.127]">tiktok</a>
-            </div>
+      {/* Links — positioned at edges */}
+      <div className="follow-links absolute top-[55.8%] left-0 right-0 z-[1] flex flex-col sm:flex-row justify-between px-[7.78%]">
+        <div className="text-center">
+          <p className="font-['Archivo_Expanded',sans-serif] font-bold text-[#d86527] text-[10px] tracking-[-0.3px] uppercase leading-[1.127]">REDES SOCIAIS</p>
+          <div className="flex flex-col gap-[6px] mt-[18px] font-['Archivo_Expanded',sans-serif] font-extrabold text-[#e1dcd0] text-[clamp(1rem,1.67vw,24px)] tracking-[-0.72px] uppercase text-center">
+            <a href="#" className="hover:text-[#d86527] transition-colors leading-[1.127]">INSTAGRAM</a>
+            <a href="#" className="hover:text-[#d86527] transition-colors leading-[1.127]">YOUTUBE</a>
+            <a href="#" className="hover:text-[#d86527] transition-colors leading-[1.127]">tiktok</a>
           </div>
-          <div className="text-center sm:text-right">
-            <SectionLabel>contatos</SectionLabel>
-            <div className="flex flex-col gap-2 mt-4 font-['Archivo_Expanded',sans-serif] font-extrabold text-[#e1dcd0] text-xl md:text-2xl tracking-[-0.72px] uppercase">
-              <a href="#" className="hover:text-[#d86527] transition-colors leading-[1.127]">parcerias</a>
-              <a href="#" className="hover:text-[#d86527] transition-colors leading-[1.127]">media kit</a>
-              <a href="#" className="hover:text-[#d86527] transition-colors leading-[1.127]">email</a>
-            </div>
+        </div>
+        <div className="text-center">
+          <p className="font-['Archivo_Expanded',sans-serif] font-bold text-[#d86527] text-[10px] tracking-[-0.3px] uppercase leading-[1.127]">contatos</p>
+          <div className="flex flex-col gap-[6px] mt-[18px] font-['Archivo_Expanded',sans-serif] font-extrabold text-[#e1dcd0] text-[clamp(1rem,1.67vw,24px)] tracking-[-0.72px] uppercase text-center">
+            <a href="#" className="hover:text-[#d86527] transition-colors leading-[1.127]">parcerias</a>
+            <a href="#" className="hover:text-[#d86527] transition-colors leading-[1.127]">media kit</a>
+            <a href="#" className="hover:text-[#d86527] transition-colors leading-[1.127]">email</a>
           </div>
         </div>
       </div>
