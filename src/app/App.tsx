@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 /* ─── Decorative diamond icon ─── */
 function Diamond({ className = "" }: { className?: string }) {
   return (
-    <div className={`flex items-center justify-center size-5 ${className}`} aria-hidden="true">
+    <div className={`flex items-center justify-center size-5 transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:rotate-[360deg] ${className}`} aria-hidden="true">
       <div className="-rotate-45">
         <div className="bg-[#a84814] rounded-[3px] size-3.5" />
       </div>
@@ -48,32 +48,188 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
 }
 
 /* ─── Navbar ─── */
-function Navbar() {
+const NAV_LINKS = [
+  { label: "Sobre", id: "sobre" },
+  { label: "Carreira", id: "carreira" },
+  { label: "Galeria", id: "galeria" },
+  { label: "Patrocínio", id: "patrocinio" },
+];
+
+/* ─── Reusable char-by-char hover effect ─── */
+function useCharHover(ref: React.RefObject<HTMLElement | null>) {
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const topChars = el.querySelectorAll<HTMLSpanElement>(".char-top");
+    const bottomChars = el.querySelectorAll<HTMLSpanElement>(".char-bottom");
+
+    const onEnter = () => {
+      gsap.to(topChars, { yPercent: -100, stagger: 0.025, duration: 0.4, ease: "power3.out", overwrite: true });
+      gsap.to(bottomChars, { yPercent: -100, stagger: 0.025, duration: 0.4, ease: "power3.out", overwrite: true });
+    };
+    const onLeave = () => {
+      gsap.to(topChars, { yPercent: 0, stagger: 0.025, duration: 0.4, ease: "power3.out", overwrite: true });
+      gsap.to(bottomChars, { yPercent: 0, stagger: 0.025, duration: 0.4, ease: "power3.out", overwrite: true });
+    };
+
+    el.addEventListener("mouseenter", onEnter);
+    el.addEventListener("mouseleave", onLeave);
+    return () => {
+      el.removeEventListener("mouseenter", onEnter);
+      el.removeEventListener("mouseleave", onLeave);
+    };
+  }, [ref]);
+}
+
+function CharHoverLink({ href, label, className = "", hoverColor = "text-[#d86527]", ariaLabel }: { href: string; label: string; className?: string; hoverColor?: string; ariaLabel?: string }) {
+  const linkRef = useRef<HTMLAnchorElement>(null);
+  useCharHover(linkRef);
+  const chars = label.split("");
   return (
-    <nav aria-label="Navegacao principal" className="hero_nav absolute top-5 md:top-8 left-[0.94%] right-[1.51%] flex items-center justify-between z-10">
-      <div className="bg-white/12 flex items-center px-3 md:px-4 py-3 rounded-md gap-0 overflow-x-auto">
-        {["Sobre", "Títulos"].map((item) => (
-          <a key={item} href={`#${item.toLowerCase()}`} aria-label={`Ir para secao ${item}`} className="px-3 md:px-4 py-2 shrink-0">
-            <span className={`font-archivo-condensed font-extrabold text-sm uppercase ${item === "Sobre" ? "text-white" : "text-[#949da6]"}`}>
-              {item}
-            </span>
-          </a>
-        ))}
-        <a href="#campeonato" aria-label="Ir para secao Campeonato" className="flex gap-0.5 items-center px-3 md:px-4 py-2 shrink-0">
-          <span className="font-archivo-condensed font-extrabold text-[#949da6] text-sm uppercase">Campeonato</span>
-          <svg className="size-6" fill="none" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M8 10L12 14L16 10" stroke="#B7BDC4" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
-          </svg>
-        </a>
-        <a href="#novidades" aria-label="Ir para secao Novidades" className="px-3 md:px-4 py-2 shrink-0 hidden sm:block">
-          <span className="font-archivo-condensed font-extrabold text-[#949da6] text-sm uppercase">Novidades</span>
-        </a>
-      </div>
-      <a href="#contato" aria-label="Entrar em contato" className="bg-[#d86527] rounded-md shrink-0 flex gap-3 items-center px-5 md:px-6 py-3">
-        <Diamond />
-        <span className="font-archivo-expanded font-extrabold text-[#eeebe4] text-[13px] tracking-[-0.39px] uppercase whitespace-nowrap leading-[1.127]">Contato</span>
-      </a>
-    </nav>
+    <a ref={linkRef} href={href} aria-label={ariaLabel} className={`cursor-pointer ${className}`}>
+      <span className="relative block overflow-hidden">
+        <span className="flex">
+          {chars.map((c, i) => <span key={i} className="char-top inline-block" style={{ whiteSpace: c === " " ? "pre" : undefined }}>{c}</span>)}
+        </span>
+        <span className={`flex absolute left-0 top-full ${hoverColor}`}>
+          {chars.map((c, i) => <span key={i} className="char-bottom inline-block" style={{ whiteSpace: c === " " ? "pre" : undefined }}>{c}</span>)}
+        </span>
+      </span>
+    </a>
+  );
+}
+
+function NavLinks({ activeSection }: { activeSection: string }) {
+  return (
+    <>
+      {NAV_LINKS.map((item) => (
+        <div key={item.id} className="px-4 py-2 shrink-0">
+          <CharHoverLink
+            href={`#${item.id}`}
+            label={item.label}
+            className={`font-archivo-condensed font-extrabold text-sm uppercase ${activeSection === item.id ? "text-white" : "text-[#949da6]"}`}
+            ariaLabel={`Ir para secao ${item.label}`}
+          />
+        </div>
+      ))}
+    </>
+  );
+}
+
+function CTAButton({ children = "Contato", href = "#contato", className = "" }: { children?: React.ReactNode; href?: string; className?: string }) {
+  return (
+    <a href={href} className={`group relative bg-[#d86527] hover:bg-[#ee671f] transition-colors duration-300 rounded-[6px] shrink-0 flex items-center self-stretch px-6 py-3 overflow-hidden ${className}`}>
+      <span className="relative flex items-center gap-3">
+        <span className="inline-flex transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:translate-x-[calc(var(--text-w)+12px)]">
+          <Diamond />
+        </span>
+        <span
+          className="font-archivo-expanded font-extrabold text-[#eeebe4] text-[13px] tracking-[-0.39px] uppercase whitespace-nowrap leading-[1.127] transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:-translate-x-[calc(var(--icon-w)+12px)]"
+          ref={(el) => {
+            if (el) {
+              const parent = el.parentElement;
+              if (parent) {
+                parent.style.setProperty("--text-w", `${el.offsetWidth}px`);
+                parent.style.setProperty("--icon-w", "20px");
+              }
+            }
+          }}
+        >{children}</span>
+      </span>
+    </a>
+  );
+}
+
+function Navbar() {
+  const [sticky, setSticky] = useState(false);
+  const [activeSection, setActiveSection] = useState("sobre");
+  const [onLightBg, setOnLightBg] = useState(false);
+  const topNavRef = useRef<HTMLElement>(null);
+  const bottomNavRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    // Set initial state: hidden below viewport but visibility preserved for GPU layer
+    gsap.set(bottomNavRef.current, { yPercent: 150, opacity: 0, visibility: "hidden" });
+    requestAnimationFrame(() => {
+      if (bottomNavRef.current) {
+        bottomNavRef.current.style.visibility = "visible";
+      }
+    });
+
+    const trigger = ScrollTrigger.create({
+      trigger: ".hero_heading",
+      start: "bottom top",
+      onEnter: () => {
+        setSticky(true);
+        gsap.to(topNavRef.current, { y: -60, opacity: 0, duration: 0.4, ease: "power2.in", overwrite: true });
+        gsap.to(bottomNavRef.current, { yPercent: 0, opacity: 1, duration: 0.6, ease: "power3.out", delay: 0.1, overwrite: true });
+      },
+      onLeaveBack: () => {
+        setSticky(false);
+        gsap.to(topNavRef.current, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out", overwrite: true });
+        gsap.to(bottomNavRef.current, { yPercent: 150, opacity: 0, duration: 0.4, ease: "power2.in", overwrite: true });
+      },
+    });
+
+    // Track active section
+    const sectionTriggers = NAV_LINKS.map((link) => {
+      return ScrollTrigger.create({
+        trigger: `#${link.id}`,
+        start: "top 80%",
+        end: "bottom 80%",
+        onEnter: () => setActiveSection(link.id),
+        onEnterBack: () => setActiveSection(link.id),
+      });
+    });
+
+    // Track light background — targets the inner light container in patrocinio
+    const lightBgEl = document.querySelector("#patrocinio > .bg-\\[\\#f9f6ee\\]");
+    const lightBgTrigger = lightBgEl ? ScrollTrigger.create({
+      trigger: lightBgEl,
+      start: "top bottom-=80",
+      end: "bottom bottom-=80",
+      onEnter: () => setOnLightBg(true),
+      onLeave: () => setOnLightBg(false),
+      onEnterBack: () => setOnLightBg(true),
+      onLeaveBack: () => setOnLightBg(false),
+    }) : null;
+
+    return () => {
+      trigger.kill();
+      sectionTriggers.forEach((t) => t.kill());
+      lightBgTrigger?.kill();
+    };
+  }, []);
+
+  return (
+    <>
+      {/* Top nav (hero) */}
+      <nav
+        ref={topNavRef}
+        aria-label="Navegacao principal"
+        className="hero_nav absolute top-3 left-3 right-3 flex items-start justify-between z-50"
+      >
+        <div className="bg-white/12 flex items-center px-[17px] py-3 rounded-[6px] overflow-x-auto">
+          <NavLinks activeSection={activeSection} />
+        </div>
+        <CTAButton>Contato</CTAButton>
+      </nav>
+
+      {/* Bottom sticky nav */}
+      <nav
+        ref={bottomNavRef}
+        aria-label="Navegacao principal"
+        className="fixed bottom-5 left-1/2 -translate-x-1/2 z-50"
+      >
+        <div className={`backdrop-blur-[20px] flex gap-[18px] items-center p-[6px] rounded-[6px] transition-colors duration-300 ${onLightBg ? "bg-[#0a1e36]/95" : "bg-white/7"}`} style={{ willChange: "transform", backfaceVisibility: "hidden" }}>
+          <div className="flex items-center">
+            <NavLinks activeSection={activeSection} />
+          </div>
+          <CTAButton>Contato</CTAButton>
+        </div>
+      </nav>
+    </>
   );
 }
 
@@ -112,8 +268,8 @@ function FitText({ className = "" }: { className?: string }) {
     <div ref={containerRef} className={`w-full overflow-hidden flex justify-center ${className}`}>
       <h1
         ref={textRef}
-        className="font-archivo-expanded text-[#e1dcd0] uppercase whitespace-nowrap leading-[0.867]"
-        style={{ letterSpacing: "-0.03em" }}
+        className="font-archivo-expanded w-full text-[#e1dcd0] uppercase whitespace-nowrap leading-[0.867]"
+        style={{ letterSpacing: "-0.03em", marginLeft: "-18px" }}
       >
         <span className="font-light">HUGO </span>
         <span className="font-extrabold text-[#d86527]">NETTO</span>
@@ -128,14 +284,14 @@ function HeroSection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Intro sequence
+      // Intro sequence — clearProps after to avoid residual inline styles
       const introTl = gsap.timeline({ delay: 0.2 });
       introTl
         .from(".hero_background img", { scale: 1.3, duration: 2, ease: "power2.out" }, 0)
-        .from(".hero_heading", { y: 120, opacity: 0, duration: 1.4, ease: "expo.out" }, 0.3)
-        .from(".hero_subheading", { x: -60, opacity: 0, duration: 1, ease: "power3.out" }, 0.8)
-        .from(".hero_description", { x: 60, opacity: 0, duration: 1, ease: "power3.out" }, 0.8)
-        .from(".hero_nav", { y: -30, opacity: 0, duration: 0.8, ease: "power3.out" }, 0.5);
+        .from(".hero_heading", { y: 120, opacity: 0, duration: 1.4, ease: "expo.out", clearProps: "all" }, 0.3)
+        .from(".hero_subheading", { x: -60, opacity: 0, duration: 1, ease: "power3.out", clearProps: "all" }, 0.8)
+        .from(".hero_description", { x: 60, opacity: 0, duration: 1, ease: "power3.out", clearProps: "all" }, 0.8)
+        .from(".hero_nav", { y: -30, opacity: 0, duration: 0.8, ease: "power3.out", clearProps: "all" }, 0.5);
 
       // Scroll parallax: image zooms + moves, content fades
       const scrollTl = gsap.timeline({
@@ -144,6 +300,11 @@ function HeroSection() {
           start: "top top",
           end: "bottom top",
           scrub: true,
+          onLeaveBack: () => {
+            // Force reset when scrolled back to top
+            gsap.set(".hero_subheading", { yPercent: 0, opacity: 1, clearProps: "transform" });
+            gsap.set(".hero_description", { yPercent: 0, opacity: 1, clearProps: "transform" });
+          },
         },
       });
       scrollTl
@@ -158,20 +319,16 @@ function HeroSection() {
     <section id="inicio" ref={heroRef} className="relative min-h-screen bg-[#051026] overflow-hidden flex flex-col" style={{ position: "sticky", top: 0, zIndex: 0 }}>
       {/* Background image with parallax */}
       <div className="hero_background absolute inset-0 scale-110">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#02080e]/60 via-transparent to-[#041221] z-[1]" />
         <OptimizedImage name="driver-calm-standing" alt="Hugo Netto na pista" sizes="100vw" priority imgClassName="absolute inset-0 object-cover size-full object-top" />
       </div>
 
-      <Navbar />
-
-      {/* Bottom content: subtitle + description aligned with HUGO NETTO glyphs */}
+      {/* Bottom content */}
       <div className="relative z-[2] mt-auto w-full">
-        {/* Padding matches H/O side bearings: left 18/1920=0.94%, right 29/1920=1.51% */}
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 pl-[0.94%] pr-[1.51%] mb-1 md:mb-2">
-          <p className="hero_subheading font-archivo-expanded font-extrabold text-[#eeebe4] text-sm md:text-base uppercase tracking-[-0.48px] leading-[1.127] max-w-[260px]">
-            Piloto de Alta<br />Performance
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 px-3 md:px-[6px] mb-4 md:mb-6">
+          <p className="hero_subheading font-archivo-expanded font-extrabold text-[#eeebe4] text-base md:text-2xl uppercase tracking-[-0.72px] leading-[1.127] w-[251px] text-center">
+            Piloto de Alta Performance
           </p>
-          <p className="hero_description font-['Inter',sans-serif] font-semibold text-xs md:text-sm text-[#eeebe4] leading-[1.54] max-w-[260px] sm:text-right">
+          <p className="hero_description font-['Inter',sans-serif] font-semibold text-sm text-[#eeebe4] leading-[1.54] w-[249px] lg:mr-[18px]">
             Velocidade, precisão e disciplina no limite. Uma jornada construída entre controle, técnica e adrenalina.
           </p>
         </div>
@@ -317,8 +474,8 @@ function MindsetSection() {
           ease: "power3.out",
           scrollTrigger: {
             trigger: ref.current,
-            start: `${30 + i * 15}% center`,
-            end: `${40 + i * 15}% center`,
+            start: `${20 + i * 10}% center`,
+            end: `${30 + i * 10}% center`,
             scrub: 1,
           },
         });
@@ -727,10 +884,7 @@ function SponsorsSection() {
 
         {/* CTA */}
         <div className="flex justify-center">
-          <a href="#contato" aria-label="Seja um parceiro de Hugo Netto" className="bg-[#d86527] flex gap-3 items-center px-6 py-4 rounded-md hover:bg-[#c05a22] transition-colors">
-            <Diamond />
-            <span className="font-archivo-expanded font-extrabold text-[#eeebe4] text-[13px] tracking-[-0.39px] uppercase whitespace-nowrap leading-[1.127]">SEJA UM PARCEIRO</span>
-          </a>
+          <CTAButton href="#contato">Seja um Parceiro</CTAButton>
         </div>
       </div>
     </section>
@@ -808,18 +962,18 @@ function FollowSection() {
       <nav aria-label="Redes sociais e contatos" className="follow_nav absolute top-[55.8%] left-0 right-0 z-[1] flex flex-col sm:flex-row justify-between px-[7.78%]">
         <div className="follow_nav-left text-center">
           <p className="font-archivo-expanded font-bold text-[#d86527] text-[10px] tracking-[-0.3px] uppercase leading-[1.127]">REDES SOCIAIS</p>
-          <div className="flex flex-col gap-[6px] mt-[18px] font-archivo-expanded font-extrabold text-[#e1dcd0] text-[clamp(1rem,1.67vw,24px)] tracking-[-0.72px] uppercase text-center">
-            <a href="#" aria-label="Seguir Hugo Netto no Instagram" className="hover:text-[#d86527] transition-colors leading-[1.127]">INSTAGRAM</a>
-            <a href="#" aria-label="Assistir Hugo Netto no YouTube" className="hover:text-[#d86527] transition-colors leading-[1.127]">YOUTUBE</a>
-            <a href="#" aria-label="Seguir Hugo Netto no TikTok" className="hover:text-[#d86527] transition-colors leading-[1.127]">tiktok</a>
+          <div className="flex flex-col items-center gap-[6px] mt-[18px] font-archivo-expanded font-extrabold text-[#e1dcd0] text-[clamp(1rem,1.67vw,24px)] tracking-[-0.72px] uppercase">
+            <CharHoverLink href="#" label="INSTAGRAM" className="text-[#e1dcd0] leading-[1.127]" ariaLabel="Seguir Hugo Netto no Instagram" />
+            <CharHoverLink href="#" label="YOUTUBE" className="text-[#e1dcd0] leading-[1.127]" ariaLabel="Assistir Hugo Netto no YouTube" />
+            <CharHoverLink href="#" label="TIKTOK" className="text-[#e1dcd0] leading-[1.127]" ariaLabel="Seguir Hugo Netto no TikTok" />
           </div>
         </div>
         <div className="follow_nav-right text-center">
           <p className="font-archivo-expanded font-bold text-[#d86527] text-[10px] tracking-[-0.3px] uppercase leading-[1.127]">contatos</p>
-          <div className="flex flex-col gap-[6px] mt-[18px] font-archivo-expanded font-extrabold text-[#e1dcd0] text-[clamp(1rem,1.67vw,24px)] tracking-[-0.72px] uppercase text-center">
-            <a href="#" aria-label="Informacoes sobre parcerias com Hugo Netto" className="hover:text-[#d86527] transition-colors leading-[1.127]">parcerias</a>
-            <a href="#" aria-label="Baixar media kit de Hugo Netto" className="hover:text-[#d86527] transition-colors leading-[1.127]">media kit</a>
-            <a href="#" aria-label="Enviar email para Hugo Netto" className="hover:text-[#d86527] transition-colors leading-[1.127]">email</a>
+          <div className="flex flex-col items-center gap-[6px] mt-[18px] font-archivo-expanded font-extrabold text-[#e1dcd0] text-[clamp(1rem,1.67vw,24px)] tracking-[-0.72px] uppercase">
+            <CharHoverLink href="#" label="PARCERIAS" className="text-[#e1dcd0] leading-[1.127]" ariaLabel="Informacoes sobre parcerias" />
+            <CharHoverLink href="#" label="MEDIA KIT" className="text-[#e1dcd0] leading-[1.127]" ariaLabel="Baixar media kit" />
+            <CharHoverLink href="#" label="EMAIL" className="text-[#e1dcd0] leading-[1.127]" ariaLabel="Enviar email" />
           </div>
         </div>
       </nav>
@@ -871,6 +1025,7 @@ export default function App() {
   return (
     <main className="bg-[#041221] overflow-x-hidden">
       <GrainOverlay />
+      <Navbar />
       <HeroSection />
       <AboutSection />
       <MindsetSection />
