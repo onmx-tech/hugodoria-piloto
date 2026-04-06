@@ -76,6 +76,52 @@ function Navbar() {
   );
 }
 
+/* ─── FitText — auto-sizes HUGO NETTO to fill container width ─── */
+function FitText({ className = "" }: { className?: string }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    const resize = () => {
+      const container = containerRef.current;
+      const text = textRef.current;
+      if (!container || !text) return;
+      const containerWidth = container.clientWidth;
+      // Binary search for the right font size
+      let lo = 10, hi = 500;
+      while (hi - lo > 1) {
+        const mid = (lo + hi) / 2;
+        text.style.fontSize = `${mid}px`;
+        if (text.scrollWidth > containerWidth) {
+          hi = mid;
+        } else {
+          lo = mid;
+        }
+      }
+      text.style.fontSize = `${lo}px`;
+    };
+
+    document.fonts.ready.then(() => {
+      resize();
+      window.addEventListener("resize", resize);
+    });
+    return () => window.removeEventListener("resize", resize);
+  }, []);
+
+  return (
+    <div ref={containerRef} className={`w-full overflow-hidden ${className}`}>
+      <h1
+        ref={textRef}
+        className="font-['Archivo_Expanded',sans-serif] text-[#e1dcd0] uppercase whitespace-nowrap leading-[0.85]"
+        style={{ letterSpacing: "-0.03em" }}
+      >
+        <span className="font-light">HUGO </span>
+        <span className="font-extrabold text-[#d86527]">NETTO</span>
+      </h1>
+    </div>
+  );
+}
+
 /* ─── Hero Section ─── */
 function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -139,19 +185,8 @@ function HeroSection() {
           </p>
         </div>
 
-        {/* Giant HUGO NETTO edge-to-edge — scales to fit viewport */}
-        <div className="hero-title w-full overflow-hidden">
-          <h1
-            className="font-['Archivo_Expanded',sans-serif] text-[#e1dcd0] uppercase whitespace-nowrap leading-[0.85] px-3 md:px-4"
-            style={{
-              fontSize: "clamp(2.5rem, 14vw, 13rem)",
-              letterSpacing: "-0.04em",
-            }}
-          >
-            <span className="font-light">HUGO </span>
-            <span className="font-extrabold text-[#d86527]">NETTO</span>
-          </h1>
-        </div>
+        {/* Giant HUGO NETTO edge-to-edge — auto-fits viewport width */}
+        <FitText className="hero-title" />
       </div>
     </section>
   );
@@ -239,17 +274,18 @@ function AboutSection() {
 /* ─── Mindset Section ─── */
 function FeatureCard({ num, title, desc }: { num: string; title: string; desc: string }) {
   return (
-    <div className="feature-card relative border-b border-white/20 px-2 py-8">
-      <div className="flex gap-6 md:gap-8 items-start">
-        <div className="flex flex-col gap-3 pt-1.5 shrink-0">
-          <span className="font-['Archivo_Expanded',sans-serif] font-extrabold text-[#e1dcd0] text-base tracking-[-0.48px] uppercase leading-[1.127]">{num}</span>
-          <div className="bg-[#d86527] h-px w-9" />
+    <div className="feature-card relative">
+      <div className="flex gap-[32px] items-start overflow-clip px-[8px] py-[32px]">
+        <div className="flex flex-col gap-[13px] items-start pt-[6px] shrink-0">
+          <span className="font-['Archivo_Expanded',sans-serif] font-extrabold text-[#e1dcd0] text-[16px] tracking-[-0.48px] uppercase leading-[1.127]">{num}</span>
+          <div className="bg-[#d86527] h-[1px] w-[36px]" />
         </div>
-        <div className="flex-1 flex flex-col gap-3">
-          <p className="font-['Archivo',sans-serif] font-bold text-[#e1dcd0] text-lg md:text-xl tracking-[-0.2px] uppercase leading-[30px]" style={{ fontVariationSettings: "'wdth' 100" }}>{title}</p>
-          <p className="font-['Inter',sans-serif] font-medium text-sm text-white/60 leading-[1.54]">{desc}</p>
+        <div className="flex-1 flex flex-col gap-[12px]">
+          <p className="font-['Archivo',sans-serif] font-bold text-[#e1dcd0] text-[20px] tracking-[-0.2px] uppercase leading-[30px] whitespace-nowrap" style={{ fontVariationSettings: "'wdth' 100" }}>{title}</p>
+          <p className="font-['Inter',sans-serif] font-medium text-[14px] text-[rgba(255,255,255,0.59)] leading-[1.54]">{desc}</p>
         </div>
       </div>
+      <div className="absolute inset-0 border-b border-[rgba(255,255,255,0.2)] pointer-events-none" />
     </div>
   );
 }
@@ -299,41 +335,41 @@ function MindsetSection() {
 
   return (
     <section ref={ref} className="relative bg-gradient-to-b from-[#041221] to-[#072a51] overflow-hidden" style={{ aspectRatio: "1440/1073", minHeight: "900px" }}>
-      {/* Full-bleed pilot image as background */}
+      {/* Full-bleed pilot image — Figma: 1797×1316, centered, bottom: -341px */}
       <div className="mindset-bg absolute inset-0 pointer-events-none z-[0] overflow-hidden">
-        <OptimizedImage
-          name="driver-fullbody"
-          alt=""
-          sizes="100vw"
-          className="absolute inset-0 block size-full"
-          imgClassName="absolute top-0 h-full w-[128%] max-w-none left-[-14%]"
-        />
+        <div className="absolute left-1/2 -translate-x-1/2 bottom-[-32%] w-[124.8%] h-[122.6%]">
+          <OptimizedImage
+            name="driver-fullbody"
+            alt=""
+            sizes="100vw"
+            className="absolute inset-0 block size-full"
+            imgClassName="absolute h-full left-[-14%] max-w-none top-0 w-[128%]"
+          />
+        </div>
       </div>
 
-      {/* Title */}
-      <div className="mindset-title absolute top-[80px] md:top-[120px] left-1/2 -translate-x-1/2 text-center z-[3] px-5 w-full">
-        <SectionLabel>MENTALIDADE</SectionLabel>
-        <h2 className="font-['Archivo_Expanded',sans-serif] font-extrabold text-[#e1dcd0] text-2xl md:text-[32px] tracking-[-0.96px] uppercase leading-[1.127] mt-4 max-w-[568px] mx-auto">
+      {/* Title — Figma: "MENTALIDADE" at top:92.5px, heading at top:164px */}
+      <div className="mindset-title absolute top-[92px] left-1/2 -translate-x-1/2 text-center z-[3] w-full">
+        <p className="font-['Archivo_Expanded',sans-serif] font-bold text-[#d86527] text-[10px] tracking-[-0.3px] uppercase leading-[1.127]">MENTALIDADE</p>
+        <h2 className="font-['Archivo_Expanded',sans-serif] font-extrabold text-[#e1dcd0] text-[32px] tracking-[-0.96px] uppercase leading-[1.127] mt-[40px] max-w-[568px] mx-auto">
           O que define um piloto de alta performance?
         </h2>
       </div>
 
-      {/* Cards positioned on left and right sides */}
-      <div className="absolute inset-0 z-[2] max-w-[1440px] mx-auto">
-        {/* Desktop positioning — matches Figma: left cards at x=112, right at x=977 */}
+      {/* Cards — Figma: left at 7.78%, right at 67.85%, top row 44.1%, bottom row 74% */}
+      <div className="absolute inset-0 z-[2]">
+        {/* Desktop */}
         <div className="hidden md:block">
-          {/* Top row: 01 left, 02 right at 44% from top */}
-          <div className="absolute left-[7.8%] top-[44%] w-[350px]">
+          <div className="absolute left-[7.78%] top-[44.1%] w-[24.3%]">
             <FeatureCard {...leftFeatures[0]} />
           </div>
-          <div className="absolute right-[7.8%] top-[44%] w-[350px]">
+          <div className="absolute right-[7.78%] top-[44.1%] w-[24.3%]">
             <FeatureCard {...rightFeatures[0]} />
           </div>
-          {/* Bottom row: 03 left, 04 right at 74% from top */}
-          <div className="absolute left-[7.8%] top-[74%] w-[350px]">
+          <div className="absolute left-[7.78%] top-[74%] w-[24.3%]">
             <FeatureCard {...leftFeatures[1]} />
           </div>
-          <div className="absolute right-[7.8%] top-[74%] w-[350px]">
+          <div className="absolute right-[7.78%] top-[74%] w-[24.3%]">
             <FeatureCard {...rightFeatures[1]} />
           </div>
         </div>
