@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 /* ─── Decorative diamond icon ─── */
 function Diamond({ className = "" }: { className?: string }) {
   return (
-    <div className={`flex items-center justify-center size-5 ${className}`}>
+    <div className={`flex items-center justify-center size-5 ${className}`} aria-hidden="true">
       <div className="-rotate-45">
         <div className="bg-[#a84814] rounded-[3px] size-3.5" />
       </div>
@@ -22,7 +22,7 @@ function Diamond({ className = "" }: { className?: string }) {
 /* ─── Down arrow SVG ─── */
 function DownArrow() {
   return (
-    <svg className="size-6" fill="none" viewBox="0 0 24 24">
+    <svg className="size-6" fill="none" viewBox="0 0 24 24" aria-hidden="true">
       <path d="M6.5 17L11.5 12L6.5 7" opacity="0.4" stroke="#D86527" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
       <path d="M12.5 17L17.5 12L12.5 7" stroke="#D86527" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
     </svg>
@@ -32,7 +32,7 @@ function DownArrow() {
 /* ─── Section label (e.g. "MENTALIDADE") ─── */
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <p className="font-['Archivo_Expanded',sans-serif] font-bold text-[#d86527] text-[10px] md:text-xs tracking-[-0.3px] uppercase leading-[1.127]">
+    <p className="font-archivo-expanded font-bold text-[#d86527] text-[10px] md:text-xs tracking-[-0.3px] uppercase leading-[1.127]">
       {children}
     </p>
   );
@@ -41,7 +41,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 /* ─── Section heading ─── */
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="font-['Archivo_Expanded',sans-serif] font-extrabold text-[#e1dcd0] text-2xl md:text-[32px] tracking-[-0.96px] uppercase leading-[1.127]">
+    <h2 className="font-archivo-expanded font-extrabold text-[#e1dcd0] text-2xl md:text-[32px] tracking-[-0.96px] uppercase leading-[1.127]">
       {children}
     </h2>
   );
@@ -50,28 +50,28 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
 /* ─── Navbar ─── */
 function Navbar() {
   return (
-    <nav className="absolute top-5 left-5 right-5 md:left-7 md:right-7 flex items-center justify-between z-10">
+    <nav aria-label="Navegacao principal" className="hero_nav absolute top-5 md:top-8 left-[0.94%] right-[1.51%] flex items-center justify-between z-10">
       <div className="bg-white/12 flex items-center px-3 md:px-4 py-3 rounded-md gap-0 overflow-x-auto">
         {["Sobre", "Títulos"].map((item) => (
-          <a key={item} href="#" className="px-3 md:px-4 py-2 shrink-0">
-            <span className={`font-['Archivo_Condensed',sans-serif] font-extrabold text-sm uppercase ${item === "Sobre" ? "text-white" : "text-[#949da6]"}`}>
+          <a key={item} href={`#${item.toLowerCase()}`} aria-label={`Ir para secao ${item}`} className="px-3 md:px-4 py-2 shrink-0">
+            <span className={`font-archivo-condensed font-extrabold text-sm uppercase ${item === "Sobre" ? "text-white" : "text-[#949da6]"}`}>
               {item}
             </span>
           </a>
         ))}
-        <a href="#" className="flex gap-0.5 items-center px-3 md:px-4 py-2 shrink-0">
-          <span className="font-['Archivo_Condensed',sans-serif] font-extrabold text-[#949da6] text-sm uppercase">Campeonato</span>
-          <svg className="size-6" fill="none" viewBox="0 0 24 24">
+        <a href="#campeonato" aria-label="Ir para secao Campeonato" className="flex gap-0.5 items-center px-3 md:px-4 py-2 shrink-0">
+          <span className="font-archivo-condensed font-extrabold text-[#949da6] text-sm uppercase">Campeonato</span>
+          <svg className="size-6" fill="none" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M8 10L12 14L16 10" stroke="#B7BDC4" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
           </svg>
         </a>
-        <a href="#" className="px-3 md:px-4 py-2 shrink-0 hidden sm:block">
-          <span className="font-['Archivo_Condensed',sans-serif] font-extrabold text-[#949da6] text-sm uppercase">Novidades</span>
+        <a href="#novidades" aria-label="Ir para secao Novidades" className="px-3 md:px-4 py-2 shrink-0 hidden sm:block">
+          <span className="font-archivo-condensed font-extrabold text-[#949da6] text-sm uppercase">Novidades</span>
         </a>
       </div>
-      <a href="#" className="bg-[#d86527] rounded-md shrink-0 flex gap-3 items-center px-5 md:px-6 py-3">
+      <a href="#contato" aria-label="Entrar em contato" className="bg-[#d86527] rounded-md shrink-0 flex gap-3 items-center px-5 md:px-6 py-3">
         <Diamond />
-        <span className="font-['Archivo_Expanded',sans-serif] font-extrabold text-[#eeebe4] text-[13px] tracking-[-0.39px] uppercase whitespace-nowrap leading-[1.127]">Contato</span>
+        <span className="font-archivo-expanded font-extrabold text-[#eeebe4] text-[13px] tracking-[-0.39px] uppercase whitespace-nowrap leading-[1.127]">Contato</span>
       </a>
     </nav>
   );
@@ -88,7 +88,6 @@ function FitText({ className = "" }: { className?: string }) {
       const text = textRef.current;
       if (!container || !text) return;
       const containerWidth = container.clientWidth;
-      // Binary search for the right font size
       let lo = 10, hi = 500;
       while (hi - lo > 1) {
         const mid = (lo + hi) / 2;
@@ -110,10 +109,10 @@ function FitText({ className = "" }: { className?: string }) {
   }, []);
 
   return (
-    <div ref={containerRef} className={`w-full overflow-hidden ${className}`}>
+    <div ref={containerRef} className={`w-full overflow-hidden flex justify-center ${className}`}>
       <h1
         ref={textRef}
-        className="font-['Archivo_Expanded',sans-serif] text-[#e1dcd0] uppercase whitespace-nowrap leading-[0.85]"
+        className="font-archivo-expanded text-[#e1dcd0] uppercase whitespace-nowrap leading-[0.867]"
         style={{ letterSpacing: "-0.03em" }}
       >
         <span className="font-light">HUGO </span>
@@ -129,30 +128,17 @@ function HeroSection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".hero-title", {
-        y: 80,
-        opacity: 0,
-        duration: 1.2,
-        ease: "power3.out",
-        delay: 0.3,
-      });
-      gsap.from(".hero-subtitle", {
-        y: 40,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out",
-        delay: 0.6,
-      });
-      gsap.from(".hero-desc", {
-        y: 30,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out",
-        delay: 0.8,
-      });
-      gsap.to(".hero-bg", {
-        yPercent: 15,
-        ease: "none",
+      // Intro sequence
+      const introTl = gsap.timeline({ delay: 0.2 });
+      introTl
+        .from(".hero_background img", { scale: 1.3, duration: 2, ease: "power2.out" }, 0)
+        .from(".hero_heading", { y: 120, opacity: 0, duration: 1.4, ease: "expo.out" }, 0.3)
+        .from(".hero_subheading", { x: -60, opacity: 0, duration: 1, ease: "power3.out" }, 0.8)
+        .from(".hero_description", { x: 60, opacity: 0, duration: 1, ease: "power3.out" }, 0.8)
+        .from(".hero_nav", { y: -30, opacity: 0, duration: 0.8, ease: "power3.out" }, 0.5);
+
+      // Scroll parallax: image zooms + moves, content fades
+      const scrollTl = gsap.timeline({
         scrollTrigger: {
           trigger: heroRef.current,
           start: "top top",
@@ -160,34 +146,36 @@ function HeroSection() {
           scrub: true,
         },
       });
+      scrollTl
+        .to(".hero_background", { yPercent: 30, scale: 1.1 }, 0)
+        .to(".hero_subheading", { yPercent: -80, opacity: 0 }, 0)
+        .to(".hero_description", { yPercent: -80, opacity: 0 }, 0);
     }, heroRef);
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={heroRef} className="relative min-h-screen bg-[#051026] overflow-hidden flex flex-col">
+    <section id="inicio" ref={heroRef} className="relative min-h-screen bg-[#051026] overflow-hidden flex flex-col" style={{ position: "sticky", top: 0, zIndex: 0 }}>
       {/* Background image with parallax */}
-      <div className="hero-bg absolute inset-0 scale-110">
+      <div className="hero_background absolute inset-0 scale-110">
         <div className="absolute inset-0 bg-gradient-to-b from-[#02080e]/60 via-transparent to-[#041221] z-[1]" />
         <OptimizedImage name="driver-calm-standing" alt="Hugo Netto na pista" sizes="100vw" priority imgClassName="absolute inset-0 object-cover size-full object-top" />
       </div>
 
       <Navbar />
 
-      {/* Bottom content: subtitle + description row, HUGO NETTO below */}
+      {/* Bottom content: subtitle + description aligned with HUGO NETTO glyphs */}
       <div className="relative z-[2] mt-auto w-full">
-        {/* Subtitle left / Description right */}
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 px-5 md:px-10 lg:px-14 mb-6 md:mb-8">
-          <p className="hero-subtitle font-['Archivo_Expanded',sans-serif] font-extrabold text-[#eeebe4] text-sm md:text-base uppercase tracking-[-0.48px] leading-[1.127] max-w-[260px]">
+        {/* Padding matches H/O side bearings: left 18/1920=0.94%, right 29/1920=1.51% */}
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 pl-[0.94%] pr-[1.51%] mb-1 md:mb-2">
+          <p className="hero_subheading font-archivo-expanded font-extrabold text-[#eeebe4] text-sm md:text-base uppercase tracking-[-0.48px] leading-[1.127] max-w-[260px]">
             Piloto de Alta<br />Performance
           </p>
-          <p className="hero-desc font-['Inter',sans-serif] font-semibold text-xs md:text-sm text-[#eeebe4] leading-[1.54] max-w-[260px] sm:text-right">
+          <p className="hero_description font-['Inter',sans-serif] font-semibold text-xs md:text-sm text-[#eeebe4] leading-[1.54] max-w-[260px] sm:text-right">
             Velocidade, precisão e disciplina no limite. Uma jornada construída entre controle, técnica e adrenalina.
           </p>
         </div>
-
-        {/* Giant HUGO NETTO edge-to-edge — auto-fits viewport width */}
-        <FitText className="hero-title" />
+        <FitText className="hero_heading" />
       </div>
     </section>
   );
@@ -199,63 +187,82 @@ function AboutSection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".about-heading", {
+      // Heading slides in from left with clip-path reveal
+      gsap.from(".about_heading h2", {
+        x: -120,
+        opacity: 0,
+        duration: 1.2,
+        ease: "power4.out",
+        scrollTrigger: { trigger: ".about_heading", start: "top 75%", end: "top 40%", scrub: 1 },
+      });
+      // "É dominar" slides in from right after heading
+      gsap.from(".about_accent", {
         x: -80,
         opacity: 0,
         duration: 1,
         ease: "power3.out",
-        scrollTrigger: { trigger: ".about-heading", start: "top 80%" },
+        scrollTrigger: { trigger: ".about_accent", start: "top 80%", end: "top 50%", scrub: 1 },
       });
-      gsap.from(".about-accent", {
-        x: 80,
+      // Helmet scales up
+      gsap.from(".about_image", {
+        scale: 0,
+        opacity: 0,
+        duration: 1.2,
+        ease: "power3.out",
+        scrollTrigger: { trigger: ".about_image", start: "top 80%" },
+      });
+      // Description fades up
+      gsap.from(".about_description", {
+        y: 60,
         opacity: 0,
         duration: 1,
         ease: "power3.out",
-        scrollTrigger: { trigger: ".about-accent", start: "top 80%" },
+        scrollTrigger: { trigger: ".about_description", start: "top 80%", end: "top 50%", scrub: 1 },
       });
-      gsap.from(".about-desc", {
-        y: 40,
-        opacity: 0,
-        duration: 1,
+      // Orange line grows
+      gsap.from(".about_divider", {
+        scaleX: 0,
+        transformOrigin: "left",
+        duration: 0.8,
         ease: "power3.out",
-        scrollTrigger: { trigger: ".about-desc", start: "top 85%" },
+        scrollTrigger: { trigger: ".about_divider", start: "top 85%" },
       });
     }, ref);
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={ref} className="relative bg-[#041221] overflow-hidden min-h-screen flex items-center">
+    <section id="sobre" ref={ref} className="relative bg-[#041221] overflow-hidden min-h-screen flex items-center z-[2]">
 
       <div className="relative w-full max-w-[1920px] mx-auto px-5 md:px-[7.78%] py-20">
         <div className="grid grid-cols-1 md:grid-cols-[auto_1fr_1fr] items-center gap-8 md:gap-[3%]">
           {/* Left: Headline — Figma: 492/1216 = 40.4% */}
-          <div className="about-heading">
-            <h2 className="font-['Archivo_Expanded',sans-serif] font-extrabold text-[#e1dcd0] text-[clamp(1.5rem,2.78vw,2.5rem)] tracking-[-1.2px] uppercase leading-[1.127] whitespace-nowrap">
+          <div className="about_heading">
+            <h2 className="font-archivo-expanded font-extrabold text-[#e1dcd0] text-[clamp(1.5rem,2.78vw,2.5rem)] tracking-[-1.2px] uppercase leading-[1.127] whitespace-nowrap">
               Alta<br />performance<br />não é só correr.
             </h2>
-            <div className="about-accent flex items-center gap-2 -mt-0.5 ml-[3.3em]">
+            <div className="about_accent flex items-center gap-2 -mt-0.5 ml-[3.3em]">
               <Diamond />
-              <p className="font-['Archivo_Expanded',sans-serif] font-extrabold text-[#d86527] text-[clamp(1.5rem,2.78vw,2.5rem)] tracking-[-1.2px] uppercase leading-[1.127]">
+              <p className="font-archivo-expanded font-extrabold text-[#d86527] text-[clamp(1.5rem,2.78vw,2.5rem)] tracking-[-1.2px] uppercase leading-[1.127]">
                 É dominar
               </p>
             </div>
           </div>
 
           {/* Center: Oval helmet image */}
-          <div className="flex justify-center items-center">
+          <div className="about_image flex justify-center items-center">
             <div className="relative w-full max-w-[320px] aspect-[246.3/140.8] rounded-[179.5px] pointer-events-none">
               <div aria-hidden="true" className="absolute inset-0 rounded-[179.5px] overflow-hidden">
                 <div className="absolute bg-[#07315f] inset-0 rounded-[179.5px]" />
-                <OptimizedImage name="helmet-dramatic" alt="Capacete" sizes="246px" imgClassName="absolute inset-0 object-cover size-full rounded-[179.5px]" />
+                <OptimizedImage name="helmet-dramatic" alt="Capacete de corrida de Hugo Netto em iluminacao dramatica" sizes="246px" imgClassName="absolute inset-0 object-cover size-full rounded-[179.5px]" />
               </div>
               <div aria-hidden="true" className="absolute border border-black inset-0 rounded-[179.5px]" />
             </div>
           </div>
 
           {/* Right: Description — Figma: 374/1216 = 30.7% (1fr) */}
-          <div className="about-desc max-w-[374px]">
-            <div className="bg-[#a84814] w-[44px] h-[4px] rounded-[3px] mb-5" />
+          <div className="about_description max-w-[374px]">
+            <div className="about_divider bg-[#a84814] w-[44px] h-[4px] rounded-[3px] mb-5" />
             <p className="font-['Inter',sans-serif] font-semibold text-[14px] text-[rgba(238,235,228,0.83)] leading-[1.54]">
               Hugo Netto é piloto de alta performance, movido por disciplina, estratégia e controle emocional. Nas pistas, cada curva exige precisão absoluta e tomada de decisão em milésimos.{" "}
               <span className="text-[#eeebe4]">Mais do que velocidade, sua jornada é sobre performance real sob pressão.</span>
@@ -270,14 +277,14 @@ function AboutSection() {
 /* ─── Mindset Section ─── */
 function FeatureCard({ num, title, desc }: { num: string; title: string; desc: string }) {
   return (
-    <div className="feature-card relative">
+    <div className="mindset_card relative">
       <div className="flex gap-[32px] items-start overflow-clip px-[8px] py-[32px]">
         <div className="flex flex-col gap-[13px] items-start pt-[6px] shrink-0">
-          <span className="font-['Archivo_Expanded',sans-serif] font-extrabold text-[#e1dcd0] text-[16px] tracking-[-0.48px] uppercase leading-[1.127]">{num}</span>
+          <span className="font-archivo-expanded font-extrabold text-[#e1dcd0] text-[16px] tracking-[-0.48px] uppercase leading-[1.127]">{num}</span>
           <div className="bg-[#d86527] h-[1px] w-[36px]" />
         </div>
         <div className="flex-1 flex flex-col gap-[12px]">
-          <p className="font-['Archivo',sans-serif] font-bold text-[#e1dcd0] text-[20px] tracking-[-0.2px] uppercase leading-[30px] whitespace-nowrap" style={{ fontVariationSettings: "'wdth' 100" }}>{title}</p>
+          <h3 className="font-['Archivo',sans-serif] font-bold text-[#e1dcd0] text-[20px] tracking-[-0.2px] uppercase leading-[30px] whitespace-nowrap">{title}</h3>
           <p className="font-['Inter',sans-serif] font-medium text-[14px] text-[rgba(255,255,255,0.59)] leading-[1.54]">{desc}</p>
         </div>
       </div>
@@ -291,23 +298,36 @@ function MindsetSection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".mindset-title", {
-        y: 50,
+      // Title reveal
+      gsap.from(".mindset_heading", {
+        y: 80,
         opacity: 0,
-        duration: 1,
+        duration: 1.2,
         ease: "power3.out",
-        scrollTrigger: { trigger: ".mindset-title", start: "top 80%" },
+        scrollTrigger: { trigger: ".mindset_heading", start: "top 85%" },
       });
-      gsap.from(".feature-card", {
-        y: 60,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: "power3.out",
-        scrollTrigger: { trigger: ".feature-card", start: "top 85%" },
+
+      // Pin section and reveal cards sequentially with scrub
+      const cards = gsap.utils.toArray(".mindset_card");
+      cards.forEach((card, i) => {
+        gsap.from(card as Element, {
+          y: 80,
+          opacity: 0,
+          duration: 0.6,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ref.current,
+            start: `${30 + i * 15}% center`,
+            end: `${40 + i * 15}% center`,
+            scrub: 1,
+          },
+        });
       });
-      gsap.to(".mindset-bg", {
-        yPercent: 10,
+
+      // Parallax on pilot image
+      gsap.to(".mindset_background", {
+        yPercent: 15,
+        scale: 1.05,
         ease: "none",
         scrollTrigger: {
           trigger: ref.current,
@@ -330,14 +350,14 @@ function MindsetSection() {
   ];
 
   return (
-    <section ref={ref} className="relative bg-gradient-to-b from-[#041221] to-[#072a51] overflow-hidden" style={{ aspectRatio: "1440/1073", minHeight: "900px" }}>
+    <section id="mentalidade" ref={ref} className="relative bg-gradient-to-b from-[#041221] to-[#072a51] overflow-hidden z-[2]" style={{ aspectRatio: "1440/1073", minHeight: "900px" }}>
 
       {/* Full-bleed pilot image — Figma: 1797×1316, centered, bottom: -341px */}
-      <div className="mindset-bg absolute inset-0 pointer-events-none z-[0] overflow-hidden">
+      <div className="mindset_background absolute inset-0 pointer-events-none z-[0] overflow-hidden">
         <div className="absolute left-1/2 -translate-x-1/2 bottom-[-32%] w-[124.8%] h-[122.6%]">
           <OptimizedImage
             name="driver-fullbody"
-            alt=""
+            alt="Hugo Netto em pose de corpo inteiro com traje de piloto"
             sizes="100vw"
             className="absolute inset-0 block size-full"
             imgClassName="absolute h-full left-[-14%] max-w-none top-0 w-[128%]"
@@ -346,9 +366,9 @@ function MindsetSection() {
       </div>
 
       {/* Title — Figma: "MENTALIDADE" at top:92.5px, heading at top:164px */}
-      <div className="mindset-title absolute top-[92px] left-1/2 -translate-x-1/2 text-center z-[3] w-full">
-        <p className="font-['Archivo_Expanded',sans-serif] font-bold text-[#d86527] text-[10px] tracking-[-0.3px] uppercase leading-[1.127]">MENTALIDADE</p>
-        <h2 className="font-['Archivo_Expanded',sans-serif] font-extrabold text-[#e1dcd0] text-[32px] tracking-[-0.96px] uppercase leading-[1.127] mt-[40px] max-w-[568px] mx-auto">
+      <div className="mindset_heading absolute top-[92px] left-1/2 -translate-x-1/2 text-center z-[3] w-full">
+        <p className="font-archivo-expanded font-bold text-[#d86527] text-[10px] tracking-[-0.3px] uppercase leading-[1.127]">MENTALIDADE</p>
+        <h2 className="font-archivo-expanded font-extrabold text-[#e1dcd0] text-[32px] tracking-[-0.96px] uppercase leading-[1.127] mt-[40px] max-w-[568px] mx-auto">
           O que define um piloto de alta performance?
         </h2>
       </div>
@@ -418,8 +438,8 @@ function StatItem({ value, label }: { value: string; label: string }) {
   const num = parseInt(value);
   const suffix = value.replace(/\d/g, "");
   return (
-    <div className="stat-item flex flex-col">
-      <p className="font-['Archivo_Expanded',sans-serif] font-light text-[#d86527] text-[clamp(3rem,6.67vw,96px)] tracking-[-2.88px] uppercase leading-[1.127]">
+    <div className="stats_item flex flex-col">
+      <p className="font-archivo-expanded font-light text-[#d86527] text-[clamp(3rem,6.67vw,96px)] tracking-[-2.88px] uppercase leading-[1.127]">
         <CountUp value={num} suffix={suffix} />
       </p>
       <div className="w-[217px] h-px bg-white/18 mt-4 mb-3" />
@@ -435,17 +455,34 @@ function StatsSection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      ref.current?.querySelectorAll(".stat-item").forEach((el) => {
-        gsap.from(el, {
-          y: 50,
+      // Stats heading reveal
+      gsap.from(".stats_heading", {
+        y: 60,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: { trigger: ".stats_heading", start: "top 80%" },
+      });
+
+      // Each stat slides in from alternating sides
+      const stats = gsap.utils.toArray(".stats_item");
+      stats.forEach((el, i) => {
+        gsap.from(el as Element, {
+          x: i % 2 === 0 ? -80 : 80,
           opacity: 0,
           duration: 1,
           ease: "power3.out",
-          scrollTrigger: { trigger: el, start: "top 85%" },
+          scrollTrigger: { trigger: el as Element, start: "top 85%" },
         });
       });
-      gsap.to(".car-parallax", {
-        yPercent: -8,
+
+      // Car: dramatic parallax + slight rotation
+      gsap.fromTo(".stats_image", {
+        yPercent: 20,
+        scale: 0.9,
+      }, {
+        yPercent: -15,
+        scale: 1,
         ease: "none",
         scrollTrigger: {
           trigger: ref.current,
@@ -459,12 +496,12 @@ function StatsSection() {
   }, []);
 
   return (
-    <section ref={ref} className="relative bg-[#041221] py-20 md:py-32 overflow-hidden">
+    <section id="carreira" ref={ref} className="relative bg-[#041221] py-20 md:py-32 overflow-hidden z-[2]">
 
       {/* Trajectory heading */}
-      <div className="relative text-center max-w-[689px] mx-auto px-5 mb-20 md:mb-28">
+      <div className="stats_heading relative text-center max-w-[689px] mx-auto px-5 mb-20 md:mb-28">
         <SectionLabel>carreira nas pistas</SectionLabel>
-        <h2 className="font-['Archivo_Expanded',sans-serif] font-extrabold text-[#e1dcd0] text-2xl md:text-[32px] tracking-[-0.96px] uppercase leading-[1.127] mt-6">
+        <h2 className="font-archivo-expanded font-extrabold text-[#e1dcd0] text-2xl md:text-[32px] tracking-[-0.96px] uppercase leading-[1.127] mt-6">
           TRAJETÓRIA NO AUTOMOBILISMO
         </h2>
         <p className="font-['Inter',sans-serif] font-semibold text-sm text-[rgba(238,235,228,0.83)] leading-[1.54] mt-6">
@@ -481,8 +518,8 @@ function StatsSection() {
         </div>
 
         {/* Car image centered between stat rows */}
-        <div className="car-parallax relative mx-auto -mt-8 md:-mt-16 max-w-[1198px] aspect-[1198/684] mix-blend-screen pointer-events-none">
-          <OptimizedImage name="car-360-view" alt="Carro de corrida 360" sizes="(max-width: 768px) 100vw, 1198px" imgClassName="absolute inset-0 object-contain size-full" />
+        <div className="stats_image relative mx-auto -mt-8 md:-mt-16 max-w-[1198px] aspect-[1198/684] mix-blend-screen pointer-events-none">
+          <OptimizedImage name="car-360-view" alt="Carro de corrida de Hugo Netto em vista 360 graus com adesivagem de patrocinadores" sizes="(max-width: 768px) 100vw, 1198px" imgClassName="absolute inset-0 object-contain size-full" />
         </div>
 
         {/* Row 2: 15+ left | 10+ right */}
@@ -501,45 +538,73 @@ function GallerySection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".gallery-title", {
-        scale: 0.8,
+      // Title fades in with scrub
+      gsap.from(".gallery_heading", {
+        y: 60,
         opacity: 0,
-        duration: 1.2,
-        ease: "power3.out",
-        scrollTrigger: { trigger: ".gallery-title", start: "top 80%" },
+        ease: "none",
+        scrollTrigger: {
+          trigger: ref.current,
+          start: "top 80%",
+          end: "top 40%",
+          scrub: 1,
+        },
       });
-      gsap.from(".gallery-item", {
-        y: 80,
+
+      // Both rows fade in together
+      gsap.from(".gallery_grid", {
         opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
+        y: 40,
+        duration: 1,
         ease: "power3.out",
-        scrollTrigger: { trigger: ".gallery-grid", start: "top 80%" },
+        scrollTrigger: { trigger: ".gallery_grid", start: "top 85%" },
+      });
+
+      // Parallax: top row moves right, bottom moves left on scroll
+      gsap.to(".gallery_row-top", {
+        x: -60,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ref.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+      gsap.to(".gallery_row-bottom", {
+        x: 60,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ref.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
       });
     }, ref);
     return () => ctx.revert();
   }, []);
 
   const topRow = [
-    { name: "driver-calm-race", alt: "Piloto antes da corrida" },
-    { name: "creation-car-front", alt: "Carro de corrida" },
-    { name: "creation-interior", alt: "Interior do carro" },
+    { name: "driver-calm-race", alt: "Hugo Netto concentrado antes da largada em dia de corrida" },
+    { name: "creation-car-front", alt: "Vista frontal do carro de corrida de Hugo Netto com adesivagem completa" },
+    { name: "creation-interior", alt: "Interior do cockpit do carro de corrida com volante e painel" },
   ];
   const bottomRow = [
-    { name: "helmet-closeup", alt: "Capacete em close" },
-    { name: "creation-aerial", alt: "Vista aérea do carro" },
-    { name: "creation-engine", alt: "Motor do carro" },
+    { name: "helmet-closeup", alt: "Detalhe do capacete personalizado de Hugo Netto com pintura exclusiva" },
+    { name: "creation-aerial", alt: "Vista aerea do carro de corrida de Hugo Netto na pista" },
+    { name: "creation-engine", alt: "Motor preparado do carro de competicao de Hugo Netto" },
   ];
 
   return (
-    <section ref={ref} className="relative bg-[#041221] overflow-hidden h-screen flex flex-col justify-center">
+    <section id="galeria" ref={ref} className="relative bg-[#041221] overflow-hidden h-screen flex flex-col justify-center z-[2]">
 
-      <div className="gallery-grid relative">
+      <div className="gallery_grid relative">
         {/* Top row ticker — scrolls RIGHT */}
-        <div className="overflow-hidden">
-          <div className="flex gap-3 md:gap-6 animate-gallery-right w-max">
+        <div className="gallery_row-top overflow-hidden">
+          <div className="flex gap-3 md:gap-6 is-gallery-right w-max">
             {[...topRow, ...topRow, ...topRow, ...topRow].map((img, i) => (
-              <div key={`top-${i}`} className="gallery-item aspect-video w-[70vw] sm:w-[45vw] md:w-[612px] shrink-0 rounded-lg md:rounded-xl overflow-hidden relative bg-[#192a3c]">
+              <div key={`top-${i}`} className="gallery_item aspect-video w-[70vw] sm:w-[45vw] md:w-[612px] shrink-0 rounded-lg md:rounded-xl overflow-hidden relative bg-[#192a3c]">
                 <OptimizedImage name={img.name} alt={img.alt} sizes="612px" imgClassName="absolute inset-0 object-cover size-full" />
               </div>
             ))}
@@ -548,7 +613,7 @@ function GallerySection() {
 
         {/* Title overlay — mix-blend-difference */}
         <div className="absolute inset-0 z-[3] flex items-center justify-center pointer-events-none" style={{ mixBlendMode: "difference" }}>
-          <h2 className="gallery-title font-['Archivo_Expanded',sans-serif] font-extrabold text-[#e1dcd0] text-[clamp(1.5rem,4vw,58px)] text-center tracking-[-1.76px] uppercase leading-[1.127] max-w-[533px] px-5">
+          <h2 className="gallery_heading font-archivo-expanded font-extrabold text-[#e1dcd0] text-[clamp(1.5rem,4vw,58px)] text-center tracking-[-1.76px] uppercase leading-[1.127] max-w-[533px] px-5">
             Entre velocidade e precisão
           </h2>
         </div>
@@ -557,10 +622,10 @@ function GallerySection() {
         <div className="h-3 md:h-6" />
 
         {/* Bottom row ticker — scrolls LEFT */}
-        <div className="overflow-hidden">
-          <div className="flex gap-3 md:gap-6 animate-gallery-left w-max">
+        <div className="gallery_row-bottom overflow-hidden">
+          <div className="flex gap-3 md:gap-6 is-gallery-left w-max">
             {[...bottomRow, ...bottomRow, ...bottomRow, ...bottomRow].map((img, i) => (
-              <div key={`bot-${i}`} className="gallery-item aspect-video w-[70vw] sm:w-[45vw] md:w-[612px] shrink-0 rounded-lg md:rounded-xl overflow-hidden relative bg-[#192a3c]">
+              <div key={`bot-${i}`} className="gallery_item aspect-video w-[70vw] sm:w-[45vw] md:w-[612px] shrink-0 rounded-lg md:rounded-xl overflow-hidden relative bg-[#192a3c]">
                 <OptimizedImage name={img.name} alt={img.alt} sizes="612px" imgClassName="absolute inset-0 object-cover size-full" />
               </div>
             ))}
@@ -577,10 +642,10 @@ function GallerySection() {
           0% { transform: translateX(-50%); }
           100% { transform: translateX(0); }
         }
-        .animate-gallery-right {
+        .is-gallery-right {
           animation: galleryRight 30s linear infinite;
         }
-        .animate-gallery-left {
+        .is-gallery-left {
           animation: galleryLeft 30s linear infinite;
         }
       `}</style>
@@ -591,7 +656,7 @@ function GallerySection() {
 /* ─── Sponsors Section ─── */
 function LogoSvg({ clipId }: { clipId: string }) {
   return (
-    <svg className="w-[122px] h-[49px]" fill="none" viewBox="0 0 122 49">
+    <svg className="w-[122px] h-[49px]" fill="none" viewBox="0 0 122 49" role="img" aria-label="Logo de patrocinador">
       <g clipPath={`url(#${clipId})`}>
         <path d={svgPaths.p1a612d80} fill="#1D2633" />
       </g>
@@ -609,27 +674,27 @@ function SponsorsSection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".sponsor-card", {
+      gsap.from(".sponsors_card", {
         y: 60,
         opacity: 0,
         duration: 0.8,
         stagger: 0.1,
         ease: "power3.out",
-        scrollTrigger: { trigger: ".sponsor-card", start: "top 85%" },
+        scrollTrigger: { trigger: ".sponsors_card", start: "top 85%" },
       });
     }, ref);
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={ref} className="relative bg-[#041221] px-5 md:px-10 py-20 md:py-32">
+    <section id="patrocinio" ref={ref} className="relative bg-[#041221] px-5 md:px-10 py-20 md:py-32 z-[2]">
       <div className="bg-[#f9f6ee] rounded-2xl md:rounded-3xl py-16 md:py-20 px-5 md:px-10 mx-auto overflow-hidden">
         {/* Heading */}
         <div className="text-center max-w-[669px] mx-auto mb-12 md:mb-16">
-          <p className="font-['Archivo_Expanded',sans-serif] font-bold text-[#d86527] text-[10px] tracking-[-0.3px] uppercase leading-[1.127]">PATROCÍNIO</p>
-          <p className="font-['Archivo_Expanded',sans-serif] font-extrabold text-[#041221] text-2xl md:text-[32px] tracking-[-0.96px] uppercase leading-[1.127] mt-6">
+          <p className="font-archivo-expanded font-bold text-[#d86527] text-[10px] tracking-[-0.3px] uppercase leading-[1.127]">PATROCÍNIO</p>
+          <h2 className="font-archivo-expanded font-extrabold text-[#041221] text-2xl md:text-[32px] tracking-[-0.96px] uppercase leading-[1.127] mt-6">
             Marcas que aceleram junto
-          </p>
+          </h2>
           <p className="font-['Inter',sans-serif] font-semibold text-sm text-black/83 leading-[1.54] mt-6 max-w-[513px] mx-auto">
             O automobilismo é uma plataforma única de visibilidade, performance e posicionamento premium. Hugo busca parcerias com marcas que compartilham valores como excelência, disciplina e inovação.
           </p>
@@ -637,10 +702,10 @@ function SponsorsSection() {
 
         {/* Sponsor logos ticker */}
         <div className="relative mb-12 md:mb-16 overflow-hidden" style={{ mask: "linear-gradient(90deg, transparent, black 5%, black 95%, transparent)", WebkitMask: "linear-gradient(90deg, transparent, black 5%, black 95%, transparent)" }}>
-          <div className="flex animate-ticker gap-4 w-max">
+          <div className="flex is-ticker gap-4 w-max">
             {[...Array(2)].map((_, set) =>
               [0, 1, 2, 3, 4].map((i) => (
-                <div key={`${set}-${i}`} className="sponsor-card bg-black/4 rounded w-[240px] md:w-[280px] aspect-[340/269] flex items-center justify-center flex-shrink-0">
+                <div key={`${set}-${i}`} className="sponsors_card bg-black/4 rounded w-[240px] md:w-[280px] aspect-[340/269] flex items-center justify-center flex-shrink-0">
                   <LogoSvg clipId={`clip_logo_${set}_${i}`} />
                 </div>
               ))
@@ -651,10 +716,10 @@ function SponsorsSection() {
               0% { transform: translateX(0); }
               100% { transform: translateX(-50%); }
             }
-            .animate-ticker {
+            .is-ticker {
               animation: ticker 20s linear infinite;
             }
-            .animate-ticker:hover {
+            .is-ticker:hover {
               animation-play-state: paused;
             }
           `}</style>
@@ -662,9 +727,9 @@ function SponsorsSection() {
 
         {/* CTA */}
         <div className="flex justify-center">
-          <a href="#" className="bg-[#d86527] flex gap-3 items-center px-6 py-4 rounded-md hover:bg-[#c05a22] transition-colors">
+          <a href="#contato" aria-label="Seja um parceiro de Hugo Netto" className="bg-[#d86527] flex gap-3 items-center px-6 py-4 rounded-md hover:bg-[#c05a22] transition-colors">
             <Diamond />
-            <span className="font-['Archivo_Expanded',sans-serif] font-extrabold text-[#eeebe4] text-[13px] tracking-[-0.39px] uppercase whitespace-nowrap leading-[1.127]">SEJA UM PARCEIRO</span>
+            <span className="font-archivo-expanded font-extrabold text-[#eeebe4] text-[13px] tracking-[-0.39px] uppercase whitespace-nowrap leading-[1.127]">SEJA UM PARCEIRO</span>
           </a>
         </div>
       </div>
@@ -678,23 +743,39 @@ function FollowSection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".follow-title", {
-        y: 60,
+      // Title fades in synced to scroll
+      gsap.from(".follow_heading", {
+        y: 80,
         opacity: 0,
-        duration: 1.2,
-        ease: "power3.out",
-        scrollTrigger: { trigger: ".follow-title", start: "top 80%" },
+        ease: "none",
+        scrollTrigger: {
+          trigger: ref.current,
+          start: "top 80%",
+          end: "top 40%",
+          scrub: 1,
+        },
       });
-      gsap.from(".follow-links > *", {
-        y: 40,
+
+      // Links slide in from their sides
+      gsap.from(".follow_nav-left", {
+        x: -100,
         opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
+        duration: 1,
         ease: "power3.out",
-        scrollTrigger: { trigger: ".follow-links", start: "top 85%" },
+        scrollTrigger: { trigger: ".follow_nav", start: "top 80%" },
       });
-      gsap.to(".follow-bg", {
+      gsap.from(".follow_nav-right", {
+        x: 100,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: { trigger: ".follow_nav", start: "top 80%" },
+      });
+
+      // Portrait parallax
+      gsap.to(".follow_background", {
         yPercent: 8,
+        scale: 1.05,
         ease: "none",
         scrollTrigger: {
           trigger: ref.current,
@@ -708,15 +789,15 @@ function FollowSection() {
   }, []);
 
   return (
-    <section ref={ref} className="relative bg-gradient-to-b from-[#041221] to-[#07294f] overflow-hidden h-screen min-h-[600px]">
+    <section id="contato" ref={ref} className="relative bg-gradient-to-b from-[#041221] to-[#07294f] overflow-hidden h-screen min-h-[600px] z-[2]">
       {/* Portrait image — centered */}
-      <div className="follow-bg absolute top-[25%] bottom-0 left-0 right-0 pointer-events-none flex justify-center overflow-hidden">
-        <OptimizedImage name="portrait-cinematic" alt="Retrato do piloto" sizes="100vw" imgClassName="absolute inset-0 object-cover object-top opacity-70 h-full w-auto max-w-[900px] 2xl:max-w-[65%] mx-auto" />
+      <div className="follow_background absolute top-[25%] bottom-0 left-0 right-0 pointer-events-none flex justify-center overflow-hidden">
+        <OptimizedImage name="portrait-cinematic" alt="Retrato cinematografico de Hugo Netto" sizes="100vw" imgClassName="absolute inset-0 object-cover object-top opacity-70 h-full w-auto max-w-[900px] 2xl:max-w-[65%] mx-auto" />
       </div>
 
       {/* Title */}
-      <div className="follow-title absolute top-[10%] left-1/2 -translate-x-1/2 text-center z-[1] max-w-[90vw]">
-        <h2 className="font-['Archivo_Expanded',sans-serif] text-[#e1dcd0] text-[clamp(2rem,4.9vw,70.4px)] text-center tracking-[-2.11px] uppercase leading-[0.867]">
+      <div className="follow_heading absolute top-[10%] left-1/2 -translate-x-1/2 text-center z-[1] max-w-[90vw]">
+        <h2 className="font-archivo-expanded text-[#e1dcd0] text-[clamp(2rem,4.9vw,70.4px)] text-center tracking-[-2.11px] uppercase leading-[1]">
           <span className="font-light block">ACOMPANHE</span>
           <span className="font-light">HUGO </span>
           <span className="font-extrabold text-[#d86527]">netto</span>
@@ -724,44 +805,45 @@ function FollowSection() {
       </div>
 
       {/* Links — positioned at edges */}
-      <div className="follow-links absolute top-[55.8%] left-0 right-0 z-[1] flex flex-col sm:flex-row justify-between px-[7.78%]">
-        <div className="text-center">
-          <p className="font-['Archivo_Expanded',sans-serif] font-bold text-[#d86527] text-[10px] tracking-[-0.3px] uppercase leading-[1.127]">REDES SOCIAIS</p>
-          <div className="flex flex-col gap-[6px] mt-[18px] font-['Archivo_Expanded',sans-serif] font-extrabold text-[#e1dcd0] text-[clamp(1rem,1.67vw,24px)] tracking-[-0.72px] uppercase text-center">
-            <a href="#" className="hover:text-[#d86527] transition-colors leading-[1.127]">INSTAGRAM</a>
-            <a href="#" className="hover:text-[#d86527] transition-colors leading-[1.127]">YOUTUBE</a>
-            <a href="#" className="hover:text-[#d86527] transition-colors leading-[1.127]">tiktok</a>
+      <nav aria-label="Redes sociais e contatos" className="follow_nav absolute top-[55.8%] left-0 right-0 z-[1] flex flex-col sm:flex-row justify-between px-[7.78%]">
+        <div className="follow_nav-left text-center">
+          <p className="font-archivo-expanded font-bold text-[#d86527] text-[10px] tracking-[-0.3px] uppercase leading-[1.127]">REDES SOCIAIS</p>
+          <div className="flex flex-col gap-[6px] mt-[18px] font-archivo-expanded font-extrabold text-[#e1dcd0] text-[clamp(1rem,1.67vw,24px)] tracking-[-0.72px] uppercase text-center">
+            <a href="#" aria-label="Seguir Hugo Netto no Instagram" className="hover:text-[#d86527] transition-colors leading-[1.127]">INSTAGRAM</a>
+            <a href="#" aria-label="Assistir Hugo Netto no YouTube" className="hover:text-[#d86527] transition-colors leading-[1.127]">YOUTUBE</a>
+            <a href="#" aria-label="Seguir Hugo Netto no TikTok" className="hover:text-[#d86527] transition-colors leading-[1.127]">tiktok</a>
           </div>
         </div>
-        <div className="text-center">
-          <p className="font-['Archivo_Expanded',sans-serif] font-bold text-[#d86527] text-[10px] tracking-[-0.3px] uppercase leading-[1.127]">contatos</p>
-          <div className="flex flex-col gap-[6px] mt-[18px] font-['Archivo_Expanded',sans-serif] font-extrabold text-[#e1dcd0] text-[clamp(1rem,1.67vw,24px)] tracking-[-0.72px] uppercase text-center">
-            <a href="#" className="hover:text-[#d86527] transition-colors leading-[1.127]">parcerias</a>
-            <a href="#" className="hover:text-[#d86527] transition-colors leading-[1.127]">media kit</a>
-            <a href="#" className="hover:text-[#d86527] transition-colors leading-[1.127]">email</a>
+        <div className="follow_nav-right text-center">
+          <p className="font-archivo-expanded font-bold text-[#d86527] text-[10px] tracking-[-0.3px] uppercase leading-[1.127]">contatos</p>
+          <div className="flex flex-col gap-[6px] mt-[18px] font-archivo-expanded font-extrabold text-[#e1dcd0] text-[clamp(1rem,1.67vw,24px)] tracking-[-0.72px] uppercase text-center">
+            <a href="#" aria-label="Informacoes sobre parcerias com Hugo Netto" className="hover:text-[#d86527] transition-colors leading-[1.127]">parcerias</a>
+            <a href="#" aria-label="Baixar media kit de Hugo Netto" className="hover:text-[#d86527] transition-colors leading-[1.127]">media kit</a>
+            <a href="#" aria-label="Enviar email para Hugo Netto" className="hover:text-[#d86527] transition-colors leading-[1.127]">email</a>
           </div>
         </div>
-      </div>
+      </nav>
 
       {/* Footer inside FollowSection */}
-      <div className="absolute bottom-0 left-0 right-0 z-[2] py-3">
+      <footer className="absolute bottom-0 left-0 right-0 z-[2] py-3" role="contentinfo">
         <div className="max-w-[1920px] mx-auto px-[38px] flex items-center justify-between">
         <p className="font-['Geist',sans-serif] font-normal text-[12px] text-white leading-normal whitespace-nowrap">
           Copyright &copy; 2026 Hugo Netto. Todos os direitos reservados
         </p>
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          aria-label="Voltar ao topo da pagina"
           className="flex gap-[8px] items-center group"
         >
           <span className="font-['Geist',sans-serif] font-medium text-[12px] text-white leading-[1.5] whitespace-nowrap group-hover:text-[#d86527] transition-colors">Voltar ao topo</span>
-          <div className="flex items-center justify-center size-[24px]">
+          <div className="flex items-center justify-center size-[24px]" aria-hidden="true">
             <div className="-rotate-90">
               <DownArrow />
             </div>
           </div>
         </button>
         </div>
-      </div>
+      </footer>
     </section>
   );
 }
@@ -787,7 +869,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="bg-[#041221] overflow-x-hidden">
+    <main className="bg-[#041221] overflow-x-hidden">
       <GrainOverlay />
       <HeroSection />
       <AboutSection />
@@ -796,6 +878,6 @@ export default function App() {
       <GallerySection />
       <SponsorsSection />
       <FollowSection />
-    </div>
+    </main>
   );
 }
