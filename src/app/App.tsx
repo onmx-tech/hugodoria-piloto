@@ -224,7 +224,7 @@ function AboutSection() {
   }, []);
 
   return (
-    <section ref={ref} className="relative bg-[#041221] py-24 md:py-40 overflow-hidden">
+    <section ref={ref} className="relative bg-[#041221] overflow-hidden min-h-screen flex items-center">
       {/* Vertical grid lines background */}
       <div aria-hidden="true" className="absolute inset-0 pointer-events-none max-w-[1293px] mx-auto left-0 right-0">
         <div className="absolute inset-y-0 left-0 w-px bg-[#E1DCD0]/8" />
@@ -234,33 +234,36 @@ function AboutSection() {
         <div className="absolute inset-y-0 right-0 w-px bg-[#E1DCD0]/8" />
       </div>
 
-      <div className="relative max-w-[1293px] mx-auto px-5 md:px-10">
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-10 md:gap-12 items-center">
-          {/* Left: Headline */}
-          <div>
-            <h2 className="about-heading font-['Archivo_Expanded',sans-serif] font-extrabold text-[#e1dcd0] text-[32px] md:text-[40px] tracking-[-1.2px] uppercase leading-[1.127]">
-              Alta<br />performance<br />não é só correr.
+      <div className="relative max-w-[1440px] mx-auto px-5 md:px-[7.78%]">
+        <div className="grid grid-cols-1 md:grid-cols-[40.4%_20.2%_1fr] items-center gap-8 md:gap-[4.2%]">
+          {/* Left: Headline — Figma: 492/1216 = 40.4% */}
+          <div className="about-heading">
+            <h2 className="font-['Archivo_Expanded',sans-serif] font-extrabold text-[#e1dcd0] text-[clamp(1.5rem,2.78vw,2.5rem)] tracking-[-1.2px] uppercase leading-[1.127]">
+              Alta performance não é só correr.
             </h2>
-            <div className="about-accent flex items-center gap-3 mt-5 pl-[1.5em]">
+            <div className="about-accent flex items-center gap-3 mt-5">
               <Diamond />
-              <p className="font-['Archivo_Expanded',sans-serif] font-extrabold text-[#d86527] text-[32px] md:text-[40px] tracking-[-1.2px] uppercase leading-[1.127]">
+              <p className="font-['Archivo_Expanded',sans-serif] font-extrabold text-[#d86527] text-[clamp(1.5rem,2.78vw,2.5rem)] tracking-[-1.2px] uppercase leading-[1.127]">
                 É dominar
               </p>
             </div>
           </div>
 
-          {/* Center: Oval helmet image */}
+          {/* Center: Oval helmet image — Figma: 246/1216 = 20.2% */}
           <div className="flex justify-center">
-            <div className="relative w-[180px] h-[100px] md:w-[246px] md:h-[141px] rounded-full overflow-hidden border border-black">
-              <div className="absolute inset-0 bg-[#07315f]" />
-              <OptimizedImage name="helmet-dramatic" alt="Capacete" sizes="246px" imgClassName="absolute inset-0 object-cover size-full" />
+            <div className="relative w-full max-w-[246.3px] aspect-[246.3/140.8] rounded-[179.5px] pointer-events-none">
+              <div aria-hidden="true" className="absolute inset-0 rounded-[179.5px] overflow-hidden">
+                <div className="absolute bg-[#07315f] inset-0 rounded-[179.5px]" />
+                <OptimizedImage name="helmet-dramatic" alt="Capacete" sizes="246px" imgClassName="absolute inset-0 object-cover size-full rounded-[179.5px]" />
+              </div>
+              <div aria-hidden="true" className="absolute border border-black inset-0 rounded-[179.5px]" />
             </div>
           </div>
 
-          {/* Right: Description */}
-          <div className="about-desc">
-            <div className="bg-[#d86527] h-px w-9 mb-5" />
-            <p className="font-['Inter',sans-serif] font-semibold text-sm text-[rgba(238,235,228,0.83)] leading-[1.54] max-w-[374px]">
+          {/* Right: Description — Figma: 374/1216 = 30.7% (1fr) */}
+          <div className="about-desc max-w-[374px]">
+            <div className="bg-[#a84814] w-[44px] h-[4px] rounded-[3px] mb-5" />
+            <p className="font-['Inter',sans-serif] font-semibold text-[14px] text-[rgba(238,235,228,0.83)] leading-[1.54]">
               Hugo Netto é piloto de alta performance, movido por disciplina, estratégia e controle emocional. Nas pistas, cada curva exige precisão absoluta e tomada de decisão em milésimos.{" "}
               <span className="text-[#eeebe4]">Mais do que velocidade, sua jornada é sobre performance real sob pressão.</span>
             </p>
