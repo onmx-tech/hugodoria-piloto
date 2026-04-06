@@ -316,7 +316,7 @@ function HeroSection() {
   }, []);
 
   return (
-    <section id="inicio" ref={heroRef} className="relative min-h-screen bg-[#051026] overflow-hidden flex flex-col" style={{ position: "sticky", top: 0, zIndex: 0 }}>
+    <section id="inicio" ref={heroRef} className="relative min-h-screen overflow-hidden flex flex-col" style={{ position: "sticky", top: 0, zIndex: 0, background: "linear-gradient(180deg, #030B14 0%, #083362 100%)" }}>
       {/* Background image with parallax */}
       <div className="hero_background absolute inset-0 scale-110">
         <OptimizedImage name="driver-calm-standing" alt="Hugo Netto na pista" sizes="100vw" priority imgClassName="absolute inset-0 object-cover size-full object-top" />
@@ -389,7 +389,7 @@ function AboutSection() {
   }, []);
 
   return (
-    <section id="sobre" ref={ref} className="relative bg-[#041221] overflow-hidden min-h-screen flex items-center z-[2]">
+    <section id="sobre" ref={ref} className="relative bg-[#041221] overflow-hidden min-h-screen flex items-center z-[2] snap-start snap-always">
 
       <div className="relative w-full max-w-[1920px] mx-auto px-5 md:px-[7.78%] py-20">
         <div className="grid grid-cols-1 md:grid-cols-[auto_1fr_1fr] items-center gap-8 md:gap-[3%]">
@@ -1023,7 +1023,7 @@ export default function App() {
   }, []);
 
   return (
-    <main className="bg-[#041221] overflow-x-hidden">
+    <main className="bg-[#041221] overflow-x-hidden snap-y snap-proximity">
       <GrainOverlay />
       <Navbar />
       <HeroSection />
