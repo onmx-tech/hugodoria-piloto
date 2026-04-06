@@ -288,7 +288,8 @@ function HeroSection() {
       const introTl = gsap.timeline({ delay: 0.2 });
       introTl
         .from(".hero_background img", { scale: 1.3, duration: 2, ease: "power2.out" }, 0)
-        .from(".hero_heading", { y: 120, opacity: 0, duration: 1.4, ease: "expo.out", clearProps: "all" }, 0.3)
+        .from(".hero_heading .font-light", { x: -200, opacity: 0, duration: 1.4, ease: "expo.out", clearProps: "all" }, 0.3)
+        .from(".hero_heading .text-\\[\\#d86527\\]", { x: 200, opacity: 0, duration: 1.4, ease: "expo.out", clearProps: "all" }, 0.3)
         .from(".hero_subheading", { x: -60, opacity: 0, duration: 1, ease: "power3.out", clearProps: "all" }, 0.8)
         .from(".hero_description", { x: 60, opacity: 0, duration: 1, ease: "power3.out", clearProps: "all" }, 0.8)
         .from(".hero_nav", { y: -30, opacity: 0, duration: 0.8, ease: "power3.out", clearProps: "all" }, 0.5);
@@ -1003,6 +1004,7 @@ function FollowSection() {
 }
 
 
+
 /* ─── App ─── */
 export default function App() {
   useEffect(() => {
@@ -1024,15 +1026,15 @@ export default function App() {
 
   return (
     <main className="bg-[#041221] overflow-x-hidden snap-y snap-proximity">
-      <GrainOverlay />
-      <Navbar />
-      <HeroSection />
-      <AboutSection />
-      <MindsetSection />
-      <StatsSection />
-      <GallerySection />
-      <SponsorsSection />
-      <FollowSection />
+        <GrainOverlay />
+        <Navbar />
+        <HeroSection />
+        <AboutSection />
+        <MindsetSection />
+        <StatsSection />
+        <GallerySection />
+        <SponsorsSection />
+        <FollowSection />
     </main>
   );
 }
