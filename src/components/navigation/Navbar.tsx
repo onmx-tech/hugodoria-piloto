@@ -13,7 +13,7 @@ function NavLinks({ activeSection, onLightBg = false }: { activeSection: string;
           <CharHoverLink
             href={`#${item.id}`}
             label={item.label}
-            className={`font-archivo-condensed font-extrabold text-sm uppercase transition-colors duration-300 ${activeSection === item.id ? (onLightBg ? "text-[#041221]" : "text-white") : (onLightBg ? "text-[#041221]/50" : "text-[#949da6]")}`}
+            className={`font-archivo-condensed font-extrabold text-sm uppercase transition-colors duration-300 ${activeSection === item.id ? "text-white" : (onLightBg ? "text-white/60" : "text-[#949da6]")}`}
             ariaLabel={`Ir para secao ${item.label}`}
           />
         </div>
@@ -31,7 +31,7 @@ export function Navbar() {
   const bottomNavRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    // Set initial state: hidden below viewport but visibility preserved for GPU layer
+    // Set initial state: hidden below viewport
     gsap.set(bottomNavRef.current, { yPercent: 150, opacity: 0, visibility: "hidden" });
     requestAnimationFrame(() => {
       if (bottomNavRef.current) {
@@ -39,63 +39,71 @@ export function Navbar() {
       }
     });
 
-    const trigger = ScrollTrigger.create({
-      trigger: ".hero_heading",
-      start: "bottom top",
-      onEnter: () => {
-        setSticky(true);
-        gsap.to(topNavRef.current, { y: -60, opacity: 0, duration: 0.4, ease: "power2.in", overwrite: true });
-        gsap.to(bottomNavRef.current, { yPercent: 0, opacity: 1, duration: 0.6, ease: "power3.out", delay: 0.1, overwrite: true });
-      },
-      onLeaveBack: () => {
-        setSticky(false);
-        gsap.to(topNavRef.current, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out", overwrite: true });
-        gsap.to(bottomNavRef.current, { yPercent: 150, opacity: 0, duration: 0.4, ease: "power2.in", overwrite: true });
-      },
-    });
+    // All triggers are created after lazy sections mount
+    const triggers: ScrollTrigger[] = [];
 
-    // Track active section
-    const sectionTriggers = NAV_LINKS.map((link) => {
-      return ScrollTrigger.create({
-        trigger: `#${link.id}`,
+    function createTriggers() {
+      // Need #sobre to exist (lazy loaded)
+      if (!document.getElementById("sobre")) return false;
+
+      // Bottom nav appears when #sobre enters viewport
+      triggers.push(ScrollTrigger.create({
+        trigger: "#sobre",
         start: "top 80%",
-        end: "bottom 80%",
-        onEnter: () => setActiveSection(link.id),
-        onEnterBack: () => setActiveSection(link.id),
+        onEnter: () => {
+          setSticky(true);
+          gsap.to(topNavRef.current, { y: -60, opacity: 0, duration: 0.4, ease: "power2.in", overwrite: true });
+          gsap.to(bottomNavRef.current, { yPercent: 0, opacity: 1, duration: 0.6, ease: "power3.out", delay: 0.1, overwrite: true });
+        },
+        onLeaveBack: () => {
+          setSticky(false);
+          gsap.to(topNavRef.current, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out", overwrite: true });
+          gsap.to(bottomNavRef.current, { yPercent: 150, opacity: 0, duration: 0.4, ease: "power2.in", overwrite: true });
+        },
+      }));
+
+      // Track active section
+      NAV_LINKS.forEach((link) => {
+        triggers.push(ScrollTrigger.create({
+          trigger: `#${link.id}`,
+          start: "top 80%",
+          end: "bottom 80%",
+          onEnter: () => setActiveSection(link.id),
+          onEnterBack: () => setActiveSection(link.id),
+        }));
       });
-    });
 
-    // Track light background — targets the inner light container in patrocinio
-    // Uses MutationObserver because #patrocinio is lazy-loaded and may not exist yet
-    let lightBgTrigger: ScrollTrigger | null = null;
-
-    function createLightBgTrigger() {
+      // Track light background for sponsors section
       const lightBgEl = document.querySelector("#patrocinio > .bg-\\[\\#f9f6ee\\]");
-      if (!lightBgEl) return false;
-      lightBgTrigger = ScrollTrigger.create({
-        trigger: lightBgEl,
-        start: "top bottom-=80",
-        end: "bottom bottom-=80",
-        onEnter: () => setOnLightBg(true),
-        onLeave: () => setOnLightBg(false),
-        onEnterBack: () => setOnLightBg(true),
-        onLeaveBack: () => setOnLightBg(false),
-      });
+      if (lightBgEl) {
+        triggers.push(ScrollTrigger.create({
+          trigger: lightBgEl,
+          start: "top bottom-=80",
+          end: "bottom bottom-=80",
+          onEnter: () => setOnLightBg(true),
+          onLeave: () => setOnLightBg(false),
+          onEnterBack: () => setOnLightBg(true),
+          onLeaveBack: () => setOnLightBg(false),
+        }));
+      }
+
       return true;
     }
 
+    // Sections are lazy-loaded — wait for them to mount
     let observer: MutationObserver | null = null;
-    if (!createLightBgTrigger()) {
+    if (!createTriggers()) {
       observer = new MutationObserver(() => {
-        if (createLightBgTrigger()) observer?.disconnect();
+        if (createTriggers()) {
+          observer?.disconnect();
+          ScrollTrigger.refresh();
+        }
       });
       observer.observe(document.body, { childList: true, subtree: true });
     }
 
     return () => {
-      trigger.kill();
-      sectionTriggers.forEach((t) => t.kill());
-      lightBgTrigger?.kill();
+      triggers.forEach((t) => t.kill());
       observer?.disconnect();
     };
   }, []);
