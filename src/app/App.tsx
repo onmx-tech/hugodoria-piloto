@@ -362,7 +362,7 @@ function HeroSection() {
           <OptimizedImage name="driver-calm-standing" alt="Hugo Netto na pista" sizes="100vw" priority imgClassName="absolute inset-0 object-cover size-full object-top" />
         </div>
         {/* Mobile */}
-        <div className="md:hidden absolute left-1/2 -translate-x-1/2 bottom-[0px] w-[260%]">
+        <div className="md:hidden absolute left-1/2 -translate-x-1/2 bottom-[0px] w-[340%]">
           <OptimizedImage name="driver-calm-standing" alt="Hugo Netto na pista" sizes="350vw" priority imgClassName="w-full h-auto" />
         </div>
       </div>
@@ -372,7 +372,7 @@ function HeroSection() {
 
       {/* Mobile: Name overlapping image */}
       <div className="md:hidden absolute top-[112px] left-0 right-0 z-[2] px-4">
-        <h1 className="hero_heading font-archivo-expanded text-[#e1dcd0] text-[clamp(55px,20.5vw,77px)] uppercase leading-[0.95] tracking-[-0.03em] text-center">
+        <h1 className="hero_heading font-archivo-expanded text-[#e1dcd0] text-[clamp(48px,18.5vw,70px)] uppercase leading-[0.95] tracking-[-0.03em] text-center">
           <span className="font-light block">HUGO</span>
           <span className="font-extrabold text-[#d86527] block">NETTO</span>
         </h1>
@@ -455,9 +455,9 @@ function AboutSection() {
   }, []);
 
   return (
-    <section id="sobre" ref={ref} className="relative bg-[#041221] overflow-hidden min-h-screen flex items-center z-[2] snap-start snap-always">
+    <section id="sobre" ref={ref} className="relative bg-[#041221] overflow-hidden md:min-h-screen flex items-center z-[2] snap-start snap-always">
 
-      <div className="relative w-full max-w-[1920px] mx-auto px-4 md:px-[7.78%] pt-28 pb-14 md:py-20">
+      <div className="relative w-full max-w-[1920px] mx-auto px-4 md:px-[7.78%] pt-20 pb-10 md:py-20">
         <div className="flex flex-col items-center gap-14 md:grid md:grid-cols-[auto_1fr_1fr] md:items-center md:gap-[3%]">
           {/* Headline */}
           <div className="about_heading">
@@ -618,12 +618,12 @@ function MindsetSection() {
           <FeatureCard key={f.num} {...f} />
         ))}
         {/* Pilot image — full bleed, clipped at bottom */}
-        <div className="relative w-[calc(100%+32px)] -mx-4 mt-8 overflow-hidden h-[500px]">
+        <div className="relative w-[calc(100%+32px)] -mx-4 mt-8 overflow-hidden h-[450px]">
           <OptimizedImage
             name="driver-fullbody"
             alt="Hugo Netto"
-            sizes="380vw"
-            imgClassName="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[380%] max-w-none h-auto"
+            sizes="500vw"
+            imgClassName="absolute top-[-15%] left-1/2 -translate-x-1/2 w-[500%] max-w-none h-auto"
           />
         </div>
       </div>
@@ -1024,7 +1024,7 @@ function FollowSection() {
       </div>
 
       {/* Title */}
-      <div className="follow_heading relative md:absolute md:top-[10%] md:left-1/2 md:-translate-x-1/2 text-center z-[1] max-w-[90vw] mx-auto pt-28 md:pt-0">
+      <div className="follow_heading relative md:absolute md:top-[10%] md:left-1/2 md:-translate-x-1/2 text-center z-[1] max-w-[90vw] mx-auto pt-20 md:pt-0">
         <h2 className="font-archivo-expanded text-[#e1dcd0] text-[clamp(32px,10.6vw,40px)] md:text-[clamp(2rem,4.9vw,70.4px)] text-center tracking-[-0.03em] uppercase leading-[0.95]">
           <span className="font-light block">ACOMPANHE</span>
           <span className="font-light">HUGO </span>
@@ -1053,12 +1053,12 @@ function FollowSection() {
       </nav>
 
       {/* Mobile: Portrait image in flow after links */}
-      <div className="md:hidden relative w-full overflow-hidden mt-14 h-[432px]">
-        <OptimizedImage name="portrait-cinematic" alt="Retrato cinematografico de Hugo Netto" sizes="200vw" imgClassName="absolute top-0 left-[60%] -translate-x-1/2 w-[200%] max-w-none h-auto" />
+      <div className="md:hidden relative w-full overflow-hidden mt-14 flex-1 min-h-[400px]">
+        <OptimizedImage name="portrait-cinematic" alt="Retrato cinematografico de Hugo Netto" sizes="100vw" imgClassName="absolute inset-0 object-cover object-top size-full" />
       </div>
 
       {/* Footer */}
-      <footer className="relative md:absolute md:bottom-0 md:left-0 md:right-0 z-[2] py-6 md:py-3" role="contentinfo">
+      <footer className="relative md:absolute md:bottom-0 md:left-0 md:right-0 z-[2] py-4 md:py-3" role="contentinfo">
         <div className="max-w-[1920px] mx-auto px-4 md:px-[38px] flex flex-col md:flex-row items-center md:justify-between gap-3 md:gap-0">
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
