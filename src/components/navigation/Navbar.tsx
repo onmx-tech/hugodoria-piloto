@@ -5,7 +5,7 @@ import { NAV_LINKS } from "../../constants/navigation";
 import { CharHoverLink } from "./CharHoverLink";
 import { CTAButton } from "./CTAButton";
 
-function NavLinks({ activeSection }: { activeSection: string }) {
+function NavLinks({ activeSection, onLightBg = false }: { activeSection: string; onLightBg?: boolean }) {
   return (
     <>
       {NAV_LINKS.map((item) => (
@@ -13,7 +13,7 @@ function NavLinks({ activeSection }: { activeSection: string }) {
           <CharHoverLink
             href={`#${item.id}`}
             label={item.label}
-            className={`font-archivo-condensed font-extrabold text-sm uppercase ${activeSection === item.id ? "text-white" : "text-[#949da6]"}`}
+            className={`font-archivo-condensed font-extrabold text-sm uppercase transition-colors duration-300 ${activeSection === item.id ? (onLightBg ? "text-[#041221]" : "text-white") : (onLightBg ? "text-[#041221]/50" : "text-[#949da6]")}`}
             ariaLabel={`Ir para secao ${item.label}`}
           />
         </div>
@@ -66,21 +66,37 @@ export function Navbar() {
     });
 
     // Track light background — targets the inner light container in patrocinio
-    const lightBgEl = document.querySelector("#patrocinio > .bg-\\[\\#f9f6ee\\]");
-    const lightBgTrigger = lightBgEl ? ScrollTrigger.create({
-      trigger: lightBgEl,
-      start: "top bottom-=80",
-      end: "bottom bottom-=80",
-      onEnter: () => setOnLightBg(true),
-      onLeave: () => setOnLightBg(false),
-      onEnterBack: () => setOnLightBg(true),
-      onLeaveBack: () => setOnLightBg(false),
-    }) : null;
+    // Uses MutationObserver because #patrocinio is lazy-loaded and may not exist yet
+    let lightBgTrigger: ScrollTrigger | null = null;
+
+    function createLightBgTrigger() {
+      const lightBgEl = document.querySelector("#patrocinio > .bg-\\[\\#f9f6ee\\]");
+      if (!lightBgEl) return false;
+      lightBgTrigger = ScrollTrigger.create({
+        trigger: lightBgEl,
+        start: "top bottom-=80",
+        end: "bottom bottom-=80",
+        onEnter: () => setOnLightBg(true),
+        onLeave: () => setOnLightBg(false),
+        onEnterBack: () => setOnLightBg(true),
+        onLeaveBack: () => setOnLightBg(false),
+      });
+      return true;
+    }
+
+    let observer: MutationObserver | null = null;
+    if (!createLightBgTrigger()) {
+      observer = new MutationObserver(() => {
+        if (createLightBgTrigger()) observer?.disconnect();
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+    }
 
     return () => {
       trigger.kill();
       sectionTriggers.forEach((t) => t.kill());
       lightBgTrigger?.kill();
+      observer?.disconnect();
     };
   }, []);
 
@@ -141,7 +157,7 @@ export function Navbar() {
       >
         <div className={`backdrop-blur-[20px] flex gap-[18px] items-center p-[6px] rounded-[6px] transition-colors duration-300 ${onLightBg ? "bg-[#0a1e36]/95" : "bg-white/7"}`} style={{ willChange: "transform", backfaceVisibility: "hidden" }}>
           <div className="flex items-center">
-            <NavLinks activeSection={activeSection} />
+            <NavLinks activeSection={activeSection} onLightBg={onLightBg} />
           </div>
           <CTAButton>Contato</CTAButton>
         </div>
