@@ -210,7 +210,7 @@ function Navbar() {
         <div className="bg-white/12 backdrop-blur-[9.2px] flex items-center justify-between p-[6px] rounded-[4px]">
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="flex flex-col justify-center items-center w-[48px] h-[38px] px-[10px] py-3 gap-[6px]"
+            className="flex flex-col justify-center items-center w-[48px] h-[38px] px-[10px] py-3 gap-[6px] outline-none"
             aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
           >
             <span className={`w-7 h-1 bg-white transition-transform duration-300 ${menuOpen ? "translate-y-[5px] rotate-45" : ""}`} />
@@ -223,28 +223,17 @@ function Navbar() {
       {/* Mobile menu dropdown */}
       {menuOpen && (
         <div className="md:hidden fixed top-[76px] left-4 right-4 z-[55]">
-          <div className="bg-[#0f1e33]/90 backdrop-blur-md border border-white/12 rounded-[8px] flex flex-col items-center py-10 px-6 gap-8">
-            {[
-              { label: "Sobre", id: "sobre" },
-              { label: "Títulos", id: "carreira" },
-              { label: "Campeonato", id: "galeria", hasArrow: true },
-              { label: "Novidades", id: "patrocinio" },
-            ].map((link) => (
+          <div className="bg-white/12 backdrop-blur-[9.2px] rounded-[4px] flex flex-col items-center py-10 px-6 gap-8 outline-none">
+            {NAV_LINKS.map((link) => (
               <a
                 key={link.id}
                 href={`#${link.id}`}
                 onClick={() => setMenuOpen(false)}
-                className={`font-archivo-condensed font-extrabold text-[22px] uppercase tracking-[-0.03em] flex items-center gap-2 ${activeSection === link.id ? "text-white" : "text-[#949da6]"}`}
+                className={`font-archivo-condensed font-extrabold text-[22px] uppercase tracking-[-0.03em] outline-none ${activeSection === link.id ? "text-white" : "text-[#949da6]"}`}
               >
                 {link.label}
-                {link.hasArrow && (
-                  <svg className="size-6" fill="none" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M8 10L12 14L16 10" stroke="#B7BDC4" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
-                  </svg>
-                )}
               </a>
             ))}
-            <CTAButton className="!w-full !self-auto justify-center">Contato</CTAButton>
           </div>
         </div>
       )}
@@ -365,7 +354,7 @@ function HeroSection() {
   }, []);
 
   return (
-    <section id="inicio" ref={heroRef} className="relative h-[850px] md:min-h-screen overflow-hidden flex flex-col" style={{ position: "sticky", top: 0, zIndex: 0, background: "linear-gradient(180deg, #030B14 0%, #083362 70%, #051026 100%)" }}>
+    <section id="inicio" ref={heroRef} className="relative h-[850px] md:min-h-screen overflow-hidden flex flex-col" style={{ position: "sticky", top: 0, zIndex: 0, background: "linear-gradient(180deg, #030B14 0%, #083362 60%, #041221 100%)" }}>
       {/* Background image with parallax */}
       <div className="hero_background absolute inset-0 md:scale-110">
         {/* Desktop */}
@@ -383,7 +372,7 @@ function HeroSection() {
 
       {/* Mobile: Name overlapping image */}
       <div className="md:hidden absolute top-[112px] left-0 right-0 z-[2] px-4">
-        <h1 className="hero_heading font-archivo-expanded text-[#e1dcd0] text-[77px] uppercase leading-[73px] tracking-[-0.03em] text-center">
+        <h1 className="hero_heading font-archivo-expanded text-[#e1dcd0] text-[clamp(55px,20.5vw,77px)] uppercase leading-[0.95] tracking-[-0.03em] text-center">
           <span className="font-light block">HUGO</span>
           <span className="font-extrabold text-[#d86527] block">NETTO</span>
         </h1>
@@ -472,12 +461,12 @@ function AboutSection() {
         <div className="flex flex-col items-center gap-14 md:grid md:grid-cols-[auto_1fr_1fr] md:items-center md:gap-[3%]">
           {/* Headline */}
           <div className="about_heading">
-            <h2 className="font-archivo-expanded font-extrabold text-[#e1dcd0] text-[28px] md:text-[clamp(1.5rem,2.78vw,2.5rem)] tracking-[-0.03em] uppercase leading-[1.127] whitespace-nowrap">
+            <h2 className="font-archivo-expanded font-extrabold text-[#e1dcd0] text-[clamp(22px,7.5vw,28px)] md:text-[clamp(1.5rem,2.78vw,2.5rem)] tracking-[-0.03em] uppercase leading-[1.127] whitespace-nowrap">
               Alta<br />performance<br />não é só correr.
             </h2>
             <div className="about_accent flex items-center gap-[15px] -mt-0.5 justify-end md:justify-start md:ml-[3.3em]">
               <Diamond />
-              <p className="font-archivo-expanded font-extrabold text-[#d86527] text-[28px] md:text-[clamp(1.5rem,2.78vw,2.5rem)] tracking-[-0.03em] uppercase leading-[1.127]">
+              <p className="font-archivo-expanded font-extrabold text-[#d86527] text-[clamp(22px,7.5vw,28px)] md:text-[clamp(1.5rem,2.78vw,2.5rem)] tracking-[-0.03em] uppercase leading-[1.127]">
                 É dominar
               </p>
             </div>
@@ -602,7 +591,7 @@ function MindsetSection() {
       {/* Title */}
       <div className="mindset_heading relative md:absolute md:top-[92px] md:left-1/2 md:-translate-x-1/2 text-center z-[3] w-full pt-14 md:pt-0 px-4 md:px-0">
         <p className="font-archivo-expanded font-bold text-[#d86527] text-[10px] tracking-[-0.3px] uppercase leading-[1.127]">MENTALIDADE</p>
-        <h2 className="font-archivo-expanded font-extrabold text-[#e1dcd0] text-[28px] md:text-[32px] tracking-[-0.03em] md:tracking-[-0.96px] uppercase leading-[1.127] mt-[30px] md:mt-[40px] max-w-[343px] md:max-w-[568px] mx-auto">
+        <h2 className="font-archivo-expanded font-extrabold text-[#e1dcd0] text-[clamp(22px,7.5vw,28px)] md:text-[32px] tracking-[-0.03em] md:tracking-[-0.96px] uppercase leading-[1.127] mt-[30px] md:mt-[40px] max-w-[343px] md:max-w-[568px] mx-auto">
           O que define um piloto de alta performance?
         </h2>
       </div>
@@ -679,7 +668,7 @@ function StatItem({ value, label }: { value: string; label: string }) {
   const suffix = value.replace(/\d/g, "");
   return (
     <div className="stats_item flex flex-col">
-      <p className="font-archivo-expanded font-light text-[#d86527] text-[56px] md:text-[clamp(3rem,6.67vw,96px)] tracking-[-0.03em] uppercase leading-[1.127]">
+      <p className="font-archivo-expanded font-light text-[#d86527] text-[clamp(40px,15vw,56px)] md:text-[clamp(3rem,6.67vw,96px)] tracking-[-0.03em] uppercase leading-[1.127]">
         <CountUp value={num} suffix={suffix} />
       </p>
       <div className="w-full md:w-[217px] h-px bg-white/18 mt-4 mb-3" />
@@ -741,7 +730,7 @@ function StatsSection() {
       {/* Trajectory heading */}
       <div className="stats_heading relative text-center max-w-[689px] mx-auto px-4 md:px-5 mb-14 md:mb-28">
         <SectionLabel>carreira nas pistas</SectionLabel>
-        <h2 className="font-archivo-expanded font-extrabold text-[#e1dcd0] text-[28px] md:text-[32px] tracking-[-0.03em] uppercase leading-[1.127] mt-6">
+        <h2 className="font-archivo-expanded font-extrabold text-[#e1dcd0] text-[clamp(22px,7.5vw,28px)] md:text-[32px] tracking-[-0.03em] uppercase leading-[1.127] mt-6">
           TRAJETÓRIA NO AUTOMOBILISMO
         </h2>
         <p className="font-['Inter',sans-serif] font-semibold text-sm text-[rgba(238,235,228,0.83)] leading-[1.54] mt-6">
@@ -855,7 +844,7 @@ function GallerySection() {
 
         {/* Title overlay — mix-blend-difference */}
         <div className="absolute inset-0 z-[3] flex items-center justify-center pointer-events-none" style={{ mixBlendMode: "difference" }}>
-          <h2 className="gallery_heading font-archivo-expanded font-extrabold text-[#e1dcd0] text-[38px] md:text-[clamp(1.5rem,4vw,58px)] text-center tracking-[-0.03em] uppercase leading-[1.127] max-w-[533px] px-5">
+          <h2 className="gallery_heading font-archivo-expanded font-extrabold text-[#e1dcd0] text-[clamp(28px,10vw,38px)] md:text-[clamp(1.5rem,4vw,58px)] text-center tracking-[-0.03em] uppercase leading-[1.127] max-w-[533px] px-5">
             Entre velocidade e precisão
           </h2>
         </div>
@@ -934,7 +923,7 @@ function SponsorsSection() {
         {/* Heading */}
         <div className="text-center max-w-[669px] mx-auto mb-8 md:mb-16">
           <p className="font-archivo-expanded font-bold text-[#d86527] text-[10px] tracking-[-0.3px] uppercase leading-[1.127]">PATROCÍNIO</p>
-          <h2 className="font-archivo-expanded font-extrabold text-[#041221] text-[28px] md:text-[32px] tracking-[-0.03em] uppercase leading-[1.127] mt-6">
+          <h2 className="font-archivo-expanded font-extrabold text-[#041221] text-[clamp(22px,7.5vw,28px)] md:text-[32px] tracking-[-0.03em] uppercase leading-[1.127] mt-6">
             Marcas que aceleram junto
           </h2>
           <p className="font-['Inter',sans-serif] font-semibold text-sm text-black/83 leading-[1.54] mt-6 max-w-[513px] mx-auto">
@@ -1036,7 +1025,7 @@ function FollowSection() {
 
       {/* Title */}
       <div className="follow_heading relative md:absolute md:top-[10%] md:left-1/2 md:-translate-x-1/2 text-center z-[1] max-w-[90vw] mx-auto pt-28 md:pt-0">
-        <h2 className="font-archivo-expanded text-[#e1dcd0] text-[40px] md:text-[clamp(2rem,4.9vw,70.4px)] text-center tracking-[-0.03em] uppercase leading-[0.95]">
+        <h2 className="font-archivo-expanded text-[#e1dcd0] text-[clamp(32px,10.6vw,40px)] md:text-[clamp(2rem,4.9vw,70.4px)] text-center tracking-[-0.03em] uppercase leading-[0.95]">
           <span className="font-light block">ACOMPANHE</span>
           <span className="font-light">HUGO </span>
           <span className="font-extrabold text-[#d86527]">netto</span>
@@ -1047,7 +1036,7 @@ function FollowSection() {
       <nav aria-label="Redes sociais e contatos" className="follow_nav relative md:absolute md:top-[55.8%] left-0 right-0 z-[1] flex flex-col items-center md:items-stretch md:flex-row md:justify-between px-4 md:px-[7.78%] mt-14 md:mt-0 gap-14 md:gap-0">
         <div className="follow_nav-left text-center">
           <p className="font-archivo-expanded font-bold text-[#d86527] text-[10px] tracking-[-0.3px] uppercase leading-[1.127]">REDES SOCIAIS</p>
-          <div className="flex flex-col items-center gap-[6px] mt-[18px] font-archivo-expanded font-extrabold text-[#e1dcd0] text-[24px] md:text-[clamp(1rem,1.67vw,24px)] tracking-[-0.03em] uppercase">
+          <div className="flex flex-col items-center gap-[6px] mt-[18px] font-archivo-expanded font-extrabold text-[#e1dcd0] text-[clamp(18px,6.4vw,24px)] md:text-[clamp(1rem,1.67vw,24px)] tracking-[-0.03em] uppercase">
             <CharHoverLink href="#" label="INSTAGRAM" className="text-[#e1dcd0] leading-[1.127]" ariaLabel="Seguir Hugo Netto no Instagram" />
             <CharHoverLink href="#" label="YOUTUBE" className="text-[#e1dcd0] leading-[1.127]" ariaLabel="Assistir Hugo Netto no YouTube" />
             <CharHoverLink href="#" label="TIKTOK" className="text-[#e1dcd0] leading-[1.127]" ariaLabel="Seguir Hugo Netto no TikTok" />
@@ -1055,7 +1044,7 @@ function FollowSection() {
         </div>
         <div className="follow_nav-right text-center">
           <p className="font-archivo-expanded font-bold text-[#d86527] text-[10px] tracking-[-0.3px] uppercase leading-[1.127]">contatos</p>
-          <div className="flex flex-col items-center gap-[6px] mt-[18px] font-archivo-expanded font-extrabold text-[#e1dcd0] text-[24px] md:text-[clamp(1rem,1.67vw,24px)] tracking-[-0.03em] uppercase">
+          <div className="flex flex-col items-center gap-[6px] mt-[18px] font-archivo-expanded font-extrabold text-[#e1dcd0] text-[clamp(18px,6.4vw,24px)] md:text-[clamp(1rem,1.67vw,24px)] tracking-[-0.03em] uppercase">
             <CharHoverLink href="#" label="PARCERIAS" className="text-[#e1dcd0] leading-[1.127]" ariaLabel="Informacoes sobre parcerias" />
             <CharHoverLink href="#" label="MEDIA KIT" className="text-[#e1dcd0] leading-[1.127]" ariaLabel="Baixar media kit" />
             <CharHoverLink href="#" label="EMAIL" className="text-[#e1dcd0] leading-[1.127]" ariaLabel="Enviar email" />
