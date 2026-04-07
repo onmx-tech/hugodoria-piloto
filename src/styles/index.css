@@ -1,4 +1,4 @@
-@import './fonts.css';
-@import './tailwind.css';
-@import './theme.css';
-@import 'lenis/dist/lenis.css';
+@import './base/fonts.css';
+@import './layout/tailwind.css';
+@import './base/theme.css';
+@import './vendor/lenis.css';
