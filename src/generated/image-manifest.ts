@@ -198,5 +198,311 @@ export const images: Record<string, ImageEntry> = {
     "placeholder": "data:image/webp;base64,UklGRtAAAABXRUJQVlA4IMQAAABwBQCdASogABIAPzmEuVOvKKWisAgB4CcJQBdmbObJBsOXGAxlblZbzopWH4M5xQHk5XHgAP7pQyXRDAdSO5UhNlvGpDiJmfYAqv+NPHrtLalfF0XdZ1WL+hFauxBF8gOPQtkPIA8+11t2Sf4nAJzbaKfhLkuiZVw5osaheIF2oaEmqwGZdBCtJw5SrU7NvwF2zRkR/TwLaeJTYc/1YGHlXSTMePTXN095hMm321ltryROLK3O1iT68ZD2DUJ5gahGAAAA",
     "width": 4096,
     "height": 2341
+  },
+  "photo-car-track-action": {
+    "avif": {
+      "480": "/images/photo-car-track-action-480.avif",
+      "768": "/images/photo-car-track-action-768.avif",
+      "1440": "/images/photo-car-track-action-1440.avif",
+      "2048": "/images/photo-car-track-action-2048.avif"
+    },
+    "webp": {
+      "480": "/images/photo-car-track-action-480.webp",
+      "768": "/images/photo-car-track-action-768.webp",
+      "1440": "/images/photo-car-track-action-1440.webp",
+      "2048": "/images/photo-car-track-action-2048.webp"
+    },
+    "jpg": "/images/photo-car-track-action-1440.jpg",
+    "placeholder": "data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAACQBACdASogABUAPzmIulOvKSWisAgB4CcJbAC7AAqgc+duGfl/JTDlqt9fOgAA/nNA6OxGO4e0ph6kzLCyl1aG64bGx0unGULfLIEmVnJSQoJhuPydjzqOPMEwoGr3PpoMdaATsuT1QRKrUkIm80fI91OL2w/K13/rITOhqRCzfQyJL/g145KLkl7cR8Et0kNtB9tcg5ZxyseFRAAAAA==",
+    "width": 2560,
+    "height": 1706
+  },
+  "photo-car-track-curve": {
+    "avif": {
+      "480": "/images/photo-car-track-curve-480.avif",
+      "768": "/images/photo-car-track-curve-768.avif",
+      "1440": "/images/photo-car-track-curve-1440.avif",
+      "2048": "/images/photo-car-track-curve-2048.avif"
+    },
+    "webp": {
+      "480": "/images/photo-car-track-curve-480.webp",
+      "768": "/images/photo-car-track-curve-768.webp",
+      "1440": "/images/photo-car-track-curve-1440.webp",
+      "2048": "/images/photo-car-track-curve-2048.webp"
+    },
+    "jpg": "/images/photo-car-track-curve-1440.jpg",
+    "placeholder": "data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAAAwBQCdASogABUAPzGCslOuqKSisAwB0CYJbADA3q/w3/Qslxb1zHVL01Xp3DmcBLLWkAD+MFeZHzhHWG/hv3WmsQpIHSHXv31oWDXcFuNOZTzROK0gA2uAB0SiShKnBK4Y3uIH/TifhoEB2fmzZ53Y3Jjtm2NHEaKga2211zDZQ2Fdj2gxnQUkFPv8O2hs7TZyvBNPid0s4aAA",
+    "width": 2560,
+    "height": 1706
+  },
+  "photo-car-track-front": {
+    "avif": {
+      "480": "/images/photo-car-track-front-480.avif",
+      "768": "/images/photo-car-track-front-768.avif",
+      "1440": "/images/photo-car-track-front-1440.avif"
+    },
+    "webp": {
+      "480": "/images/photo-car-track-front-480.webp",
+      "768": "/images/photo-car-track-front-768.webp",
+      "1440": "/images/photo-car-track-front-1440.webp"
+    },
+    "jpg": "/images/photo-car-track-front-1440.jpg",
+    "placeholder": "data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAADwBACdASogABUAPzmMu1YvKaYjsBgIAeAnCWwAxPgnSf4BwHN3kFUINoDKSsIFIowA+v77ZHB+2Hg04UCvGCKJunezFSECWaAQUWogruhunGdnAefs8+ucDuxUmG8MQSi9OSAnuyzkDgNRXjDCWxegWTKQvHHt/gEmG4ZUnf9OAd660sXNDYtW90Vb9etb1s/pdKn2Tlp1+FC1mCoBI0kAAAA=",
+    "width": 1600,
+    "height": 1066
+  },
+  "photo-car-track-orange": {
+    "avif": {
+      "480": "/images/photo-car-track-orange-480.avif",
+      "768": "/images/photo-car-track-orange-768.avif",
+      "1440": "/images/photo-car-track-orange-1440.avif",
+      "2048": "/images/photo-car-track-orange-2048.avif"
+    },
+    "webp": {
+      "480": "/images/photo-car-track-orange-480.webp",
+      "768": "/images/photo-car-track-orange-768.webp",
+      "1440": "/images/photo-car-track-orange-1440.webp",
+      "2048": "/images/photo-car-track-orange-2048.webp"
+    },
+    "jpg": "/images/photo-car-track-orange-1440.jpg",
+    "placeholder": "data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAADQBACdASogABUAPzGGslOuqaQisAwB0CYJbADDcA2aMK5/5qjdBRn3t50mV72MAAD+IaxNpfLrB7bY1o5CmeT/0Tlyiz2Bt+DX5IvQ4JwrlyLOckgtoQv4zn6nrztegudfBg1ZcGIpnvSh/rbz/8kY1dUUTbGwTbZsBTjRLuD+GIttzEhraqO/lqV692D6Qdg+k0xZSJhG4JiAzqqUaWkw/gA=",
+    "width": 2560,
+    "height": 1706
+  },
+  "photo-driver-crouch-car": {
+    "avif": {
+      "480": "/images/photo-driver-crouch-car-480.avif",
+      "768": "/images/photo-driver-crouch-car-768.avif",
+      "1440": "/images/photo-driver-crouch-car-1440.avif"
+    },
+    "webp": {
+      "480": "/images/photo-driver-crouch-car-480.webp",
+      "768": "/images/photo-driver-crouch-car-768.webp",
+      "1440": "/images/photo-driver-crouch-car-1440.webp"
+    },
+    "jpg": "/images/photo-driver-crouch-car-1440.jpg",
+    "placeholder": "data:image/webp;base64,UklGRiABAABXRUJQVlA4IBQBAABQBgCdASogACgAPy1+s1OuqCSitVgMAdAliWgAyJwJ/c5+OhRGcAjov0yd6LSNOZ/w2FpNFrCP+XSpIAD9d1Cje+aLwyeql8C0abDMcazk3eeWrAEF6OgUMNU6qMq+EMQ4naW16+n1hGo/alPR+DGA2Gx3Ha5/+fqGhrBPKKHU/0lEZC8Y9vjMgRiZdfGtav3riJgGL8OCBLly531QjJ6hj1lKa91e3QmbIqH1SD04sGocf+oOOjnEy0ftu8sflzSkMj1AvbHnzeQTCVvhpVVoIqbcqnKRceW6WuwMQe/5/E6hKLcz5n/TE5X9HRFfynWoWHKGb8wvH6JbilMFiKoDX5pgQ6LdZD2ZQ16CWpmCCBKAAAA=",
+    "width": 2047,
+    "height": 2560
+  },
+  "photo-driver-orange-car-standing": {
+    "avif": {
+      "480": "/images/photo-driver-orange-car-standing-480.avif",
+      "768": "/images/photo-driver-orange-car-standing-768.avif",
+      "1440": "/images/photo-driver-orange-car-standing-1440.avif",
+      "2048": "/images/photo-driver-orange-car-standing-2048.avif"
+    },
+    "webp": {
+      "480": "/images/photo-driver-orange-car-standing-480.webp",
+      "768": "/images/photo-driver-orange-car-standing-768.webp",
+      "1440": "/images/photo-driver-orange-car-standing-1440.webp",
+      "2048": "/images/photo-driver-orange-car-standing-2048.webp"
+    },
+    "jpg": "/images/photo-driver-orange-car-standing-1440.jpg",
+    "placeholder": "data:image/webp;base64,UklGRmABAABXRUJQVlA4IFQBAABQCACdASogADAAPyV6tFOuKCUitVv8AcAkiWwAtwFBVs1JaTunHdZcRfsEcVcihnuG0uAgllpBnH0ShlFs7IyeNe8a1UdLEEAQjUAA/qWPi615pi/xMGGhdgq/xtL5LuJ5nPr9qssEgJQi7d2XEsLf/Kvy1N7pzzNZm/YDTj0c1+1gc57PdqlwqXt+tJTW69ok7zZ8nErRjq5gY17ThnG/zsMOdOYhbCUq/st4JA9KEAWBpYurwTOuYyB4B2bFH8ekyLM9Z4PNp45OLHN1pdHwyzoU0+YB/zsJ4+T7MZ7S4k5XDk7QmhHAgAsBiJwNnGbmth4ObhGMviW6wJortvzARvTx1ggszx/WD227+kMUW15NyQWLgx4reqqZMZ/iUM5yiLGrY0BbmC67No+/Z/Xkmz2q1W233nSBehSZrLRs4zGwwz4B4aR1tLgMqRJ/9ZjyrQAA",
+    "width": 2640,
+    "height": 3960
+  },
+  "photo-driver-podium-board": {
+    "avif": {
+      "480": "/images/photo-driver-podium-board-480.avif",
+      "768": "/images/photo-driver-podium-board-768.avif",
+      "1440": "/images/photo-driver-podium-board-1440.avif",
+      "2048": "/images/photo-driver-podium-board-2048.avif"
+    },
+    "webp": {
+      "480": "/images/photo-driver-podium-board-480.webp",
+      "768": "/images/photo-driver-podium-board-768.webp",
+      "1440": "/images/photo-driver-podium-board-1440.webp",
+      "2048": "/images/photo-driver-podium-board-2048.webp"
+    },
+    "jpg": "/images/photo-driver-podium-board-1440.jpg",
+    "placeholder": "data:image/webp;base64,UklGRgQBAABXRUJQVlA4IPgAAABQBgCdASogADAAPzmKtlWvKSSjKqwB4CcJbADJF6+yqU8zqn6trfqy6d0aXML8pt7KrFHpSNUuLb1mgAD9F22KqsjXWpyngJMIbVOB86W2PXxJV/xp7dfcT78iupp+3TR20kWR0zXKm8/ldmbVLGGHthCD7rGG373+U4YBBT9waeI0eRzPboAKM4VmnoBxRE9AhdIWSkMlCW+yCMArZAvhk2PSlLUn01KCH7yhiVZNP1N0qmjVsyfbVV/uNTw3u2X4J+u0ayQsYRCvy7zA1mNPkcvdJvlN0wMHILC/Bbyr13tFcn47ZfTHv3ymCDwY7F+MRYh3qIGAAA==",
+    "width": 2774,
+    "height": 4160
+  },
+  "photo-driver-standing-car": {
+    "avif": {
+      "480": "/images/photo-driver-standing-car-480.avif",
+      "768": "/images/photo-driver-standing-car-768.avif",
+      "1440": "/images/photo-driver-standing-car-1440.avif"
+    },
+    "webp": {
+      "480": "/images/photo-driver-standing-car-480.webp",
+      "768": "/images/photo-driver-standing-car-768.webp",
+      "1440": "/images/photo-driver-standing-car-1440.webp"
+    },
+    "jpg": "/images/photo-driver-standing-car-1440.jpg",
+    "placeholder": "data:image/webp;base64,UklGRjoBAABXRUJQVlA4IC4BAABQBwCdASogACgAPzmIvlYvKKajqqoB4CcJbAC36t16JmjPBLvEdT9eb5XhBFWq+tB+z5vhDBYWTdVbC1KE3P7GBHlSAP7xylPortvADpZQvKFHVgA8TSn6o/6ouQQcvUFdUlpq94SjM22LJoi5c3c3IpM0WBQUa3h+gAhDV4Dp27hP3scY5xlZSVft9ruM4dKbSVfxgEf6lMLeLnEVUNi62Z8LDSIRcT5ulKiE9T9wP+QkD/jIJpoLu8Ny5fTHdx067jhpcpYLkihLGNNALRgn3vmA4e9DxhokRUNOUKsIfaSid4j7ILqKf+yk5SrtTen3LotEV6jN91ytaoxPiUIMwIMpa0OKO8NTGaFm7zChoFITwVOzMkwRRLVhFRGA8UofP28qOOYQ0qaMv2F4AA==",
+    "width": 2047,
+    "height": 2560
+  },
+  "photo-driver-trophy-asphalt": {
+    "avif": {
+      "480": "/images/photo-driver-trophy-asphalt-480.avif",
+      "768": "/images/photo-driver-trophy-asphalt-768.avif",
+      "1440": "/images/photo-driver-trophy-asphalt-1440.avif"
+    },
+    "webp": {
+      "480": "/images/photo-driver-trophy-asphalt-480.webp",
+      "768": "/images/photo-driver-trophy-asphalt-768.webp",
+      "1440": "/images/photo-driver-trophy-asphalt-1440.webp"
+    },
+    "jpg": "/images/photo-driver-trophy-asphalt-1440.jpg",
+    "placeholder": "data:image/webp;base64,UklGRqIBAABXRUJQVlA4IJYBAADQCACdASogADAAPzmCtVOvKCSitVgIAeAnCWoApd+/7/7jTWGmYpXBh571XYhuZSiKI6v4RtTJFsXEP3+HNtTsUHbZ7Q2inIJcsrV2MycAAP7UZg00lo6hhaS4Ga93Sh/aTJlF1LsJG1sifC1LHOL+2uClo8gZ+t+3d2VmYLB5t66d9+7A5fswnjtZ5YrxZwQW2zarm04uBST1Mev0G1rlW5lfKMXIe4GWk4DFfxdJS6vRHJEhezhDIR74tpHFJdRtSfsDsLBB0sMDmBXWrxEwkdNs6sBDLj4CJImjN5DJpFsDeiSjgYGJFMSZjvATjRwCGj4Y1+zwYHcrP/WIo9f3GZakSCxWkwnTkBoyImPnEXSpLVWPcSNrwUKPZpJRZPbe3AnE6T7li5nOOdrWM9IYhaqqydPUwg0BDg0q7y590YB1elWGcMGlRiTBCJs9U0Mffv/cW2ZbiuXAihR3z8rKN0by7etuZB2pBh+TW19GgQfNS/dpTDbY4NsIMJSa38Nlx1kz3dVW4AbqXVFuQMP2rejAc2AA",
+    "width": 1985,
+    "height": 2978
+  },
+  "photo-helmet-mercedes-closeup": {
+    "avif": {
+      "480": "/images/photo-helmet-mercedes-closeup-480.avif",
+      "768": "/images/photo-helmet-mercedes-closeup-768.avif",
+      "1440": "/images/photo-helmet-mercedes-closeup-1440.avif"
+    },
+    "webp": {
+      "480": "/images/photo-helmet-mercedes-closeup-480.webp",
+      "768": "/images/photo-helmet-mercedes-closeup-768.webp",
+      "1440": "/images/photo-helmet-mercedes-closeup-1440.webp"
+    },
+    "jpg": "/images/photo-helmet-mercedes-closeup-1440.jpg",
+    "placeholder": "data:image/webp;base64,UklGRroBAABXRUJQVlA4IK4BAAAQCQCdASogACgAPzGAr1OuqCOisA1R0CYJbAC0VVgwAQJX2+Ya2W12PCgWX6t0aK/WYbXzFneXwrTgFoSxk18ElCF77oJvnbf/y95C9Y1StAAA/rWjuL/CztUSdStj4J2jyB83sk89dMF5ZFNdEivNt8HP9cRRSkge5Td9AGDXLed/Z1E34YTW76RkgxKCqqaGLVbMh1EmilSJhRQk+CIv+jr1OpQM3LWy7VRvZJS/SLhYyczIgnZYmyz08tBNnXVKUhgQNRvc4cdsub5qdQdomimmZh5FehVNtHfpINV0HJ7QHybeyFXA+axXiKg8Aj6sk1Oi/Ixd2YDgBZ00MxQNgNsIbGcDwIeoTfY0eQq1/xtMbAsTAsZk2lnOqIHLQD8LCeR5RX0FUNBnoLDlQgiXUpmGJ+uGQzAqovmv6esCMMJ6YVe3+EDY2xrunr6r4okrbSW/Hr6ub3iMCng33SiU9eEy9fHiWa2gEoR5pQFg59kO4gAmG1/AK20Qd3V7Z8v5Bw+85Q9njMcT14uhWkZmVKfrsOpm4/L+9kVqI/GUSKnRZJEgRwR1Y00sAAAA",
+    "width": 2047,
+    "height": 2560
+  },
+  "photo-podium-celebration": {
+    "avif": {
+      "480": "/images/photo-podium-celebration-480.avif",
+      "768": "/images/photo-podium-celebration-768.avif",
+      "1440": "/images/photo-podium-celebration-1440.avif",
+      "2048": "/images/photo-podium-celebration-2048.avif"
+    },
+    "webp": {
+      "480": "/images/photo-podium-celebration-480.webp",
+      "768": "/images/photo-podium-celebration-768.webp",
+      "1440": "/images/photo-podium-celebration-1440.webp",
+      "2048": "/images/photo-podium-celebration-2048.webp"
+    },
+    "jpg": "/images/photo-podium-celebration-1440.jpg",
+    "placeholder": "data:image/webp;base64,UklGRvQAAABXRUJQVlA4IOgAAADwBQCdASogADAAPzGIslOuqaSitVgIAdAmCUAX/Y6pSDa0SBxYPjHlunFSVceDnHjKn6nEY1iNAAD+5yFeYDHL3r0avadyQQY6THCp8tlXrRH/EYoeLR8gx/qEpQGGQpgPsnqwS4DNRu4XD0dGaB0x/sVi6PM/qet2Qeg29afTqMoaObpfn7+Knd6QWAL+PbR39Bv1TB5p3YH6Owqw04WjuR1tx82e+VG+ZR49o2T1R36ZcCoJoJWXjv6jPob5s/f+tQuzONjfLKUeyB1dyhEYXryy6bbYieTQ6xKyW3g3qFhsiHB8wAAA",
+    "width": 2773,
+    "height": 4160
+  },
+  "photo-portrait-suit-seated": {
+    "avif": {
+      "480": "/images/photo-portrait-suit-seated-480.avif",
+      "768": "/images/photo-portrait-suit-seated-768.avif",
+      "1440": "/images/photo-portrait-suit-seated-1440.avif",
+      "2048": "/images/photo-portrait-suit-seated-2048.avif"
+    },
+    "webp": {
+      "480": "/images/photo-portrait-suit-seated-480.webp",
+      "768": "/images/photo-portrait-suit-seated-768.webp",
+      "1440": "/images/photo-portrait-suit-seated-1440.webp",
+      "2048": "/images/photo-portrait-suit-seated-2048.webp"
+    },
+    "jpg": "/images/photo-portrait-suit-seated-1440.jpg",
+    "placeholder": "data:image/webp;base64,UklGRk4BAABXRUJQVlA4IEIBAAAwCACdASogACgAPzWCtVOvKKSisAqp4CaJbACdM6cG7VxQjNpM5anI+udtUAmWegccYkZzaS6rOLN8QzUWcMvpfBu6klXKub6CAAD+80GT+Oz6Mht4BPqrLM5Gn9r8cZ87t1h3gHHcPPwRcXw/Zlz+XL1x5QyaKf4QMyQ+uELAPrHHvhUIDn/scfjPRYJpxUusEWHXYbF2ZVGkExYs+c+6tMR9AK0AGlXx+32UScb7qXtYcs6efaQQMn5FAf9cjOTAYJRgb6KCYJG+risiXl1KQ7ieN3tviLgirovWjObwcj7IZu2Kkzgm/KcAC2H/xsfhrYVUHUF9imxNVmgVjwmz8AF5wOyhgsAwSPwrsOtVfevWHWkusPm7CA38zqasH9J61TreBUWgFldzH03HtuT8v89To553cmlJc253fcA0dngA",
+    "width": 2795,
+    "height": 3494
+  },
+  "photo-race-grid-start": {
+    "avif": {
+      "480": "/images/photo-race-grid-start-480.avif",
+      "768": "/images/photo-race-grid-start-768.avif",
+      "1440": "/images/photo-race-grid-start-1440.avif"
+    },
+    "webp": {
+      "480": "/images/photo-race-grid-start-480.webp",
+      "768": "/images/photo-race-grid-start-768.webp",
+      "1440": "/images/photo-race-grid-start-1440.webp"
+    },
+    "jpg": "/images/photo-race-grid-start-1440.jpg",
+    "placeholder": "data:image/webp;base64,UklGRqgAAABXRUJQVlA4IJwAAAAQBQCdASogABUAPzGAsVOuqCQisAwB0CYJQBhQA6fzRFsdRTAG03c2c5W8fNG6mOwAAP6wqwgBH5yAgspOPthomQmDnXQqQpNO3BzUe3O6Tfw1ZaIG0iOKHctmkgEXvw+LBrSdCmhtL924eUAk1GvmYl5GWKodrT5ondXJbZaYuHHFnJiUdNhUgdsudgA+qtOIQ4wiDQ+uD52gAAA=",
+    "width": 1600,
+    "height": 1066
+  },
+  "photo-speaker-presentation": {
+    "avif": {
+      "480": "/images/photo-speaker-presentation-480.avif",
+      "768": "/images/photo-speaker-presentation-768.avif",
+      "1440": "/images/photo-speaker-presentation-1440.avif",
+      "2048": "/images/photo-speaker-presentation-2048.avif"
+    },
+    "webp": {
+      "480": "/images/photo-speaker-presentation-480.webp",
+      "768": "/images/photo-speaker-presentation-768.webp",
+      "1440": "/images/photo-speaker-presentation-1440.webp",
+      "2048": "/images/photo-speaker-presentation-2048.webp"
+    },
+    "jpg": "/images/photo-speaker-presentation-1440.jpg",
+    "placeholder": "data:image/webp;base64,UklGRlYBAABXRUJQVlA4IEoBAABQBwCdASogACgAPzGCuVOuqKYisAqp0CYJaAC7Ba4xnxqhuksxQaJDD1DdOW1QxKSLdASgljs3J1Pt2KWZwfbZhmpQAM461XPr0pp2VdRV4oUFvpYtxnJMXNIeZxS+EIei+XjK3ZATI1ZuKlPIjgvfLlsw2Qv87VF1IvIz6uvbSp3u0aEhSLevMMHZmqNbiyUwm63gJR1RJSkyw98qPfypKEgc2P+4sJA41vFuUJOjrmfEfyTDbCARIB7E/9NlO2XK3EE57oGpI+ASx2QzGrhSJOmtHxOLKSCgCqwo4ggBTMdBabzVjM822AExWcUOxfvWx/HoNE0t5mloOVvsMEOPrNMGSI62ULXviMOEr/f/ibWABuE0K57fqOpn9nDg/WcxU/uJtZ156813ALVAbLCoxzBen2iSToTsP0+D0HoH99LrZcbkBuyycAA=",
+    "width": 3328,
+    "height": 4160
+  },
+  "photo-sponsor-wall": {
+    "avif": {
+      "480": "/images/photo-sponsor-wall-480.avif",
+      "768": "/images/photo-sponsor-wall-768.avif"
+    },
+    "webp": {
+      "480": "/images/photo-sponsor-wall-480.webp",
+      "768": "/images/photo-sponsor-wall-768.webp"
+    },
+    "jpg": "/images/photo-sponsor-wall-1070.jpg",
+    "placeholder": "data:image/webp;base64,UklGRtIAAABXRUJQVlA4IMYAAAAwBQCdASogABMAPzmIvVavKKYjsBgIAeAnCWQAI8AHLeH81t87t9kYondpJloS3uaZCAD+uXAGBC/i+3aczjoaMS1/t0TCmkklU3Zb+geaTY2Ku+/y/a5rZ9nUUMiL8Jpl44UzWlK1UBL0Goz6g3pg6uk3NjN0PTWEYHLACXYkdWyvQbKY59YDBzDeTg3wDyXxJPCrCFmBsQuyJWjR+9PxuKG+NmDkX9E+BgGkAOFaXd7J8qe2fBqEkE3TodAjMGWGosFAAAA=",
+    "width": 1070,
+    "height": 622
+  },
+  "photo-team-podium-numbers": {
+    "avif": {
+      "480": "/images/photo-team-podium-numbers-480.avif",
+      "768": "/images/photo-team-podium-numbers-768.avif",
+      "1440": "/images/photo-team-podium-numbers-1440.avif",
+      "2048": "/images/photo-team-podium-numbers-2048.avif"
+    },
+    "webp": {
+      "480": "/images/photo-team-podium-numbers-480.webp",
+      "768": "/images/photo-team-podium-numbers-768.webp",
+      "1440": "/images/photo-team-podium-numbers-1440.webp",
+      "2048": "/images/photo-team-podium-numbers-2048.webp"
+    },
+    "jpg": "/images/photo-team-podium-numbers-1440.jpg",
+    "placeholder": "data:image/webp;base64,UklGRtwAAABXRUJQVlA4INAAAADwBACdASogABUAPzmOulWvKiWjMBgIAeAnCWYAwOgTYEXOQgxYJvVx/l8xOE+hrAAA+UUIFHzNJEMKaYNgmEA2/V4/gh+VIJIWe1E3n/83BLL/7NHDVv2jJZbloaSksxti+yTQ9+K9IxFKIUHDuxI5CG+VgIu/ux8Nvzsw4z7bg0AT5ZbsNkFV+TkRz4fY0Ys9+qvPm1VbD7kHIAGOoa2buiem7hGynIEb2X//aNOPbpGz2gcEEor/c/Q0nvBO9t1UG6ABPhb3LSh/GdCzAAAA",
+    "width": 4160,
+    "height": 2773
+  },
+  "photo-track-landscape-wide": {
+    "avif": {
+      "480": "/images/photo-track-landscape-wide-480.avif",
+      "768": "/images/photo-track-landscape-wide-768.avif",
+      "1440": "/images/photo-track-landscape-wide-1440.avif",
+      "2048": "/images/photo-track-landscape-wide-2048.avif"
+    },
+    "webp": {
+      "480": "/images/photo-track-landscape-wide-480.webp",
+      "768": "/images/photo-track-landscape-wide-768.webp",
+      "1440": "/images/photo-track-landscape-wide-1440.webp",
+      "2048": "/images/photo-track-landscape-wide-2048.webp"
+    },
+    "jpg": "/images/photo-track-landscape-wide-1440.jpg",
+    "placeholder": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAACQBACdASogABUAPzmIuFOvKSUisAgB4CcJZgC90CHIbXTDFzifE1yykpPP6FAA/ItbxLRhZEzn9DFCrU+EKitRtWinnBF3cOcYjP6THZIPBC1YPw/eajntob7mX1cpXvqIWWI51tm24e08/w29knv+oAO9DtxfRcfbkkm1uZ80D3ReORBMmKR9b1BGAAAA",
+    "width": 4160,
+    "height": 2774
+  },
+  "photo-trophy-suit": {
+    "avif": {
+      "480": "/images/photo-trophy-suit-480.avif",
+      "768": "/images/photo-trophy-suit-768.avif",
+      "1440": "/images/photo-trophy-suit-1440.avif"
+    },
+    "webp": {
+      "480": "/images/photo-trophy-suit-480.webp",
+      "768": "/images/photo-trophy-suit-768.webp",
+      "1440": "/images/photo-trophy-suit-1440.webp"
+    },
+    "jpg": "/images/photo-trophy-suit-1440.jpg",
+    "placeholder": "data:image/webp;base64,UklGRoYBAABXRUJQVlA4IHoBAADQBwCdASogACgAPzmEv1WvKCcjMBVaqeAnCWwAgvFBzugLA2AZBqCv3nI4Wi2l0BceyMCM1nsx1Ry06IFSF+2VqCAZZn/KgAD+y1DzVlrcI63ICqUjCBOSgPMFgoEExUIvKHWLLUDBfYL5Xz+KstUT+kf96lOXFVLhFNEPszXZvCJu2XVHyINzdjTgQe4CPvYdhK/zSHLbVUoo8fYPZiBjS1tCD73k6HGbnsf8Ug0YfAkYJg5SHZ7YMSZg6DWFqcYq64W+/AVsd96asWPSScaNjrFzsCzEPzTsatWHZEO2adTfOtsINEfZluFPkUaZ2Xgb0vChKEx5Ww3ouSs5rLzoXGwsd2TO9U/3S2ulqaeU5sLWZqEVbWrkWgPSe7obDb3I53hGQO23RtwI2i6NjB82HCrlWoFysx8xd0R2uAzdnvDDafdirMPj4rMRr+OG9tjHMrbFJ6jAai76+te4ui37qiZYz6HS/ORK/fCs1Aa98UkOYHy0/IAAAAA=",
+    "width": 2047,
+    "height": 2560
   }
 };
