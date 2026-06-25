@@ -1,59 +1,124 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { OptimizedImage } from "../../components/media/OptimizedImage";
 import { FitText } from "./FitText";
+
+const FRAME_COUNT = 121;
+const frameUrl = (i: number) => `/hero-helmet/h${String(i + 1).padStart(3, "0")}.webp`;
 
 export function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
+    const hero = heroRef.current;
+    const canvas = canvasRef.current;
+    if (!hero || !canvas) return;
+    const cctx = canvas.getContext("2d");
+    if (!cctx) return;
+
+    const images: HTMLImageElement[] = [];
+    const state = { frame: 0 };
+    let natW = 1280;
+    let natH = 720;
+    const isDesktop = window.innerWidth >= 768;
+
+    const setSize = () => {
+      const rect = hero.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.round(rect.width * dpr);
+      canvas.height = Math.round(rect.height * dpr);
+      cctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+
+    const render = () => {
+      const idx = Math.max(0, Math.min(FRAME_COUNT - 1, Math.round(state.frame)));
+      const img = images[idx];
+      const rect = hero.getBoundingClientRect();
+      cctx.clearRect(0, 0, rect.width, rect.height);
+      if (!img || !img.complete || !img.naturalWidth) return;
+      // cover, alinhado ao topo (igual object-cover object-top da imagem original)
+      const scale = Math.max(rect.width / natW, rect.height / natH);
+      const w = natW * scale;
+      const h = natH * scale;
+      const dx = (rect.width - w) / 2;
+      const dy = 0; // top-align
+      cctx.drawImage(img, dx, dy, w, h);
+    };
+
+    let firstLoaded = false;
+    for (let i = 0; i < FRAME_COUNT; i++) {
+      const img = new Image();
+      img.decoding = "async";
+      img.src = frameUrl(i);
+      img.onload = () => {
+        if (!firstLoaded) {
+          firstLoaded = true;
+          natW = img.naturalWidth;
+          natH = img.naturalHeight;
+          setSize();
+          render();
+        }
+      };
+      images.push(img);
+    }
+    setSize();
+
     const ctx = gsap.context(() => {
       // Intro sequence — clearProps after to avoid residual inline styles
       const introTl = gsap.timeline({ delay: 0.2 });
       introTl
-        .from(".hero_background img", { scale: 1.3, duration: 2, ease: "power2.out" }, 0)
+        .from(".hero_background", { scale: 1.3, duration: 2, ease: "power2.out" }, 0)
         .from(".hero_heading .font-light", { x: -200, opacity: 0, duration: 1.4, ease: "expo.out", clearProps: "all" }, 0.3)
         .from(".hero_heading .text-\\[\\#d86527\\]", { x: 200, opacity: 0, duration: 1.4, ease: "expo.out", clearProps: "all" }, 0.3)
         .from(".hero_subheading", { x: -60, opacity: 0, duration: 1, ease: "power3.out", clearProps: "all" }, 0.8)
         .from(".hero_description", { x: 60, opacity: 0, duration: 1, ease: "power3.out", clearProps: "all" }, 0.8)
         .from(".hero_nav", { y: -30, opacity: 0, duration: 0.8, ease: "power3.out", clearProps: "all" }, 0.5);
 
-      // Scroll parallax: desktop only
-      if (window.innerWidth >= 768) {
-        const scrollTl = gsap.timeline({
+      if (isDesktop) {
+        // Pin the hero and scrub the "putting the helmet on" sequence.
+        // Page scroll resumes once the sequence completes.
+        const pinTl = gsap.timeline({
           scrollTrigger: {
-            trigger: heroRef.current,
+            trigger: hero,
             start: "top top",
-            end: "bottom top",
-            scrub: true,
-            onLeaveBack: () => {
-              gsap.set(".hero_subheading", { yPercent: 0, opacity: 1, clearProps: "transform" });
-              gsap.set(".hero_description", { yPercent: 0, opacity: 1, clearProps: "transform" });
-            },
+            end: "+=140%",
+            scrub: 0.6,
+            pin: true,
+            pinSpacing: true,
+            anticipatePin: 1,
           },
         });
-        scrollTl
-          .to(".hero_background", { yPercent: 45, scale: 1.15 }, 0)
-          .to(".hero_subheading", { yPercent: -80, opacity: 0 }, 0)
-          .to(".hero_description", { yPercent: -80, opacity: 0 }, 0);
+        pinTl
+          .to(state, { frame: FRAME_COUNT - 1, ease: "none", onUpdate: render }, 0)
+          // textos saem na segunda metade, deixando o piloto "pronto"
+          .to(".hero_subheading", { opacity: 0, y: -40, ease: "none" }, 0.55)
+          .to(".hero_description", { opacity: 0, y: -40, ease: "none" }, 0.55);
       }
     }, heroRef);
-    return () => ctx.revert();
+
+    const onResize = () => {
+      setSize();
+      render();
+    };
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      window.removeEventListener("resize", onResize);
+      ctx.revert();
+    };
   }, []);
 
   return (
-    <section id="inicio" ref={heroRef} className="relative h-[850px] md:min-h-screen overflow-hidden flex flex-col" style={{ position: "sticky", top: 0, zIndex: 0, background: "linear-gradient(180deg, #030B14 0%, #083362 60%, #041221 100%)" }}>
-      {/* Background image with parallax */}
+    <section
+      id="inicio"
+      ref={heroRef}
+      className="relative h-[850px] md:h-screen overflow-hidden flex flex-col"
+      style={{ background: "linear-gradient(180deg, #030B14 0%, #083362 60%, #041221 100%)" }}
+    >
+      {/* Background canvas (helmet sequence) with parallax */}
       <div className="hero_background absolute inset-0 md:scale-110">
-        {/* Desktop */}
-        <div className="hidden md:block absolute inset-0">
-          <OptimizedImage name="driver-calm-standing" alt="Hugo Netto na pista" sizes="100vw" priority imgClassName="absolute inset-0 object-cover size-full object-top" />
-        </div>
-        {/* Mobile */}
-        <div className="md:hidden absolute left-1/2 -translate-x-1/2 bottom-[0px] w-[340%]">
-          <OptimizedImage name="driver-calm-standing" alt="Hugo Netto na pista" sizes="350vw" priority imgClassName="w-full h-auto" />
-        </div>
+        <canvas ref={canvasRef} className="absolute inset-0 size-full" />
       </div>
 
       {/* Mobile: bottom gradient overlay */}
