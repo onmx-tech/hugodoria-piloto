@@ -60,7 +60,7 @@ export function FollowSection() {
       </div>
 
       {/* Title */}
-      <div className="follow_heading relative md:absolute md:top-[10%] md:left-1/2 md:-translate-x-1/2 text-center z-[1] max-w-[90vw] mx-auto pt-20 md:pt-0">
+      <div className="follow_heading relative md:absolute md:top-[10%] md:left-0 md:right-0 text-center z-[1] max-w-[90vw] mx-auto pt-20 md:pt-0">
         <h2 className="font-archivo-expanded text-[#e1dcd0] text-[clamp(32px,10.6vw,40px)] md:text-[clamp(2rem,4.9vw,70.4px)] text-center tracking-[-0.03em] uppercase leading-[0.95]">
           <span className="font-light block">ACOMPANHE</span>
           <span className="font-light">HUGO </span>
