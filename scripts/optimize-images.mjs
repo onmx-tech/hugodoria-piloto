@@ -17,20 +17,9 @@ const FORMATS = {
 const JPEG_QUALITY = 80;
 const PLACEHOLDER_WIDTH = 32;
 
-// Hash → descriptive name mapping
-const NAME_MAP = {
-  '53e4c01aafd680ca3373772f4de41ed78bef4b5e': 'creation-car-front',
-  'fa2ef239635cbba91d39d5ea6baa3253817a8379': 'creation-aerial',
-  '0c9f997e642ff11beed0c4cc77a706b9b7e09e39': 'creation-interior',
-  'fb6588bbc9f12fd165a47d6c1b75f42198039374': 'creation-engine',
-  '77e513a12e9d4c61f063e3e877cc5fc74a7b5e07': 'driver-calm-race',
-  '42878b06df40db9893727e5fbb42a7bee05b2276': 'helmet-closeup',
-  '3f72aec9eef52b9b5c4081a0c575d7b41463749c': 'driver-calm-standing',
-  '267e44eb9afb6a4f89546eded2c398a025ca8f00': 'portrait-cinematic',
-  '4251cb51f5ba829324dd7a8f1ad8d507b6efa3dc': 'helmet-dramatic',
-  '7dd01bd50234e347faf1c985a4e884b0e8aba696': 'driver-fullbody',
-  'd79f81633478e30718ea536e43d65c35d8b651d5': 'car-360-view',
-};
+// Hash → descriptive name mapping (legado). As imagens de IA foram removidas na v2;
+// as fotos reais usam o próprio nome de arquivo (photo-*).
+const NAME_MAP = {};
 
 async function processImage(filePath, fileName) {
   const hash = fileName.replace(/\.\w+$/, '');
