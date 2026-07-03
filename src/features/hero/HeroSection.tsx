@@ -2,92 +2,94 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { OptimizedImage } from "../../components/media/OptimizedImage";
+import { Kicker } from "../../components/ui/Kicker";
 import { FitText } from "./FitText";
+
+const HERO_PHOTO = "photo-hero-celebration";
+const HERO_ALT = "Hugo Netto comemorando com os braços erguidos após a vitória";
+
+const META = [
+  { k: "Equipe", v: "Mercedes-AMG GT" },
+  { k: "Pódios", v: "12+" },
+  { k: "Categorias", v: "50+" },
+  { k: "Casa", v: "Interlagos" },
+];
 
 export function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Intro sequence — clearProps after to avoid residual inline styles
-      const introTl = gsap.timeline({ delay: 0.2 });
-      introTl
-        .from(".hero_background img", { scale: 1.3, duration: 2, ease: "power2.out" }, 0)
-        .from(".hero_heading .font-light", { x: -200, opacity: 0, duration: 1.4, ease: "expo.out", clearProps: "all" }, 0.3)
-        .from(".hero_heading .text-\\[\\#d86527\\]", { x: 200, opacity: 0, duration: 1.4, ease: "expo.out", clearProps: "all" }, 0.3)
-        .from(".hero_subheading", { x: -60, opacity: 0, duration: 1, ease: "power3.out", clearProps: "all" }, 0.8)
-        .from(".hero_description", { x: 60, opacity: 0, duration: 1, ease: "power3.out", clearProps: "all" }, 0.8)
-        .from(".hero_nav", { y: -30, opacity: 0, duration: 0.8, ease: "power3.out", clearProps: "all" }, 0.5);
+      const tl = gsap.timeline({ delay: 0.15 });
+      tl.from(".hero_background img", { scale: 1.25, duration: 2, ease: "power2.out" }, 0)
+        .from(".hero_kicker", { y: -20, opacity: 0, duration: 0.9, ease: "power3.out", clearProps: "all" }, 0.4)
+        .from(".hero_subheading", { y: 24, opacity: 0, duration: 0.9, ease: "power3.out", clearProps: "all" }, 0.6)
+        .from(".hero_heading .font-light", { x: -140, opacity: 0, duration: 1.3, ease: "expo.out", clearProps: "all" }, 0.5)
+        .from(".hero_heading .text-\\[\\#d86527\\]", { x: 140, opacity: 0, duration: 1.3, ease: "expo.out", clearProps: "all" }, 0.5)
+        .from(".hero_meta > *", { y: 20, opacity: 0, duration: 0.8, stagger: 0.08, ease: "power3.out", clearProps: "all" }, 0.9)
+        .from(".hero_description", { y: 20, opacity: 0, duration: 0.9, ease: "power3.out", clearProps: "all" }, 0.95);
 
-      // Scroll parallax: desktop only
       if (window.innerWidth >= 768) {
-        const scrollTl = gsap.timeline({
-          scrollTrigger: {
-            trigger: heroRef.current,
-            start: "top top",
-            end: "bottom top",
-            scrub: true,
-            onLeaveBack: () => {
-              gsap.set(".hero_subheading", { yPercent: 0, opacity: 1, clearProps: "transform" });
-              gsap.set(".hero_description", { yPercent: 0, opacity: 1, clearProps: "transform" });
-            },
-          },
+        gsap.to(".hero_background", {
+          yPercent: 20,
+          ease: "none",
+          scrollTrigger: { trigger: heroRef.current, start: "top top", end: "bottom top", scrub: true },
         });
-        scrollTl
-          .to(".hero_background", { yPercent: 45, scale: 1.15 }, 0)
-          .to(".hero_subheading", { yPercent: -80, opacity: 0 }, 0)
-          .to(".hero_description", { yPercent: -80, opacity: 0 }, 0);
       }
     }, heroRef);
     return () => ctx.revert();
   }, []);
 
   return (
-    <section id="inicio" ref={heroRef} className="relative h-[850px] md:min-h-screen overflow-hidden flex flex-col" style={{ position: "sticky", top: 0, zIndex: 0, background: "linear-gradient(180deg, #030B14 0%, #083362 60%, #041221 100%)" }}>
-      {/* Background image with parallax */}
-      <div className="hero_background absolute inset-0 md:scale-110">
-        {/* Desktop */}
-        <div className="hidden md:block absolute inset-0">
-          <OptimizedImage name="driver-calm-standing" alt="Hugo Netto na pista" sizes="100vw" priority imgClassName="absolute inset-0 object-cover size-full object-top" />
-        </div>
-        {/* Mobile */}
-        <div className="md:hidden absolute left-1/2 -translate-x-1/2 bottom-[0px] w-[340%]">
-          <OptimizedImage name="driver-calm-standing" alt="Hugo Netto na pista" sizes="350vw" priority imgClassName="w-full h-auto" />
-        </div>
+    <section
+      id="inicio"
+      ref={heroRef}
+      className="relative h-[100svh] min-h-[640px] md:min-h-screen overflow-hidden flex flex-col"
+      style={{ position: "sticky", top: 0, zIndex: 0, background: "#041221" }}
+    >
+      {/* Foto expandida por IA — nativa 16:9, preenche todo o hero */}
+      <div className="hero_background absolute inset-0 scale-[1.02]">
+        <OptimizedImage
+          name={HERO_PHOTO}
+          alt={HERO_ALT}
+          sizes="100vw"
+          priority
+          imgClassName="absolute inset-0 object-cover size-full object-[50%_36%] brightness-[.8]"
+        />
+        {/* Escurecimento geral neutro: toma o céu claro sem tingir */}
+        <div className="absolute inset-0 bg-[#041221]/28" />
+        {/* Vinheta neutra para fechar as bordas amadoras */}
+        <div className="absolute inset-0" style={{ background: "radial-gradient(120% 100% at 50% 32%, rgba(4,18,33,0) 38%, rgba(4,18,33,0.45) 74%, rgba(4,18,33,0.85) 100%)" }} />
       </div>
 
-      {/* Mobile: bottom gradient overlay */}
-      <div className="md:hidden absolute bottom-0 left-0 right-0 h-[392px] z-[1]" style={{ background: "linear-gradient(180deg, rgba(2,9,15,0) 19%, #02090F 80%)", opacity: 0.96 }} />
+      {/* Scrims para a tipografia */}
+      <div className="absolute inset-x-0 bottom-0 h-[64%] z-[1] pointer-events-none" style={{ background: "linear-gradient(180deg, rgba(4,18,33,0) 0%, rgba(4,18,33,0.74) 46%, #041221 100%)" }} />
+      {/* Topo forte para o menu ficar legível sobre o céu */}
+      <div className="absolute inset-x-0 top-0 h-[36%] z-[1] pointer-events-none" style={{ background: "linear-gradient(180deg, rgba(4,18,33,0.9) 0%, rgba(4,18,33,0.45) 40%, rgba(4,18,33,0) 100%)" }} />
 
-      {/* Mobile: Name overlapping image */}
-      <div className="md:hidden absolute top-[112px] left-0 right-0 z-[2] px-4">
-        <h1 className="hero_heading font-archivo-expanded text-[#e1dcd0] text-[clamp(48px,18.5vw,70px)] uppercase leading-[0.95] tracking-[-0.03em] text-center">
-          <span className="font-light block">HUGO</span>
-          <span className="font-extrabold text-[#d86527] block">NETTO</span>
-        </h1>
-      </div>
+      {/* Conteúdo */}
+      <div className="relative z-[2] flex flex-col h-full w-full px-5 md:px-10 lg:px-14">
+        <Kicker label="Piloto Profissional" sub="AMG Cup Brasil · #91" className="hero_kicker pt-24 md:pt-28" />
 
-      {/* Mobile: Info at bottom */}
-      <div className="md:hidden absolute bottom-0 left-0 right-0 z-[2] flex flex-col items-center px-4 pb-14 pt-8 gap-4">
-        <p className="hero_subheading font-archivo-expanded font-extrabold text-[#eeebe4] text-2xl uppercase tracking-[-0.03em] leading-[1.127] text-center">
-          Piloto de Alta Performance
-        </p>
-        <p className="hero_description font-['Inter',sans-serif] font-semibold text-sm text-[#eeebe4] leading-[1.54] w-[271px] text-center">
-          Velocidade, precisão e disciplina no limite. Uma jornada construída entre controle, técnica e adrenalina.
-        </p>
-      </div>
-
-      {/* Desktop: content at bottom */}
-      <div className="hidden md:block relative z-[2] mt-auto w-full">
-        <div className="flex flex-row items-end justify-between gap-6 px-[6px] mb-6">
-          <p className="hero_subheading font-archivo-expanded font-extrabold text-[#eeebe4] text-2xl uppercase tracking-[-0.72px] leading-[1.127] w-[251px] text-center">
-            Piloto de Alta Performance
+        <div className="mt-auto w-full pb-10 md:pb-12">
+          <p className="hero_subheading font-archivo-expanded font-extrabold text-[#eeebe4] text-lg md:text-2xl uppercase tracking-[-0.02em] leading-[1.05] mb-3 md:mb-4">
+            Alta performance sob pressão
           </p>
-          <p className="hero_description font-['Inter',sans-serif] font-semibold text-sm text-[#eeebe4] leading-[1.54] w-[249px] lg:mr-[18px]">
-            Velocidade, precisão e disciplina no limite. Uma jornada construída entre controle, técnica e adrenalina.
-          </p>
+
+          <FitText className="hero_heading" />
+
+          <div className="hero_meta mt-6 md:mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 md:gap-x-8 border-t border-white/10 pt-5">
+            {META.map((m) => (
+              <div key={m.k} className="flex flex-col">
+                <span className="font-archivo-expanded font-bold text-[#d86527] text-[9px] md:text-[10px] tracking-[0.16em] uppercase leading-none mb-1.5">{m.k}</span>
+                <span className="font-archivo-expanded font-extrabold text-[#e1dcd0] text-sm md:text-lg uppercase tracking-[-0.01em] leading-none">{m.v}</span>
+              </div>
+            ))}
+            <p className="hero_description font-['Inter',sans-serif] font-medium text-[13px] md:text-sm text-[#eeebe4]/70 leading-[1.5] max-w-[340px] md:ml-auto md:text-right">
+              Velocidade, precisão e disciplina no limite — uma jornada entre controle, técnica e adrenalina.
+            </p>
+          </div>
         </div>
-        <FitText className="hero_heading" />
       </div>
     </section>
   );

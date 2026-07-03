@@ -3,114 +3,128 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CharHoverLink } from "../../components/navigation/CharHoverLink";
 import { DownArrow } from "../../components/ui/DownArrow";
+import { Kicker } from "../../components/ui/Kicker";
 import { OptimizedImage } from "../../components/media/OptimizedImage";
+
+const LINK_COL =
+  "flex flex-col items-center md:items-start gap-2 mt-5 font-archivo-expanded font-extrabold text-[#e1dcd0] text-[clamp(20px,6.4vw,26px)] md:text-[clamp(1.1rem,1.6vw,26px)] tracking-[-0.03em] uppercase";
 
 export function FollowSection() {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".follow_heading", {
-        y: 80,
+      gsap.from(".follow_heading > *", {
+        y: 40,
         opacity: 0,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ref.current,
-          start: "top 80%",
-          end: "top 40%",
-          scrub: 1,
-        },
-      });
-
-      gsap.from(".follow_nav-left", {
-        x: -100,
-        opacity: 0,
-        duration: 1,
+        duration: 0.9,
+        stagger: 0.12,
         ease: "power3.out",
-        scrollTrigger: { trigger: ".follow_nav", start: "top 80%" },
+        scrollTrigger: { trigger: ".follow_heading", start: "top 82%" },
       });
-      gsap.from(".follow_nav-right", {
-        x: 100,
+      gsap.from(".follow_group", {
+        y: 30,
         opacity: 0,
-        duration: 1,
+        duration: 0.8,
+        stagger: 0.15,
         ease: "power3.out",
-        scrollTrigger: { trigger: ".follow_nav", start: "top 80%" },
+        scrollTrigger: { trigger: ".follow_nav", start: "top 85%" },
       });
-
-      gsap.to(".follow_background", {
-        yPercent: 8,
-        scale: 1.05,
+      gsap.from(".follow_image", {
+        y: 60,
+        opacity: 0,
+        duration: 1.1,
+        ease: "power3.out",
+        scrollTrigger: { trigger: ".follow_image", start: "top 85%" },
+      });
+      gsap.to(".follow_image img", {
+        yPercent: -6,
         ease: "none",
-        scrollTrigger: {
-          trigger: ref.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
-        },
+        scrollTrigger: { trigger: ref.current, start: "top bottom", end: "bottom top", scrub: true },
       });
     }, ref);
     return () => ctx.revert();
   }, []);
 
   return (
-    <section id="contato" ref={ref} className="relative bg-gradient-to-b from-[#041221] to-[#07294f] overflow-hidden md:h-screen md:min-h-[600px] z-[2]">
-      {/* Desktop: Portrait image */}
-      <div className="follow_background hidden md:flex absolute top-[25%] bottom-0 left-0 right-0 pointer-events-none justify-center overflow-hidden">
-        <OptimizedImage name="portrait-cinematic" alt="Retrato cinematografico de Hugo Netto" sizes="100vw" imgClassName="absolute inset-0 object-cover object-top opacity-70 h-full w-auto max-w-[900px] 2xl:max-w-[65%] mx-auto" />
-      </div>
+    <section
+      id="contato"
+      ref={ref}
+      className="relative bg-gradient-to-b from-[#041221] to-[#07294f] overflow-hidden z-[2] flex flex-col min-h-screen"
+    >
+      <div className="flex-1 flex items-center w-full">
+        <div className="w-full max-w-[1400px] mx-auto px-5 md:px-10 lg:px-14 py-24 md:py-28">
+          <div className="grid md:grid-cols-2 gap-12 md:gap-16 lg:gap-20 items-center">
+            {/* Texto + links */}
+            <div className="order-2 md:order-1 text-center md:text-left">
+              <div className="follow_heading">
+                <Kicker label="Contato" sub="Vamos acelerar juntos" className="mb-6 justify-center md:justify-start" />
+                <h2 className="font-archivo-expanded text-[#e1dcd0] text-[clamp(34px,9vw,64px)] tracking-[-0.03em] uppercase leading-[0.92]">
+                  <span className="font-light block">Acompanhe</span>
+                  <span className="font-light">Hugo </span>
+                  <span className="font-extrabold text-[#d86527]">Netto</span>
+                </h2>
+              </div>
 
-      {/* Title */}
-      <div className="follow_heading relative md:absolute md:top-[10%] md:left-0 md:right-0 text-center z-[1] max-w-[90vw] mx-auto pt-20 md:pt-0">
-        <h2 className="font-archivo-expanded text-[#e1dcd0] text-[clamp(32px,10.6vw,40px)] md:text-[clamp(2rem,4.9vw,70.4px)] text-center tracking-[-0.03em] uppercase leading-[0.95]">
-          <span className="font-light block">ACOMPANHE</span>
-          <span className="font-light">HUGO </span>
-          <span className="font-extrabold text-[#d86527]">netto</span>
-        </h2>
-      </div>
+              <nav aria-label="Redes sociais e contatos" className="follow_nav grid grid-cols-2 gap-8 mt-10 md:mt-12 max-w-[440px] mx-auto md:mx-0">
+                <div className="follow_group">
+                  <p className="font-archivo-expanded font-bold text-[#d86527] text-[10px] tracking-[0.16em] uppercase leading-none">Redes sociais</p>
+                  <div className={LINK_COL}>
+                    <CharHoverLink href="#" label="INSTAGRAM" className="text-[#e1dcd0] leading-none" ariaLabel="Seguir Hugo Netto no Instagram" />
+                    <CharHoverLink href="#" label="YOUTUBE" className="text-[#e1dcd0] leading-none" ariaLabel="Assistir Hugo Netto no YouTube" />
+                    <CharHoverLink href="#" label="TIKTOK" className="text-[#e1dcd0] leading-none" ariaLabel="Seguir Hugo Netto no TikTok" />
+                  </div>
+                </div>
+                <div className="follow_group">
+                  <p className="font-archivo-expanded font-bold text-[#d86527] text-[10px] tracking-[0.16em] uppercase leading-none">Contatos</p>
+                  <div className={LINK_COL}>
+                    <CharHoverLink href="#" label="PARCERIAS" className="text-[#e1dcd0] leading-none" ariaLabel="Informacoes sobre parcerias" />
+                    <CharHoverLink href="#" label="MEDIA KIT" className="text-[#e1dcd0] leading-none" ariaLabel="Baixar media kit" />
+                    <CharHoverLink href="#" label="EMAIL" className="text-[#e1dcd0] leading-none" ariaLabel="Enviar email" />
+                  </div>
+                </div>
+              </nav>
+            </div>
 
-      {/* Links */}
-      <nav aria-label="Redes sociais e contatos" className="follow_nav relative md:absolute md:top-[55.8%] left-0 right-0 z-[1] flex flex-col items-center md:items-stretch md:flex-row md:justify-between px-4 md:px-[7.78%] mt-14 md:mt-0 gap-14 md:gap-0">
-        <div className="follow_nav-left text-center">
-          <p className="font-archivo-expanded font-bold text-[#d86527] text-[10px] tracking-[-0.3px] uppercase leading-[1.127]">REDES SOCIAIS</p>
-          <div className="flex flex-col items-center gap-[6px] mt-[18px] font-archivo-expanded font-extrabold text-[#e1dcd0] text-[clamp(18px,6.4vw,24px)] md:text-[clamp(1rem,1.67vw,24px)] tracking-[-0.03em] uppercase">
-            <CharHoverLink href="#" label="INSTAGRAM" className="text-[#e1dcd0] leading-[1.127]" ariaLabel="Seguir Hugo Netto no Instagram" />
-            <CharHoverLink href="#" label="YOUTUBE" className="text-[#e1dcd0] leading-[1.127]" ariaLabel="Assistir Hugo Netto no YouTube" />
-            <CharHoverLink href="#" label="TIKTOK" className="text-[#e1dcd0] leading-[1.127]" ariaLabel="Seguir Hugo Netto no TikTok" />
+            {/* Foto do troféu enquadrada */}
+            <div className="follow_image order-1 md:order-2">
+              <div className="relative w-full aspect-[4/5] max-w-[440px] md:ml-auto rounded-2xl overflow-hidden bg-[#0a2138]">
+                <OptimizedImage
+                  name="photo-trophy-suit"
+                  alt="Hugo Netto com os troféus, em traje da equipe"
+                  sizes="(max-width: 768px) 90vw, 440px"
+                  imgClassName="absolute inset-0 object-cover size-full object-[50%_20%]"
+                />
+                <div className="absolute inset-x-0 bottom-0 h-1/3 pointer-events-none" style={{ background: "linear-gradient(180deg, rgba(4,18,33,0) 0%, rgba(4,18,33,0.85) 100%)" }} />
+                <div className="absolute left-5 bottom-5 flex items-center gap-3">
+                  <span className="font-archivo-expanded font-extrabold text-[#d86527] text-lg leading-none">#91</span>
+                  <span className="h-4 w-px bg-white/25" />
+                  <span className="font-archivo-expanded font-bold text-[#e1dcd0] text-[11px] tracking-[0.14em] uppercase leading-none">AMG Cup Brasil</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="follow_nav-right text-center">
-          <p className="font-archivo-expanded font-bold text-[#d86527] text-[10px] tracking-[-0.3px] uppercase leading-[1.127]">contatos</p>
-          <div className="flex flex-col items-center gap-[6px] mt-[18px] font-archivo-expanded font-extrabold text-[#e1dcd0] text-[clamp(18px,6.4vw,24px)] md:text-[clamp(1rem,1.67vw,24px)] tracking-[-0.03em] uppercase">
-            <CharHoverLink href="#" label="PARCERIAS" className="text-[#e1dcd0] leading-[1.127]" ariaLabel="Informacoes sobre parcerias" />
-            <CharHoverLink href="#" label="MEDIA KIT" className="text-[#e1dcd0] leading-[1.127]" ariaLabel="Baixar media kit" />
-            <CharHoverLink href="#" label="EMAIL" className="text-[#e1dcd0] leading-[1.127]" ariaLabel="Enviar email" />
-          </div>
-        </div>
-      </nav>
-
-      {/* Mobile: Portrait image */}
-      <div className="md:hidden relative w-full overflow-hidden mt-14 flex-1 min-h-[400px]">
-        <OptimizedImage name="portrait-cinematic" alt="Retrato cinematografico de Hugo Netto" sizes="100vw" imgClassName="absolute inset-0 object-cover object-top size-full" />
       </div>
 
       {/* Footer */}
-      <footer className="relative md:absolute md:bottom-0 md:left-0 md:right-0 z-[2] py-4 md:py-3" role="contentinfo">
-        <div className="max-w-[1920px] mx-auto px-4 md:px-[38px] flex flex-col md:flex-row items-center md:justify-between gap-3 md:gap-0">
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          aria-label="Voltar ao topo da pagina"
-          className="flex gap-[8px] items-center group order-first md:order-last"
-        >
-          <span className="font-['Inter',sans-serif] font-medium text-[12px] text-white leading-[1.5] whitespace-nowrap group-hover:text-[#d86527] transition-colors">Voltar ao topo</span>
-          <div className="flex items-center justify-center size-[24px]" aria-hidden="true">
-            <div className="-rotate-90">
-              <DownArrow />
+      <footer className="relative z-[2] border-t border-white/10 py-5" role="contentinfo">
+        <div className="max-w-[1400px] mx-auto px-5 md:px-10 lg:px-14 flex flex-col md:flex-row items-center md:justify-between gap-3">
+          <p className="font-['Inter',sans-serif] font-normal text-[11px] md:text-xs text-white/60 leading-normal text-center order-last md:order-first">
+            Copyright &copy; 2026 Hugo Netto. Todos os direitos reservados
+          </p>
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            aria-label="Voltar ao topo da pagina"
+            className="flex gap-2 items-center group"
+          >
+            <span className="font-['Inter',sans-serif] font-medium text-xs text-white leading-[1.5] whitespace-nowrap group-hover:text-[#d86527] transition-colors">Voltar ao topo</span>
+            <div className="flex items-center justify-center size-[24px]" aria-hidden="true">
+              <div className="-rotate-90">
+                <DownArrow />
+              </div>
             </div>
-          </div>
-        </button>
-        <p className="font-['Inter',sans-serif] font-normal text-[10px] md:text-[12px] text-white leading-normal text-center">
-          Copyright &copy; 2026 Hugo Netto. Todos os direitos reservados
-        </p>
+          </button>
         </div>
       </footer>
     </section>
