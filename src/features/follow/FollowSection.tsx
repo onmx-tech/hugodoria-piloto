@@ -7,7 +7,7 @@ import { Kicker } from "../../components/ui/Kicker";
 import { OptimizedImage } from "../../components/media/OptimizedImage";
 
 const LINK_COL =
-  "flex flex-col items-center md:items-start gap-2 mt-5 font-archivo-expanded font-extrabold text-[#e1dcd0] text-[clamp(20px,6.4vw,26px)] md:text-[clamp(1.1rem,1.6vw,26px)] tracking-[-0.03em] uppercase";
+  "flex flex-col items-start gap-2.5 mt-4 md:mt-5 font-archivo-expanded font-extrabold text-[#e1dcd0] text-[clamp(16px,5vw,21px)] md:text-[clamp(1.1rem,1.6vw,26px)] tracking-[-0.03em] uppercase";
 
 export function FollowSection() {
   const ref = useRef<HTMLDivElement>(null);
@@ -56,7 +56,7 @@ export function FollowSection() {
         <div className="w-full max-w-[1400px] mx-auto px-5 md:px-10 lg:px-14 py-24 md:py-28">
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 lg:gap-20 items-center">
             {/* Texto + links */}
-            <div className="order-2 md:order-1 text-center md:text-left">
+            <div className="order-1 text-center md:text-left">
               <div className="follow_heading">
                 <Kicker label="Contato" sub="Vamos acelerar juntos" className="mb-6 justify-center md:justify-start" />
                 <h2 className="font-archivo-expanded text-[#e1dcd0] text-[clamp(34px,9vw,64px)] tracking-[-0.03em] uppercase leading-[0.92]">
@@ -87,7 +87,7 @@ export function FollowSection() {
             </div>
 
             {/* Foto do troféu enquadrada */}
-            <div className="follow_image order-1 md:order-2">
+            <div className="follow_image order-2">
               <div className="relative w-full aspect-[4/5] max-w-[440px] md:ml-auto rounded-2xl overflow-hidden bg-[#0a2138]">
                 <OptimizedImage
                   name="photo-trophy-suit"
