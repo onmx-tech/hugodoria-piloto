@@ -4,16 +4,21 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { OptimizedImage } from "../../components/media/OptimizedImage";
 import { Kicker } from "../../components/ui/Kicker";
 import { FitText } from "./FitText";
+import { PODIUMS, TITLES } from "../../data/career";
 
 const HERO_PHOTO = "photo-hero-celebration";
 const HERO_ALT = "Hugo Netto comemorando com os braços erguidos após a vitória";
 
 const META = [
   { k: "Equipe", v: "Mercedes-AMG GT" },
-  { k: "Pódios", v: "72" },
-  { k: "Paulista", v: "Campeão 2019" },
+  { k: "Categoria", v: "AMG Cup Brasil" },
   { k: "Casa", v: "Interlagos" },
 ];
+
+// A conquista é o argumento do piloto — vem do mesmo lugar que a seção Carreira,
+// para nunca divergir dela.
+const CHAMPION = TITLES.find((t) => t.highlight)!;
+const RUNNER_UP_YEARS = TITLES.filter((t) => !t.highlight).map((t) => t.year);
 
 export function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -72,9 +77,20 @@ export function HeroSection() {
         <Kicker label="Piloto Profissional" sub="AMG Cup Brasil · #91" className="hero_kicker pt-24 md:pt-28" />
 
         <div className="mt-auto w-full pb-10 md:pb-12">
-          <p className="hero_subheading font-archivo-expanded font-extrabold text-[#eeebe4] text-lg md:text-2xl uppercase tracking-[-0.02em] leading-[1.05] mb-3 md:mb-4">
-            Alta performance sob pressão
-          </p>
+          {/* No lugar da frase de efeito, o fato: o que ele ganhou. */}
+          <div className="hero_subheading mb-4 md:mb-5 flex flex-wrap items-center gap-x-4 gap-y-2 md:gap-x-6">
+            <p className="font-archivo-expanded font-extrabold text-[#eeebe4] text-[clamp(17px,4.6vw,32px)] uppercase tracking-[-0.02em] leading-[1.02]">
+              Campeão Paulista <span className="text-[#d86527]">{CHAMPION.year}</span>
+            </p>
+            <span className="hidden md:block h-6 w-px bg-white/25" />
+            <p className="font-archivo-expanded font-bold text-[#eeebe4]/70 text-[clamp(11px,2.6vw,15px)] uppercase tracking-[0.06em] leading-[1.3]">
+              Vice-campeão {RUNNER_UP_YEARS.join(" · ")}
+            </p>
+            <span className="hidden md:block h-6 w-px bg-white/25" />
+            <p className="font-archivo-expanded font-extrabold text-[#eeebe4] text-[clamp(13px,3vw,19px)] uppercase tracking-[-0.01em] leading-none">
+              {PODIUMS.total} <span className="font-bold text-[#eeebe4]/70 text-[0.62em] tracking-[0.14em]">pódios</span>
+            </p>
+          </div>
 
           <FitText className="hero_heading" />
 

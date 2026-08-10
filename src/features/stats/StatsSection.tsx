@@ -102,11 +102,19 @@ export function StatsSection() {
                 </span>
                 <span className="flex-1 min-w-0">
                   <span
-                    className={`block font-archivo-expanded font-extrabold uppercase tracking-[-0.02em] leading-[1.1] text-[clamp(14px,3.4vw,19px)] ${
-                      t.highlight ? "text-[#e1dcd0]" : "text-[#e1dcd0]/85"
+                    className={`flex flex-wrap items-center gap-x-3 gap-y-1 font-archivo-expanded font-extrabold uppercase tracking-[-0.02em] leading-[1.1] ${
+                      t.highlight
+                        ? "text-[#e1dcd0] text-[clamp(16px,4.2vw,25px)]"
+                        : "text-[#e1dcd0]/85 text-[clamp(14px,3.4vw,19px)]"
                     }`}
                   >
                     {t.result}
+                    {t.highlight && (
+                      <span className="inline-flex items-center gap-1.5 rounded-full border border-[#d86527]/45 bg-[#d86527]/12 px-2.5 py-1 font-bold text-[#d86527] text-[10px] tracking-[0.16em] leading-none">
+                        <span aria-hidden="true" className="text-[8px] leading-none">◆</span>
+                        Título
+                      </span>
+                    )}
                   </span>
                   <span className="block font-['Inter',sans-serif] text-[12px] md:text-[13px] text-[rgba(238,235,228,0.55)] leading-[1.5] mt-1">
                     {t.meta}
@@ -118,10 +126,10 @@ export function StatsSection() {
 
           {/* Pódios */}
           <div className="stats_podiums lg:border-l lg:border-white/12 lg:pl-16 lg:self-stretch flex flex-col justify-center">
-            <p className="font-archivo-expanded font-light text-[#d86527] text-[clamp(56px,15vw,92px)] tracking-[-0.04em] leading-[0.9]">
+            <p className="font-archivo-expanded font-light text-[#d86527] text-[clamp(76px,17vw,132px)] tracking-[-0.04em] leading-[0.86]">
               <CountUp value={PODIUMS.total} suffix="" />
             </p>
-            <p className="font-archivo-expanded font-bold text-[#e1dcd0] text-[13px] tracking-[0.16em] uppercase leading-none mt-4">
+            <p className="font-archivo-expanded font-bold text-[#e1dcd0] text-[clamp(13px,3.2vw,16px)] tracking-[0.16em] uppercase leading-none mt-4">
               Pódios na carreira
             </p>
             <p className="font-['Inter',sans-serif] text-[13px] text-[rgba(238,235,228,0.6)] leading-[1.6] mt-3 max-w-[240px]">
