@@ -1,5 +1,7 @@
 /** Fonte única dos canais de contato. Todo CTA de contato/parceria cai no WhatsApp. */
-export const EMAIL = "contato@hugonetto.com";
+// ⚠️ A caixa ainda precisa ser criada no painel da HostGator (o domínio não tem
+// MX publicado). Até lá, o WhatsApp é o canal que funciona de fato.
+export const EMAIL = "contato@pilotohugonetto.com.br";
 
 export const WHATSAPP_NUMBER = "5511992157407";
 

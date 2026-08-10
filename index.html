@@ -4,29 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Hugo Netto - Piloto</title>
-    <meta name="description" content="Hugo Netto - piloto de alta performance no automobilismo brasileiro. Velocidade, precisao e disciplina no limite. Conhega a trajetoria, titulos e parcerias." />
-    <meta name="keywords" content="Hugo Netto, piloto, automobilismo, corrida, alta performance, piloto brasileiro, racing driver, motorsport" />
+    <title>Hugo Netto | Piloto — Mercedes-AMG Cup Brasil</title>
+    <meta name="description" content="Hugo Netto, piloto da Mercedes-AMG Cup Brasil: campeão paulista de Marcas e Pilotos em 2019, vice em 2020, 2021 e 2022, e 72 pódios na carreira. Trajetória, galeria e parcerias." />
+    <meta name="keywords" content="Hugo Netto, piloto, automobilismo, Mercedes-AMG Cup Brasil, Marcas e Pilotos, campeão paulista, Interlagos, motorsport" />
     <meta name="author" content="Hugo Netto" />
     <meta name="theme-color" content="#041221" />
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://hugodoria-piloto.vercel.app/" />
+    <link rel="canonical" href="https://pilotohugonetto.com.br/" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Hugo Netto | Piloto de Alta Performance" />
-    <meta property="og:description" content="Velocidade, precisao e disciplina no limite. Conhega a trajetoria de Hugo Netto no automobilismo brasileiro." />
-    <meta property="og:url" content="https://hugodoria-piloto.vercel.app/" />
-    <meta property="og:image" content="https://hugodoria-piloto.vercel.app/images/og-image.jpg" />
+    <meta property="og:title" content="Hugo Netto | Piloto — Mercedes-AMG Cup Brasil" />
+    <meta property="og:description" content="Campeão paulista de Marcas e Pilotos em 2019, vice em 2020, 2021 e 2022, e 72 pódios na carreira." />
+    <meta property="og:url" content="https://pilotohugonetto.com.br/" />
+    <meta property="og:image" content="https://pilotohugonetto.com.br/images/og-image.jpg" />
+    <meta property="og:image:width" content="1440" />
+    <meta property="og:image:height" content="810" />
+    <meta property="og:image:alt" content="Hugo Netto de macacão, segurando o capacete" />
     <meta property="og:site_name" content="Hugo Netto - Piloto" />
     <meta property="og:locale" content="pt_BR" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Hugo Netto | Piloto de Alta Performance" />
-    <meta name="twitter:description" content="Velocidade, precisao e disciplina no limite. Conhega a trajetoria de Hugo Netto no automobilismo brasileiro." />
-    <meta name="twitter:image" content="https://hugodoria-piloto.vercel.app/images/og-image.jpg" />
+    <meta name="twitter:title" content="Hugo Netto | Piloto — Mercedes-AMG Cup Brasil" />
+    <meta name="twitter:description" content="Campeão paulista de Marcas e Pilotos em 2019, vice em 2020, 2021 e 2022, e 72 pódios na carreira." />
+    <meta name="twitter:image" content="https://pilotohugonetto.com.br/images/og-image.jpg" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -37,9 +40,17 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Hugo Netto" />
 
-    <!-- Preload hero LCP image -->
-    <link rel="preload" as="image" type="image/avif" href="/images/driver-calm-standing-1440.avif" media="(min-width: 768px)" />
-    <link rel="preload" as="image" type="image/avif" href="/images/driver-calm-standing-480.avif" media="(max-width: 767px)" />
+    <!-- Preload da imagem do hero (LCP). O srcset precisa ser IGUAL ao que o
+         OptimizedImage monta (sizes="100vw"), senão o browser baixa duas
+         imagens diferentes: a do preload e a que ele escolhe de verdade. -->
+    <link
+      rel="preload"
+      as="image"
+      type="image/avif"
+      imagesrcset="/images/photo-hero-celebration-480.avif 480w, /images/photo-hero-celebration-768.avif 768w, /images/photo-hero-celebration-1440.avif 1440w, /images/photo-hero-celebration-2048.avif 2048w"
+      imagesizes="100vw"
+      fetchpriority="high"
+    />
 
     <!-- Preconnect for Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -52,16 +63,22 @@
         "@type": "Person",
         "name": "Hugo Netto",
         "alternateName": "Hugo Netto Piloto",
-        "url": "https://hugodoria-piloto.vercel.app/",
-        "jobTitle": "Piloto de Alta Performance",
-        "description": "Piloto de alta performance no automobilismo brasileiro com mais de 50 categorias disputadas, 12 podios e 10 primeiros lugares. Movido por disciplina, estrategia e controle emocional.",
-        "image": "https://hugodoria-piloto.vercel.app/images/og-image.jpg",
+        "url": "https://pilotohugonetto.com.br/",
+        "jobTitle": "Piloto de automobilismo",
+        "description": "Piloto brasileiro da Mercedes-AMG Cup Brasil (#91). Campeão paulista de Marcas e Pilotos em 2019 pela FASP e vice-campeão em 2020, 2021 e 2022, com 72 pódios na carreira.",
+        "image": "https://pilotohugonetto.com.br/images/og-image.jpg",
+        "award": [
+          "Campeão Paulista de Marcas e Pilotos 2019 (FASP)",
+          "Vice-campeão Paulista de Marcas e Pilotos 2020",
+          "Vice-campeão Paulista de Marcas e Pilotos 2021",
+          "Vice-campeão Paulista de Marcas e Pilotos 2022"
+        ],
         "nationality": {
           "@type": "Country",
           "name": "Brasil"
         },
         "sameAs": [],
-        "knowsAbout": ["Automobilismo", "Corrida", "Alta Performance", "Motorsport", "Stock Car", "Endurance"],
+        "knowsAbout": ["Automobilismo", "Mercedes-AMG Cup Brasil", "Marcas e Pilotos", "Motorsport", "Interlagos"],
         "hasOccupation": {
           "@type": "Occupation",
           "name": "Piloto de Automobilismo",
@@ -76,9 +93,9 @@
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "name": "Hugo Netto - Piloto de Alta Performance",
-        "url": "https://hugodoria-piloto.vercel.app/",
-        "description": "Site oficial de Hugo Netto, piloto de alta performance no automobilismo brasileiro.",
+        "name": "Hugo Netto - Piloto",
+        "url": "https://pilotohugonetto.com.br/",
+        "description": "Site oficial de Hugo Netto, piloto da Mercedes-AMG Cup Brasil.",
         "inLanguage": "pt-BR"
       }
     </script>
