@@ -1,7 +1,9 @@
 import React, { useRef, useEffect } from "react";
 import { Diamond } from "../ui/Diamond";
+import { WHATSAPP } from "../../data/contact";
 
-export function CTAButton({ children = "Contato", href = "#contato", className = "" }: { children?: React.ReactNode; href?: string; className?: string }) {
+// Todo CTA de contato/parceria cai no WhatsApp da assessoria por padrão.
+export function CTAButton({ children = "Contato", href = WHATSAPP, className = "" }: { children?: React.ReactNode; href?: string; className?: string }) {
   const textRef = useRef<HTMLSpanElement>(null);
   const wrapperRef = useRef<HTMLSpanElement>(null);
 
@@ -21,7 +23,7 @@ export function CTAButton({ children = "Contato", href = "#contato", className =
   }, [children]);
 
   return (
-    <a href={href} className={`group relative bg-[#d86527] hover:bg-[#ee671f] transition-colors duration-300 rounded-[6px] shrink-0 flex items-center self-stretch px-6 py-3 overflow-hidden ${className}`}>
+    <a href={href} {...(/^https?:/.test(href) ? { target: "_blank", rel: "noopener noreferrer" } : null)} className={`group relative bg-[#d86527] hover:bg-[#ee671f] transition-colors duration-300 rounded-[6px] shrink-0 flex items-center self-stretch px-6 py-3 overflow-hidden ${className}`}>
       <span ref={wrapperRef} className="relative flex items-center gap-3">
         <span className="inline-flex transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:translate-x-[calc(var(--text-w,60px)+12px)]">
           <Diamond />

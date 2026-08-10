@@ -34,6 +34,15 @@ Imagens NÃO são importadas direto. Fluxo:
 - Cards têm **altura fixa** e **largura por aspect-ratio real** (`aspectRatio: width/height` do manifest), por isso fotos retrato e paisagem ficam lado a lado sem cropar.
 - Não remova as classes `gallery_row-top` / `gallery_row-bottom`: o GSAP faz parallax nelas.
 
+## Dados de conteúdo (`src/data/`)
+Fonte única — mexa aqui, não no JSX:
+- `contact.ts` — WhatsApp e e-mail. **Todo CTA de contato/parceria cai no WhatsApp** (é o `href` default do `CTAButton`); `CTAButton`/`CharHoverLink` põem `target="_blank"` sozinhos quando o href é `http(s)`.
+- `career.ts` — palmarés e pódios reais (nada de número redondo inventado).
+- `sponsors.ts` — logos da fita. `h` é **altura de tinta** em px: cada SVG foi recortado na bbox real, então altura declarada = altura desenhada. Calibrado por tipologia (brasão/empilhado pedem mais altura que wordmark horizontal) para o conjunto ter o mesmo peso.
+
+## Logos de patrocinador (`public/logos/`)
+Os originais do cliente vêm em PDF/EPS/CDR/PNG e em cores incompatíveis entre si (um só existe em branco, outro é brasão colorido). Pipeline usado: rasterizar em alta → canal de tinta (`alpha × luminância`, invertendo nos logos claros) → `potrace -s` → SVG mono de 1 cor. Exceção: **AMG Cup** ficou em PNG — a estrela cromada da Mercedes é arte oficial e não se altera; só o lettering foi para o azul da paleta.
+
 ## Convenções
 - Fotos do piloto vão para a galeria com nomes `photo-<descrição>` em `src/assets/`. Sempre rode `npm run optimize` depois de adicionar/remover.
 - Antes de commit/push, confirmar identidade git (máquina tem 2 contas gh: `onmx-tech` e `thalysonblack`).

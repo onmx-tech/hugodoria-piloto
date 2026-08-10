@@ -3,14 +3,8 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Kicker } from "../../components/ui/Kicker";
 import { OptimizedImage } from "../../components/media/OptimizedImage";
-import { StatItem } from "./StatItem";
-
-const STATS = [
-  { value: "50+", label: "Categorias disputadas" },
-  { value: "12+", label: "Pódios" },
-  { value: "15+", label: "Autódromos" },
-  { value: "10+", label: "Primeiro lugar" },
-];
+import { CountUp } from "./CountUp";
+import { PODIUMS, TITLES } from "../../data/career";
 
 export function StatsSection() {
   const ref = useRef<HTMLDivElement>(null);
@@ -39,15 +33,22 @@ export function StatsSection() {
         scrollTrigger: { trigger: ref.current, start: "top bottom", end: "bottom top", scrub: true },
       });
 
-      gsap.utils.toArray<HTMLElement>(".stats_item").forEach((el, i) => {
+      gsap.utils.toArray<HTMLElement>(".stats_title").forEach((el, i) => {
         gsap.from(el, {
-          y: 30,
+          y: 24,
           opacity: 0,
-          duration: 0.8,
-          delay: i * 0.08,
+          duration: 0.7,
+          delay: i * 0.09,
           ease: "power3.out",
           scrollTrigger: { trigger: ".stats_row", start: "top 88%" },
         });
+      });
+      gsap.from(".stats_podiums", {
+        y: 24,
+        opacity: 0,
+        duration: 0.9,
+        ease: "power3.out",
+        scrollTrigger: { trigger: ".stats_row", start: "top 88%" },
       });
     }, ref);
     return () => ctx.revert();
@@ -83,11 +84,50 @@ export function StatsSection() {
           </div>
         </div>
 
-        {/* Linha de stats */}
-        <div className="stats_row grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-10 mt-14 md:mt-16">
-          {STATS.map((s) => (
-            <StatItem key={s.label} value={s.value} label={s.label} />
-          ))}
+        {/* Palmarés */}
+        <div className="stats_row grid lg:grid-cols-[1fr_auto] gap-10 lg:gap-20 mt-14 md:mt-20 items-start">
+          {/* Títulos, ano a ano */}
+          <ul className="w-full">
+            {TITLES.map((t) => (
+              <li
+                key={t.year}
+                className="stats_title flex items-baseline gap-4 md:gap-8 py-4 md:py-5 border-t border-white/12 first:border-t-0"
+              >
+                <span
+                  className={`font-archivo-expanded font-light text-[clamp(26px,7vw,40px)] leading-none tracking-[-0.03em] w-[2.6em] shrink-0 ${
+                    t.highlight ? "text-[#d86527]" : "text-[#e1dcd0]/45"
+                  }`}
+                >
+                  {t.year}
+                </span>
+                <span className="flex-1 min-w-0">
+                  <span
+                    className={`block font-archivo-expanded font-extrabold uppercase tracking-[-0.02em] leading-[1.1] text-[clamp(14px,3.4vw,19px)] ${
+                      t.highlight ? "text-[#e1dcd0]" : "text-[#e1dcd0]/85"
+                    }`}
+                  >
+                    {t.result}
+                  </span>
+                  <span className="block font-['Inter',sans-serif] text-[12px] md:text-[13px] text-[rgba(238,235,228,0.55)] leading-[1.5] mt-1">
+                    {t.meta}
+                  </span>
+                </span>
+              </li>
+            ))}
+          </ul>
+
+          {/* Pódios */}
+          <div className="stats_podiums lg:border-l lg:border-white/12 lg:pl-16 lg:self-stretch flex flex-col justify-center">
+            <p className="font-archivo-expanded font-light text-[#d86527] text-[clamp(56px,15vw,92px)] tracking-[-0.04em] leading-[0.9]">
+              <CountUp value={PODIUMS.total} suffix="" />
+            </p>
+            <p className="font-archivo-expanded font-bold text-[#e1dcd0] text-[13px] tracking-[0.16em] uppercase leading-none mt-4">
+              Pódios na carreira
+            </p>
+            <p className="font-['Inter',sans-serif] text-[13px] text-[rgba(238,235,228,0.6)] leading-[1.6] mt-3 max-w-[240px]">
+              {PODIUMS.amgCup} deles na Mercedes-AMG Cup Brasil, a categoria que disputa hoje.
+            </p>
+          </div>
         </div>
       </div>
     </section>

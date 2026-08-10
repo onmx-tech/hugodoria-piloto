@@ -10,8 +10,8 @@ const HERO_ALT = "Hugo Netto comemorando com os braços erguidos após a vitóri
 
 const META = [
   { k: "Equipe", v: "Mercedes-AMG GT" },
-  { k: "Pódios", v: "12+" },
-  { k: "Categorias", v: "50+" },
+  { k: "Pódios", v: "72" },
+  { k: "Paulista", v: "Campeão 2019" },
   { k: "Casa", v: "Interlagos" },
 ];
 

@@ -5,8 +5,15 @@ export function CharHoverLink({ href, label, className = "", hoverColor = "text-
   const linkRef = useRef<HTMLAnchorElement>(null);
   useCharHover(linkRef);
   const chars = label.split("");
+  const external = /^https?:/.test(href);
   return (
-    <a ref={linkRef} href={href} aria-label={ariaLabel} className={`cursor-pointer ${className}`}>
+    <a
+      ref={linkRef}
+      href={href}
+      aria-label={ariaLabel}
+      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : null)}
+      className={`cursor-pointer ${className}`}
+    >
       <span className="relative block overflow-hidden">
         <span className="flex">
           {chars.map((c, i) => <span key={i} className="char-top inline-block" style={{ whiteSpace: c === " " ? "pre" : undefined }}>{c}</span>)}

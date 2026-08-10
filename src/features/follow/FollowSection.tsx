@@ -5,6 +5,7 @@ import { CharHoverLink } from "../../components/navigation/CharHoverLink";
 import { DownArrow } from "../../components/ui/DownArrow";
 import { Kicker } from "../../components/ui/Kicker";
 import { OptimizedImage } from "../../components/media/OptimizedImage";
+import { EMAIL, WHATSAPP } from "../../data/contact";
 
 const LINK_COL =
   "flex flex-col items-start gap-2.5 mt-4 md:mt-5 font-archivo-expanded font-extrabold text-[#e1dcd0] text-[clamp(16px,5vw,21px)] md:text-[clamp(1.1rem,1.6vw,26px)] tracking-[-0.03em] uppercase";
@@ -78,9 +79,8 @@ export function FollowSection() {
                 <div className="follow_group">
                   <p className="font-archivo-expanded font-bold text-[#d86527] text-[10px] tracking-[0.16em] uppercase leading-none">Contatos</p>
                   <div className={LINK_COL}>
-                    <CharHoverLink href="#" label="PARCERIAS" className="text-[#e1dcd0] leading-none" ariaLabel="Informacoes sobre parcerias" />
-                    <CharHoverLink href="#" label="MEDIA KIT" className="text-[#e1dcd0] leading-none" ariaLabel="Baixar media kit" />
-                    <CharHoverLink href="#" label="EMAIL" className="text-[#e1dcd0] leading-none" ariaLabel="Enviar email" />
+                    <CharHoverLink href={WHATSAPP} label="WHATSAPP" className="text-[#e1dcd0] leading-none" ariaLabel="Falar com a assessoria de Hugo Netto no WhatsApp" />
+                    <CharHoverLink href={`mailto:${EMAIL}`} label="E-MAIL" className="text-[#e1dcd0] leading-none" ariaLabel={`Enviar e-mail para ${EMAIL}`} />
                   </div>
                 </div>
               </nav>
