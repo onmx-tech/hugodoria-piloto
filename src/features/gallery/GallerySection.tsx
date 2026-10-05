@@ -10,8 +10,8 @@ type GalleryImage = { name: string; alt: string };
 // A largura de cada card é derivada do aspect-ratio real (altura fixa),
 // então retratos e paisagens convivem sem corte.
 const topRow: GalleryImage[] = [
-  { name: "photo-car-track-front", alt: "Carro de corrida de Hugo Netto em ação na reta da pista" },
   { name: "photo-podium-celebration", alt: "Hugo Netto comemorando com os braços erguidos após a vitória" },
+  { name: "photo-car-track-front", alt: "Carro de corrida de Hugo Netto em ação na reta da pista" },
   { name: "photo-sponsor-wall", alt: "Hugo Netto diante do painel de patrocinadores em dia de prova" },
   { name: "photo-helmet-mercedes-closeup", alt: "Detalhe do capacete de Hugo Netto antes de entrar no carro" },
   { name: "photo-car-track-curve", alt: "Carro de Hugo Netto inclinando na curva durante a corrida" },

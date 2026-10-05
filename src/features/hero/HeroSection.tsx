@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { OptimizedImage } from "../../components/media/OptimizedImage";
 import { Kicker } from "../../components/ui/Kicker";
 import { FitText } from "./FitText";
+import { CTAButton } from "../../components/navigation/CTAButton";
 import { PODIUMS, TITLES } from "../../data/career";
 
 const HERO_PHOTO = "photo-hero-celebration";
@@ -101,9 +102,10 @@ export function HeroSection() {
                 <span className="font-archivo-expanded font-extrabold text-[#e1dcd0] text-sm md:text-lg uppercase tracking-[-0.01em] leading-none">{m.v}</span>
               </div>
             ))}
-            <p className="hero_description font-['Inter',sans-serif] font-medium text-[13px] md:text-sm text-[#eeebe4]/70 leading-[1.5] max-w-[340px] md:ml-auto md:text-right">
-              Velocidade, precisão e disciplina no limite — uma jornada entre controle, técnica e adrenalina.
-            </p>
+            {/* O objetivo da página é patrocínio: a porta de entrada já no hero. */}
+            <div className="hero_description w-full md:w-auto md:ml-auto flex">
+              <CTAButton>Seja patrocinador</CTAButton>
+            </div>
           </div>
         </div>
       </div>

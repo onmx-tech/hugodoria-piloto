@@ -50,12 +50,12 @@ export function AboutSection() {
             <div className="about_heading">
               <Kicker label="Sobre" sub="O Piloto" className="mb-8" />
               <h2 className="font-archivo-expanded font-extrabold text-[#e1dcd0] text-[clamp(30px,7vw,52px)] tracking-[-0.03em] uppercase leading-[0.98]">
-                Alta performance<br />não é só correr.
+                Mesmo carro<br />para todos.
               </h2>
               <div className="flex items-center gap-3 mt-2">
                 <Diamond />
                 <p className="font-archivo-expanded font-extrabold text-[#d86527] text-[clamp(30px,7vw,52px)] tracking-[-0.03em] uppercase leading-[0.98]">
-                  É dominar
+                  Vence o piloto
                 </p>
               </div>
             </div>
@@ -63,10 +63,10 @@ export function AboutSection() {
             <div className="about_description mt-9 md:mt-11 max-w-[460px]">
               <span className="block bg-[#d86527] w-11 h-1 rounded mb-5" />
               <p className="font-['Inter',sans-serif] text-[15px] md:text-base text-[rgba(238,235,228,0.78)] leading-[1.65]">
-                Hugo Netto é piloto de alta performance, movido por disciplina, estratégia e controle emocional. Nas pistas, cada curva exige precisão absoluta e decisão em milésimos.
+                Na Mercedes-AMG Cup Brasil todos largam com o mesmo carro. O resultado sai da frenagem, da linha e da cabeça de quem está ao volante.
               </p>
               <p className="font-['Inter',sans-serif] text-[15px] md:text-base text-[#eeebe4] font-medium leading-[1.65] mt-4">
-                Mais do que velocidade, sua jornada é sobre performance real sob pressão — dentro e fora do carro.
+                É nesse detalhe que Hugo trabalha, prova após prova, ao volante do #91.
               </p>
             </div>
           </div>

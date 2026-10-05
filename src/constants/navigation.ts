@@ -1,6 +1,6 @@
 export const NAV_LINKS = [
-  { label: "Sobre", id: "sobre" },
   { label: "Carreira", id: "carreira" },
-  { label: "Galeria", id: "galeria" },
+  { label: "Sobre", id: "sobre" },
   { label: "Patrocínio", id: "patrocinio" },
+  { label: "Galeria", id: "galeria" },
 ];

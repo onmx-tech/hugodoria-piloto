@@ -28,12 +28,12 @@ export function SponsorsSection() {
       <div className="bg-[#f9f6ee] rounded-[12px] md:rounded-3xl py-16 md:py-20 px-4 md:px-10 mx-auto overflow-hidden">
         {/* Heading */}
         <div className="text-center max-w-[669px] mx-auto mb-12 md:mb-16">
-          <p className="font-archivo-expanded font-bold text-[#d86527] text-[10px] tracking-[-0.3px] uppercase leading-[1.127]">PATROCÍNIO</p>
+          <p className="font-archivo-expanded font-bold text-[#d86527] text-[10px] tracking-[-0.3px] uppercase leading-[1.127]">FAMÍLIA #91</p>
           <h2 className="font-archivo-expanded font-extrabold text-[#041221] text-[clamp(22px,7.5vw,28px)] md:text-[32px] tracking-[-0.03em] uppercase leading-[1.127] mt-6">
-            Marcas que aceleram junto
+            Quem já corre com o #91
           </h2>
           <p className="font-['Inter',sans-serif] font-semibold text-sm text-black/83 leading-[1.54] mt-6 max-w-[513px] mx-auto">
-            O automobilismo é uma plataforma única de visibilidade, performance e posicionamento premium. Hugo busca parcerias com marcas que compartilham valores como excelência, disciplina e inovação.
+            Da neurocirurgia à hípica, as marcas parceiras estão no carro e no macacão de Hugo em cada prova. Quando ele sobe ao pódio, elas sobem junto.
           </p>
         </div>
 
@@ -70,7 +70,7 @@ export function SponsorsSection() {
 
         {/* CTA */}
         <div className="flex justify-center">
-          <CTAButton>Seja um Parceiro</CTAButton>
+          <CTAButton>Quero fazer parte</CTAButton>
         </div>
       </div>
     </section>

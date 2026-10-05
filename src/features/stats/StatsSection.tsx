@@ -59,28 +59,28 @@ export function StatsSection() {
       <div className="relative w-full max-w-[1400px] mx-auto px-5 md:px-10 lg:px-14">
         {/* Heading */}
         <div className="stats_heading max-w-[640px] mb-12 md:mb-16">
-          <Kicker label="Carreira nas pistas" className="mb-7" />
+          <Kicker label="Palmarés" sub="Carreira nas pistas" className="mb-7" />
           <h2 className="font-archivo-expanded font-extrabold text-[#e1dcd0] text-[clamp(28px,6vw,48px)] tracking-[-0.03em] uppercase leading-[1.0]">
-            Trajetória no automobilismo
+            Quatro anos seguidos entre os dois primeiros
           </h2>
           <p className="font-['Inter',sans-serif] text-[15px] md:text-base text-[rgba(238,235,228,0.78)] leading-[1.65] mt-6">
-            Competindo em ambientes de alta exigência, Hugo desenvolveu uma presença forte dentro e fora das pistas, unindo técnica e mentalidade competitiva.
+            Campeão paulista de Marcas e Pilotos em 2019 e vice nas três temporadas seguintes. Hoje Hugo disputa a Mercedes-AMG Cup Brasil com o carro #91.
           </p>
         </div>
 
-        {/* Banda cinematográfica do carro */}
-        <div className="stats_image relative w-full aspect-[16/9] md:aspect-[21/9] rounded-2xl overflow-hidden bg-[#0a2138]">
+        {/* O pódio é o argumento: Hugo no degrau 1 da AMG Cup */}
+        <div className="stats_image relative w-full aspect-[3/2] md:aspect-[16/9] rounded-2xl overflow-hidden bg-[#0a2138]">
           <OptimizedImage
-            name="photo-car-track-front"
-            alt="Carro de corrida de Hugo Netto na pista com adesivagem de patrocinadores"
+            name="photo-team-podium-numbers"
+            alt="Hugo Netto no degrau mais alto do pódio da Mercedes-AMG Cup Brasil, com o troféu erguido"
             sizes="(max-width: 1400px) 100vw, 1400px"
-            imgClassName="absolute inset-0 object-cover size-full"
+            imgClassName="absolute inset-0 object-cover size-full object-[50%_30%]"
           />
           <div className="absolute inset-x-0 bottom-0 h-2/5 pointer-events-none" style={{ background: "linear-gradient(180deg, rgba(4,18,33,0) 0%, rgba(4,18,33,0.7) 100%)" }} />
           <div className="absolute left-5 md:left-8 bottom-5 md:bottom-7 flex items-center gap-3">
             <span className="font-archivo-expanded font-extrabold text-[#d86527] text-xl leading-none">#91</span>
             <span className="h-4 w-px bg-white/25" />
-            <span className="font-archivo-expanded font-bold text-[#e1dcd0] text-[11px] md:text-xs tracking-[0.14em] uppercase leading-none">Mercedes-AMG GT · AMG Cup Brasil</span>
+            <span className="font-archivo-expanded font-bold text-[#e1dcd0] text-[11px] md:text-xs tracking-[0.14em] uppercase leading-none">1º lugar · Mercedes-AMG Cup Brasil</span>
           </div>
         </div>
 

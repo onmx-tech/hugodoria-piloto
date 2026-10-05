@@ -20,11 +20,13 @@ export default function App() {
       <Navbar />
       <HeroSection />
       <Suspense>
-        <AboutSection />
-        <MindsetSection />
+        {/* Patrocínio é o objetivo (Dr. Hugo, 05/10): pódio primeiro, depois quem já
+            corre junto e a proposta para a próxima marca. */}
         <StatsSection />
-        <GallerySection />
+        <AboutSection />
         <SponsorsSection />
+        <MindsetSection />
+        <GallerySection />
         <FollowSection />
       </Suspense>
     </main>

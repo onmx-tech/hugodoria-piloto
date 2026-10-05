@@ -3,12 +3,14 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Kicker } from "../../components/ui/Kicker";
 import { OptimizedImage } from "../../components/media/OptimizedImage";
+import { CTAButton } from "../../components/navigation/CTAButton";
 
+// Proposta para o próximo patrocinador. Só o que é verificável: o que já está no
+// carro e no macacão, a categoria e o canal (a assessoria, no WhatsApp).
 const FEATURES = [
-  { num: "01", title: "Foco Total", desc: "Concentração extrema em cada segundo. Nenhuma distração — apenas o objetivo à frente." },
-  { num: "02", title: "Disciplina", desc: "Rotina rigorosa de treinos, alimentação e preparação mental. Cada detalhe conta." },
-  { num: "03", title: "Resiliência", desc: "Superar adversidades nas pistas e fora delas com mentalidade de campeão." },
-  { num: "04", title: "Estratégia", desc: "Cada ultrapassagem é calculada. Cada frenagem, precisa. Inteligência na pista." },
+  { num: "01", title: "No pódio", desc: "A marca parceira vai no macacão e no carro, e sobe com Hugo a cada pódio." },
+  { num: "02", title: "Na categoria", desc: "A Mercedes-AMG Cup Brasil coloca a sua marca dentro do universo Mercedes-AMG, com Interlagos como casa." },
+  { num: "03", title: "Sem rodeio", desc: "A assessoria do piloto apresenta as cotas e conversa com você direto pelo WhatsApp." },
 ];
 
 export function MindsetSection() {
@@ -53,7 +55,7 @@ export function MindsetSection() {
 
   return (
     <section
-      id="mentalidade"
+      id="parceria"
       ref={ref}
       className="relative bg-gradient-to-b from-[#041221] to-[#072a51] overflow-hidden z-[2] py-24 md:py-32"
     >
@@ -63,10 +65,10 @@ export function MindsetSection() {
           <div className="mindset_image order-1">
             <div className="relative w-full aspect-[4/5] max-w-[460px] rounded-2xl overflow-hidden bg-[#0a2138]">
               <OptimizedImage
-                name="photo-car-track-curve"
-                alt="Carro de Hugo Netto traçando a curva com precisão"
+                name="photo-driver-podium-board"
+                alt="Hugo Netto no degrau 1 do pódio da AMG Cup, com as marcas parceiras no macacão"
                 sizes="(max-width: 768px) 90vw, 460px"
-                imgClassName="absolute inset-0 object-cover size-full object-[55%_50%]"
+                imgClassName="absolute inset-0 object-cover size-full object-[50%_30%] scale-[1.12]"
               />
               <div className="absolute inset-x-0 bottom-0 h-1/4 pointer-events-none" style={{ background: "linear-gradient(180deg, rgba(4,18,33,0) 0%, rgba(4,18,33,0.7) 100%)" }} />
             </div>
@@ -75,13 +77,13 @@ export function MindsetSection() {
           {/* Conteúdo */}
           <div className="order-2">
             <div className="mindset_heading">
-              <Kicker label="Mentalidade" className="mb-7" />
+              <Kicker label="Para a sua marca" className="mb-7" />
               <h2 className="font-archivo-expanded font-extrabold text-[#e1dcd0] text-[clamp(26px,5.5vw,40px)] tracking-[-0.03em] uppercase leading-[1.02] max-w-[520px]">
-                O que define um piloto de alta performance?
+                Por que correr com o #91
               </h2>
             </div>
 
-            <div className="mt-10 md:mt-12 grid sm:grid-cols-2 gap-x-10 gap-y-8">
+            <div className="mt-10 md:mt-12 grid gap-y-8 max-w-[520px]">
               {FEATURES.map((f) => (
                 <div key={f.num} className="mindset_card border-t border-white/12 pt-5">
                   <div className="flex items-center gap-3 mb-3">
@@ -92,6 +94,10 @@ export function MindsetSection() {
                   <p className="font-['Inter',sans-serif] text-[14px] text-[rgba(255,255,255,0.6)] leading-[1.6]">{f.desc}</p>
                 </div>
               ))}
+            </div>
+
+            <div className="mindset_card mt-10 md:mt-12 flex">
+              <CTAButton>Quero patrocinar</CTAButton>
             </div>
           </div>
         </div>

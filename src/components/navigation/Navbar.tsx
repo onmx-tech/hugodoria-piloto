@@ -24,7 +24,7 @@ function NavLinks({ activeSection, onLightBg = false }: { activeSection: string;
 
 export function Navbar() {
   const [sticky, setSticky] = useState(false);
-  const [activeSection, setActiveSection] = useState("sobre");
+  const [activeSection, setActiveSection] = useState("carreira");
   const [onLightBg, setOnLightBg] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const topNavRef = useRef<HTMLElement>(null);
@@ -43,12 +43,12 @@ export function Navbar() {
     const triggers: ScrollTrigger[] = [];
 
     function createTriggers() {
-      // Need #sobre to exist (lazy loaded)
-      if (!document.getElementById("sobre")) return false;
+      // Need #carreira (1ª seção depois do hero) to exist (lazy loaded)
+      if (!document.getElementById("carreira")) return false;
 
-      // Bottom nav appears when #sobre enters viewport
+      // Bottom nav appears when #carreira enters viewport
       triggers.push(ScrollTrigger.create({
-        trigger: "#sobre",
+        trigger: "#carreira",
         start: "top 80%",
         onEnter: () => {
           setSticky(true);
