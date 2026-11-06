@@ -10,27 +10,25 @@ type GalleryImage = { name: string; alt: string };
 // A largura de cada card é derivada do aspect-ratio real (altura fixa),
 // então retratos e paisagens convivem sem corte.
 const topRow: GalleryImage[] = [
-  { name: "photo-podium-celebration", alt: "Hugo Netto comemorando com os braços erguidos após a vitória" },
-  { name: "photo-car-track-front", alt: "Carro de corrida de Hugo Netto em ação na reta da pista" },
-  { name: "photo-sponsor-wall", alt: "Hugo Netto diante do painel de patrocinadores em dia de prova" },
-  { name: "photo-helmet-mercedes-closeup", alt: "Detalhe do capacete de Hugo Netto antes de entrar no carro" },
-  { name: "photo-car-track-curve", alt: "Carro de Hugo Netto inclinando na curva durante a corrida" },
-  { name: "photo-driver-standing-car", alt: "Hugo Netto de macacão ao lado do carro de competição" },
-  { name: "photo-team-podium-numbers", alt: "Equipe de Hugo Netto celebrando o resultado no pódio" },
-  { name: "photo-trophy-suit", alt: "Hugo Netto com o troféu, em traje de gala da equipe" },
-  { name: "photo-portrait-suit-seated", alt: "Retrato de Hugo Netto em traje formal" },
+  { name: "photo-pista-dia-curva", alt: "Carro #91 contornando a curva em dia de prova" },
+  { name: "photo-pista-noite-lateral", alt: "Carro #91 na reta em prova noturna" },
+  { name: "photo-pista-disputa", alt: "Carro #91 em disputa de posição" },
+  { name: "photo-pit-noite", alt: "Carro #91 parado na frente do box, à noite" },
+  { name: "photo-pista-saida-curva", alt: "Carro #91 saindo da curva" },
+  { name: "photo-pista-noite-zebra", alt: "Carro #91 sobre a zebra em prova noturna" },
+  { name: "photo-pit-dia", alt: "Carro #91 na frente dos boxes" },
+  { name: "photo-pista-reta-grid", alt: "Carros alinhados na reta dos boxes" },
 ];
 
 const bottomRow: GalleryImage[] = [
-  { name: "photo-race-grid-start", alt: "Grid de largada com os carros alinhados na pista" },
-  { name: "photo-driver-crouch-car", alt: "Hugo Netto agachado ao lado do carro de corrida" },
-  { name: "photo-car-track-orange", alt: "Carro de Hugo Netto traçando a pista em alta velocidade" },
-  { name: "photo-driver-trophy-asphalt", alt: "Hugo Netto com o troféu no asfalto após a corrida" },
-  { name: "photo-track-landscape-wide", alt: "Vista ampla do autódromo durante o fim de semana de prova" },
-  { name: "photo-driver-podium-board", alt: "Hugo Netto exibindo a colocação no pódio" },
-  { name: "photo-car-track-action", alt: "Carro de Hugo Netto em plena ação na pista" },
-  { name: "photo-driver-orange-car-standing", alt: "Hugo Netto de macacão em pé ao lado do carro laranja" },
-  { name: "photo-speaker-presentation", alt: "Hugo Netto durante apresentação para convidados e patrocinadores" },
+  { name: "photo-podio-trofeu", alt: "Hugo Netto com o troféu no pódio da AMG Cup Brasil" },
+  { name: "photo-preparacao-box", alt: "Hugo Netto com a equipe no box" },
+  { name: "photo-trofeus-capo", alt: "Troféus sobre o capô do carro #91" },
+  { name: "photo-box-retrato", alt: "Hugo Netto de capacete no box" },
+  { name: "photo-numero-91-capo", alt: "Hugo Netto ao lado do carro #91 e dos troféus" },
+  { name: "photo-radio-noite", alt: "Hugo Netto com fones de rádio na prova noturna" },
+  { name: "photo-box-briefing", alt: "Hugo Netto conversando com a equipe ao lado do carro" },
+  { name: "photo-pit-entrada", alt: "Carro #91 na entrada dos boxes, à noite" },
 ];
 
 function aspectOf(name: string): number {

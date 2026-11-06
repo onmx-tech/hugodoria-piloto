@@ -15,7 +15,7 @@ Repo: `onmx-tech/hugodoria-piloto`. Apesar do nome do repo, o piloto na tela é 
 - `npm run build` — `optimize` + `vite build`
 
 ## Estrutura
-- `src/App.tsx` monta as seções: hero → about → mindset → stats → sponsors → gallery → follow
+- `src/App.tsx` monta as seções: hero → stats → superfinal (cotas) → sponsors → about → bastidores → gallery → follow
 - Seções em `src/features/<nome>/`; UI compartilhada em `src/components/`
 
 ## Pipeline de imagens (IMPORTANTE — pegadinha)
@@ -37,7 +37,8 @@ Imagens NÃO são importadas direto. Fluxo:
 ## Dados de conteúdo (`src/data/`)
 Fonte única — mexa aqui, não no JSX:
 - `contact.ts` — WhatsApp e e-mail. **Todo CTA de contato/parceria cai no WhatsApp** (é o `href` default do `CTAButton`); `CTAButton`/`CharHoverLink` põem `target="_blank"` sozinhos quando o href é `http(s)`.
-- `career.ts` — palmarés e pódios reais (nada de número redondo inventado).
+- `career.ts` — temporada 2026, palmarés e pódios reais (nada de número redondo inventado).
+- `superfinal.ts` — dados e cotas da Super Final, copiados da proposta da assessoria. A seção vence em 20/12/2026.
 - `sponsors.ts` — logos da fita. `h` é **altura de tinta** em px: cada SVG foi recortado na bbox real, então altura declarada = altura desenhada. Calibrado por tipologia (brasão/empilhado pedem mais altura que wordmark horizontal) para o conjunto ter o mesmo peso.
 
 ## Logos de patrocinador (`public/logos/`)

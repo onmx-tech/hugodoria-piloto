@@ -5,6 +5,11 @@ export const EMAIL = "contato@pilotohugonetto.com.br";
 
 export const WHATSAPP_NUMBER = "5511992157407";
 
-export const WHATSAPP =
-  `https://wa.me/${WHATSAPP_NUMBER}?text=` +
-  encodeURIComponent("Olá! Vim pelo site do Hugo Netto e gostaria de falar sobre uma parceria.");
+export const whatsappWith = (text: string) =>
+  `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+
+export const WHATSAPP = whatsappWith("Olá! Vim pelo site do Hugo Netto e gostaria de falar sobre uma parceria.");
+
+export const INSTAGRAM_PILOTO = "https://www.instagram.com/pilotohugonetto/";
+export const INSTAGRAM_MEDICO = "https://www.instagram.com/drhugodoria/";
+export const SITE_MEDICO = "https://www.hugodoria.com.br";

@@ -23,11 +23,14 @@ export function FitText({ className = "" }: { className?: string }) {
       text.style.fontSize = `${lo}px`;
     };
 
-    document.fonts.ready.then(() => {
-      resize();
-      window.addEventListener("resize", resize);
-    });
-    return () => window.removeEventListener("resize", resize);
+    // Mede de novo quando cada fonte chega: medir com a fonte de reserva corta o nome.
+    document.fonts.ready.then(resize);
+    document.fonts.addEventListener("loadingdone", resize);
+    window.addEventListener("resize", resize);
+    return () => {
+      document.fonts.removeEventListener("loadingdone", resize);
+      window.removeEventListener("resize", resize);
+    };
   }, []);
 
   return (
@@ -35,7 +38,7 @@ export function FitText({ className = "" }: { className?: string }) {
       <h1
         ref={textRef}
         className="font-archivo-expanded w-full text-[#e1dcd0] uppercase whitespace-nowrap leading-[0.867]"
-        style={{ letterSpacing: "-0.03em", marginLeft: "-18px" }}
+        style={{ letterSpacing: "-0.03em", marginLeft: "-0.115em" }}
       >
         <span className="font-light">HUGO </span>
         <span className="font-extrabold text-[#d86527]">NETTO</span>

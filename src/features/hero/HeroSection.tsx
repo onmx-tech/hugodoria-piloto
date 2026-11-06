@@ -5,21 +5,15 @@ import { OptimizedImage } from "../../components/media/OptimizedImage";
 import { Kicker } from "../../components/ui/Kicker";
 import { FitText } from "./FitText";
 import { CTAButton } from "../../components/navigation/CTAButton";
-import { PODIUMS, TITLES } from "../../data/career";
 
-const HERO_PHOTO = "photo-hero-celebration";
-const HERO_ALT = "Hugo Netto comemorando com os braços erguidos após a vitória";
+const HERO_PHOTO = "photo-hero-temporada-2026";
+const HERO_ALT = "Hugo Netto de macacão preto com o troféu, diante do painel da AMG Cup Brasil";
 
 const META = [
   { k: "Equipe", v: "Mercedes-AMG GT" },
   { k: "Categoria", v: "AMG Cup Brasil" },
   { k: "Casa", v: "Interlagos" },
 ];
-
-// A conquista é o argumento do piloto — vem do mesmo lugar que a seção Carreira,
-// para nunca divergir dela.
-const CHAMPION = TITLES.find((t) => t.highlight)!;
-const RUNNER_UP_YEARS = TITLES.filter((t) => !t.highlight).map((t) => t.year);
 
 export function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -53,19 +47,19 @@ export function HeroSection() {
       className="relative h-[100svh] min-h-[640px] md:min-h-screen overflow-hidden flex flex-col"
       style={{ position: "sticky", top: 0, zIndex: 0, background: "#041221" }}
     >
-      {/* Foto expandida por IA — nativa 16:9, preenche todo o hero */}
+      {/* Macacão preto com o CDN e o troféu no painel da AMG, a foto que a assessoria apontou */}
       <div className="hero_background absolute inset-0 scale-[1.02]">
         <OptimizedImage
           name={HERO_PHOTO}
           alt={HERO_ALT}
-          sizes="100vw"
+          sizes="max(100vw, 150svh)"
           priority
-          imgClassName="absolute inset-0 object-cover size-full object-[50%_36%] brightness-[.8]"
+          imgClassName="absolute inset-0 object-cover size-full object-[50%_30%]"
         />
         {/* Escurecimento geral neutro: toma o céu claro sem tingir */}
-        <div className="absolute inset-0 bg-[#041221]/28" />
+        <div className="absolute inset-0 bg-[#041221]/10" />
         {/* Vinheta neutra para fechar as bordas amadoras */}
-        <div className="absolute inset-0" style={{ background: "radial-gradient(120% 100% at 50% 32%, rgba(4,18,33,0) 38%, rgba(4,18,33,0.45) 74%, rgba(4,18,33,0.85) 100%)" }} />
+        <div className="absolute inset-0" style={{ background: "radial-gradient(120% 100% at 50% 32%, rgba(4,18,33,0) 38%, rgba(4,18,33,0.3) 74%, rgba(4,18,33,0.7) 100%)" }} />
       </div>
 
       {/* Scrims para a tipografia */}
@@ -78,18 +72,18 @@ export function HeroSection() {
         <Kicker label="Piloto Profissional" sub="AMG Cup Brasil · #91" className="hero_kicker pt-24 md:pt-28" />
 
         <div className="mt-auto w-full pb-10 md:pb-12">
-          {/* No lugar da frase de efeito, o fato: o que ele ganhou. */}
+          {/* O fato de hoje: a temporada 2026 e a Super Final. */}
           <div className="hero_subheading mb-4 md:mb-5 flex flex-wrap items-center gap-x-4 gap-y-2 md:gap-x-6">
             <p className="font-archivo-expanded font-extrabold text-[#eeebe4] text-[clamp(17px,4.6vw,32px)] uppercase tracking-[-0.02em] leading-[1.02]">
-              Campeão Paulista <span className="text-[#d86527]">{CHAMPION.year}</span>
+              <span className="text-[#d86527]">2 vitórias</span> em 2026
             </p>
             <span className="hidden md:block h-6 w-px bg-white/25" />
-            <p className="font-archivo-expanded font-bold text-[#eeebe4]/70 text-[clamp(11px,2.6vw,15px)] uppercase tracking-[0.06em] leading-[1.3]">
-              Vice-campeão {RUNNER_UP_YEARS.join(" · ")}
+            <p className="font-archivo-expanded font-extrabold text-[#eeebe4] text-[clamp(13px,3vw,19px)] uppercase tracking-[-0.01em] leading-[1.1]">
+              Pódio em todas as etapas
             </p>
             <span className="hidden md:block h-6 w-px bg-white/25" />
-            <p className="font-archivo-expanded font-extrabold text-[#eeebe4] text-[clamp(13px,3vw,19px)] uppercase tracking-[-0.01em] leading-none">
-              {PODIUMS.total} <span className="font-bold text-[#eeebe4]/70 text-[0.62em] tracking-[0.14em]">pódios</span>
+            <p className="font-archivo-expanded font-bold text-[#eeebe4]/80 text-[clamp(11px,2.6vw,15px)] uppercase tracking-[0.06em] leading-[1.3]">
+              Super Final em 20 de dezembro
             </p>
           </div>
 

@@ -5,7 +5,8 @@ import { HeroSection } from "./features/hero/HeroSection";
 import { useLenis } from "./hooks/useLenis";
 
 const AboutSection = lazy(() => import("./features/about/AboutSection").then(m => ({ default: m.AboutSection })));
-const MindsetSection = lazy(() => import("./features/mindset/MindsetSection").then(m => ({ default: m.MindsetSection })));
+const SuperFinalSection = lazy(() => import("./features/superfinal/SuperFinalSection").then(m => ({ default: m.SuperFinalSection })));
+const BastidoresSection = lazy(() => import("./features/bastidores/BastidoresSection").then(m => ({ default: m.BastidoresSection })));
 const StatsSection = lazy(() => import("./features/stats/StatsSection").then(m => ({ default: m.StatsSection })));
 const GallerySection = lazy(() => import("./features/gallery/GallerySection").then(m => ({ default: m.GallerySection })));
 const SponsorsSection = lazy(() => import("./features/sponsors/SponsorsSection").then(m => ({ default: m.SponsorsSection })));
@@ -20,12 +21,13 @@ export default function App() {
       <Navbar />
       <HeroSection />
       <Suspense>
-        {/* Patrocínio é o objetivo (Dr. Hugo, 05/10): pódio primeiro, depois quem já
-            corre junto e a proposta para a próxima marca. */}
+        {/* Patrocínio é o objetivo (Dr. Hugo, 05/10): resultado de 2026, a Super Final
+            com as cotas, quem já corre junto, e só depois o piloto e os bastidores. */}
         <StatsSection />
-        <AboutSection />
+        <SuperFinalSection />
         <SponsorsSection />
-        <MindsetSection />
+        <AboutSection />
+        <BastidoresSection />
         <GallerySection />
         <FollowSection />
       </Suspense>

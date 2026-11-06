@@ -5,7 +5,7 @@ import { CharHoverLink } from "../../components/navigation/CharHoverLink";
 import { DownArrow } from "../../components/ui/DownArrow";
 import { Kicker } from "../../components/ui/Kicker";
 import { OptimizedImage } from "../../components/media/OptimizedImage";
-import { EMAIL, WHATSAPP } from "../../data/contact";
+import { EMAIL, INSTAGRAM_PILOTO, WHATSAPP } from "../../data/contact";
 
 const LINK_COL =
   "flex flex-col items-start gap-2.5 mt-4 md:mt-5 font-archivo-expanded font-extrabold text-[#e1dcd0] text-[clamp(16px,5vw,21px)] md:text-[clamp(1.1rem,1.6vw,26px)] tracking-[-0.03em] uppercase";
@@ -71,9 +71,7 @@ export function FollowSection() {
                 <div className="follow_group">
                   <p className="font-archivo-expanded font-bold text-[#d86527] text-[10px] tracking-[0.16em] uppercase leading-none">Redes sociais</p>
                   <div className={LINK_COL}>
-                    <CharHoverLink href="#" label="INSTAGRAM" className="text-[#e1dcd0] leading-none" ariaLabel="Seguir Hugo Netto no Instagram" />
-                    <CharHoverLink href="#" label="YOUTUBE" className="text-[#e1dcd0] leading-none" ariaLabel="Assistir Hugo Netto no YouTube" />
-                    <CharHoverLink href="#" label="TIKTOK" className="text-[#e1dcd0] leading-none" ariaLabel="Seguir Hugo Netto no TikTok" />
+                    <CharHoverLink href={INSTAGRAM_PILOTO} label="INSTAGRAM" className="text-[#e1dcd0] leading-none" ariaLabel="Seguir Hugo Netto no Instagram" />
                   </div>
                 </div>
                 <div className="follow_group">
@@ -90,10 +88,10 @@ export function FollowSection() {
             <div className="follow_image order-2">
               <div className="relative w-full aspect-[4/5] max-w-[440px] md:ml-auto rounded-2xl overflow-hidden bg-[#0a2138]">
                 <OptimizedImage
-                  name="photo-trophy-suit"
-                  alt="Hugo Netto com os troféus, em traje da equipe"
+                  name="photo-trofeu-fundo-amg"
+                  alt="Hugo Netto erguendo o troféu diante do painel da AMG Cup Brasil"
                   sizes="(max-width: 768px) 90vw, 440px"
-                  imgClassName="absolute inset-0 object-cover size-full object-[50%_20%]"
+                  imgClassName="absolute inset-0 object-cover size-full object-[50%_30%]"
                 />
                 <div className="absolute inset-x-0 bottom-0 h-1/3 pointer-events-none" style={{ background: "linear-gradient(180deg, rgba(4,18,33,0) 0%, rgba(4,18,33,0.85) 100%)" }} />
                 <div className="absolute left-5 bottom-5 flex items-center gap-3">

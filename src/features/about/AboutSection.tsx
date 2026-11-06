@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Diamond } from "../../components/ui/Diamond";
 import { Kicker } from "../../components/ui/Kicker";
+import { INSTAGRAM_MEDICO, INSTAGRAM_PILOTO, SITE_MEDICO } from "../../data/contact";
 import { OptimizedImage } from "../../components/media/OptimizedImage";
 
 export function AboutSection() {
@@ -68,6 +69,27 @@ export function AboutSection() {
               <p className="font-['Inter',sans-serif] text-[15px] md:text-base text-[#eeebe4] font-medium leading-[1.65] mt-4">
                 É nesse detalhe que Hugo trabalha, prova após prova, ao volante do #91.
               </p>
+
+              {/* Fonte: proposta da Super Final. CFM: neurocirurgião sempre com CRM e RQE. */}
+              <div className="mt-8 pt-6 border-t border-white/12">
+                <p className="font-archivo-expanded font-extrabold text-[#e1dcd0] text-[15px] md:text-base uppercase tracking-[-0.01em] leading-[1.2]">
+                  Dr. Hugo Doria Netto, MD, PhD
+                </p>
+                <p className="font-['Inter',sans-serif] text-[11px] text-[rgba(238,235,228,0.62)] tracking-[0.04em] mt-1.5">
+                  CRM-SP 118350, RQE 48918
+                </p>
+                <p className="font-['Inter',sans-serif] text-[14px] text-[rgba(238,235,228,0.78)] leading-[1.65] mt-3">
+                  Neurocirurgião há mais de 20 anos, com trajetória científica internacional e atuação em hospitais de referência. Doutor, com pesquisa publicada na revista World Neurosurgery.
+                </p>
+                <p className="font-['Inter',sans-serif] text-[14px] text-[rgba(238,235,228,0.78)] leading-[1.65] mt-3">
+                  Neurosurgic é o projeto de fellowships voltado à formação, ao intercâmbio científico e à conexão entre especialistas.
+                </p>
+                <div className="flex flex-wrap gap-x-5 gap-y-2 mt-4 font-['Inter',sans-serif] text-[13px] font-medium text-[#eeebe4]">
+                  <a href={INSTAGRAM_PILOTO} target="_blank" rel="noopener noreferrer" className="hover:text-[#d86527] transition-colors">@pilotohugonetto</a>
+                  <a href={INSTAGRAM_MEDICO} target="_blank" rel="noopener noreferrer" className="hover:text-[#d86527] transition-colors">@drhugodoria</a>
+                  <a href={SITE_MEDICO} target="_blank" rel="noopener noreferrer" className="hover:text-[#d86527] transition-colors">hugodoria.com.br</a>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -75,10 +97,10 @@ export function AboutSection() {
           <div className="about_image order-1 md:order-2">
             <div className="relative w-full aspect-[4/5] max-w-[440px] md:ml-auto rounded-2xl overflow-hidden bg-[#0a2138]">
               <OptimizedImage
-                name="photo-driver-standing-car"
-                alt="Hugo Netto de macacão ao lado do carro de competição"
+                name="photo-capacete-centro-doria"
+                alt="Hugo Netto de capacete e macacão preto com a marca do Centro Doria de Neurociência"
                 sizes="(max-width: 768px) 90vw, 440px"
-                imgClassName="absolute inset-0 object-cover size-full object-[50%_25%]"
+                imgClassName="absolute inset-0 object-cover size-full object-[52%_50%]"
               />
               {/* Base sutil para a legenda */}
               <div className="absolute inset-x-0 bottom-0 h-1/3 pointer-events-none" style={{ background: "linear-gradient(180deg, rgba(4,18,33,0) 0%, rgba(4,18,33,0.85) 100%)" }} />
