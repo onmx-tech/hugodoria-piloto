@@ -23,7 +23,7 @@ export const images: Record<string, ImageEntry> = {
       "2048": "/images/photo-box-briefing-2048.webp"
     },
     "jpg": "/images/photo-box-briefing-1440.jpg",
-    "placeholder": "data:image/webp;base64,UklGRhYBAABXRUJQVlA4IAoBAACwBQCdASogABUAPzmEuFOvKCUisAgB4CcJbAC341UhwAgXfoyvOQ2omNf1G2U3DTrWRQ7yoPAA/eNfr3W35uFRq3nvi9qlkAQFVDENu14vhol7wDRbXLOlWiICAkbgEP9NnE7t0mgvsr12jr3o0ThmI6PpLD9vDlRwKzr2dviT3fVT+0YSgUpzb+MZSvfwWMBTDyIkaAhDMsLLIJZZv3A7mjYsLn9P+o71yHQ4tn8VBoZjjoA4cd/DFcYIFAEMx/7yRto/y29gHfzWzZ/klKvazQD2tlnRjpWeeV9GtaxZHHh4lwnHGPTQzvkmwltGYiltF/d2G/b/9QZzeRVDL8cD7/q2BXM/2FXYAA==",
+    "placeholder": "data:image/webp;base64,UklGRvYAAABXRUJQVlA4IOoAAADwBQCdASogABUAPzmMvFYvKaYjsBgIAeAnCWwArw3dCm35NXjp5GG4uE6MIpQbgmgNLcjLaPlhAADeKG8vX53ylTLY+0UNt0XOp0TeLTnU7T2UZqzSOq0YMQdRtw6QpphgYiavI7Z3i8Dr7DpJ/PyahxvWddC5LzKyheFW8GlEthy3D01/6eQZ51Z1YAHpUer89AnWcxSWu7o5swlLHvw7awoSUVQiIxFkN30LT5x5IhXfld9755/kraGXSOGcMzSAWOFoFzL9mtttvkHpPWt8le2nupWx8N+z/1BltwTb0P0GPn8sF4QAAAA=",
     "width": 2600,
     "height": 1733
   },
@@ -41,7 +41,7 @@ export const images: Record<string, ImageEntry> = {
       "2048": "/images/photo-box-capacete-2048.webp"
     },
     "jpg": "/images/photo-box-capacete-1440.jpg",
-    "placeholder": "data:image/webp;base64,UklGRgABAABXRUJQVlA4IPQAAABQBgCdASogABUAPzmEuFOvKCUisAgB4CcJZgCsG1gigA7Ku13hycxnNvbL+RGWbiP2O2vn7/cIosOyGAD+mCkjG293E0AkMP+rcss34Ek/ql1ye4dKM1X0G9cwZjYB54AoHA45qOT/kpJNovARr5odbnsVEhzh2cbnYzMSi/91Azcpp13szTScXUHykTbljrLiM2FL7dxA4BER+s2AVKK+dE1i78rdflZ15FFl8E7pvI9Geh8LrHzP2RbqMK0Aq2e2DV/UiC8xQX8pXGoUPGYxEys1dN4qkhqbrxCroLFpjO4IpyEAXtwM64213OLZ175AAAAA",
+    "placeholder": "data:image/webp;base64,UklGRvAAAABXRUJQVlA4IOQAAAAQBgCdASogABUAPzmEuFOvKCUisAgB4CcJZACsG1bigA7Aa4+x5D+uZqDUrUqZYLostfnLo6VigkAA+MaanEdrslzX40f12foVbKblR++LaIOotiHIhBNqwA07y2JoFkEfAVXLCCp6A0UWd3+K6z+uyfMYdXT3x+JVRpIzzFbRrJ87/jbxdGWknHIAb4ROSGVoGLNofmhHoAkos7DHGssIAWapJ72JXrGLXZE/BQqCBmpF+D08DG8EBfXWNtpY9qXXlSefP5pQBxflcxxuEgBDdwRTkzQyZOBxG3n/Vm7ofIAAAAA=",
     "width": 2600,
     "height": 1733
   },
@@ -59,7 +59,7 @@ export const images: Record<string, ImageEntry> = {
       "2048": "/images/photo-box-carro-2048.webp"
     },
     "jpg": "/images/photo-box-carro-1440.jpg",
-    "placeholder": "data:image/webp;base64,UklGRvoAAABXRUJQVlA4IO4AAADwBQCdASogABUAPzmEuFOvKKUisBgMAeAnCWoAgQR5AB0uiXEbfup2nsN02sf9OrMADVg/piiuoADyeAC5UEy+bGUrqXE7UPXkbUVf4xuWI9nbw4NK9ONwOBoSPxympwugUFk7iH0q6feHmqsv2XVybEPOlF8IR4Fzj8xrM9XjYo7aXV3ulg27jccnrpiUlEmImlBWJAmrGzWYvWHq8bxWAGG/KEldnfoCX/v/clG1/tgAMFLFArDBLEU7ZNRhTLwgT9iWph93yU+dGfxkGrwYkxfVTwlhRGTbhTy1VOjcPPeHgD1k3lQFtXA9oAAA",
+    "placeholder": "data:image/webp;base64,UklGRugAAABXRUJQVlA4INwAAACQBQCdASogABUAPzmIu1UvKKYjKA1R4CcJZgDG9BE/PirDHbanU6sLhJki6rXnTasH8KgVwAD9RzCjzqymqbEPj+ecZzUWe4fXITNJZ4MlUGQCKqouH8CXmbP+ITjwdhcmEKPKVHOj8AdbFP3i4XXkd1IEpXZU1zEfszJqa2GEXa1lrA0VLvbsn/l4A5GnDQzfQvO1HOa0OZSQD8mhgiaDylkI4V2qXVPX1RG8Jo32/1uoZqFb/+6uaEVZw77DoHMd2P3RN3bi4e36dFrsGFf9+FRb9m+z7VAK+4AA",
     "width": 2600,
     "height": 1733
   },
@@ -77,7 +77,7 @@ export const images: Record<string, ImageEntry> = {
       "2048": "/images/photo-box-equipe-2048.webp"
     },
     "jpg": "/images/photo-box-equipe-1440.jpg",
-    "placeholder": "data:image/webp;base64,UklGRtIAAABXRUJQVlA4IMYAAAAQBQCdASogABUAPzmGvlavKCajsBgIAeAnCUAXBjGQC1oUscyBMlpGPYkbQy3w971AAP5xYltXZ5m/mE1iS0pimuS5OzfNbwNpq5h3TIcUoNn+biF1Ms8cPXxwkzPJtZX6kJfqEvQ0ZOgXuSDFjmSUtjVtiEMQMuhBFGU+LQjf46YupTBcX157mzxXoRtg5kiJumheD/aa/IMr9WKDm9VdrE2EpbgwbpYO1jhxj/JJjGonBCoRAsPUQrEvKL7Tavry3xJwAAA=",
+    "placeholder": "data:image/webp;base64,UklGRsIAAABXRUJQVlA4ILYAAAAwBACdASogABUAPzmOwlcvKaejqAqp4CcJZQDH5AMTDLe0UXG5ZlUauwAA/nFiW1ysUYhBMEdCdm+k8FkGzpvtA27n9FOH9SH4fmLDp1CGEVoOaIpoYpazo70zBcy6gxXwaSrx/8kA4em1Ai09XfuuhLpyhqWH3IxpvB9uxrDeNDvBx6owYPrmHbwc06UwqDQ+KdrHPcAGOyyRczDgq6u2RzPR3nWVhQ4HH6fU8ODhyRL6oYAAAA==",
     "width": 2600,
     "height": 1733
   },
@@ -93,7 +93,7 @@ export const images: Record<string, ImageEntry> = {
       "1440": "/images/photo-box-retrato-1440.webp"
     },
     "jpg": "/images/photo-box-retrato-1440.jpg",
-    "placeholder": "data:image/webp;base64,UklGRiIBAABXRUJQVlA4IBYBAABQBwCdASogADEAPzmMu1YvKSYjrBVcyeAnCWIAxcpsmV2t87y8CaZoceRJDrR6zkaoX8QGGSz17jZRjxMwPB27u9WAAP1kzygjmIQEedPxbQ9orNV2Q2PRJkV0HvEAMktEFRaRdfLDYuZLsk/SW5r28+yWFYBxMkSomXoef6zMkWfTLirm1QQ1lyNmjno4xDLGALOr9VEO3PpqveyNclSzNKPKkaZhcxYctK/Cnr3TJ0Obv/xrIbbDWgLlAy9JZ8WCUlSDgc6jwVeaRdEfdkZ8C3XXDOis7HmKBfqveJbxmSxZ1g3DJ2xSyOBEAOD/4lwvnO8Yx9KtkBhWM3BUpLDNDV5U1D7OeyvMCmLGfeXgFXxngAAAAA==",
+    "placeholder": "data:image/webp;base64,UklGRigBAABXRUJQVlA4IBwBAAAQBwCdASogADEAPzmOu1WvKiYjLBVcyeAnCUAYyQgAxZ6TtootBtKEHXoXlhGUoTE+AEiOa/MZXv3P61KKKUIDuAD5rDQAy61/4XZ67WnQ5+pmqcP2q0GzQFZkb3WohSsoCAz/9OKwyRAOdDpfpuvjjZzutv4ffr8g4bPWAllIJ7iIns3DjNiNPcr6YDDXJgp448U4CeJGlaGJo9JgBgWtcPXZlrF0joW0FfB5OmfDwDfooQ7ewK11jSx7ycmTnh4/KCWk0zz/5Oswm+gYT35XVROIcmGSsd3BoIdf+EOfW3nABJd+Ro/BtWpJwi0QIh6fltjtEpZurPVbxRUqaLLUStbbTJL0SNBY+42xylzGwM0rvyxbdwWLbPhAAA==",
     "width": 1694,
     "height": 2600
   },
@@ -111,7 +111,7 @@ export const images: Record<string, ImageEntry> = {
       "2048": "/images/photo-capacete-centro-doria-2048.webp"
     },
     "jpg": "/images/photo-capacete-centro-doria-1440.jpg",
-    "placeholder": "data:image/webp;base64,UklGRsYAAABXRUJQVlA4ILoAAAAwBQCdASogABUAPyl6tVOuJ6Uit/qoAcAlCWIAx+QYvpcSdOR998nv2OwF4nHl7VuSAAD+6pb57jXMqFSVEwsLGWWfwIEQW91U871c07wbnHIk8WIeUadFw9651mvDvRNoel7q+n71nLRqL6O8RvE8SHsXKNUklaLP9PDdcSlwXJLbQdqI8KN9i8b9jHuIZM+A6PXHOCPoOYLT2qt5rFyqZj9C/cjcxCeFyR363S8umgYMc6q1lnhkLAA=",
+    "placeholder": "data:image/webp;base64,UklGRr4AAABXRUJQVlA4ILIAAACQBACdASogABUAPyV+slOuKKSit/qoAcAkiUAY/IMRGGjp3pNUoghedcRqOxQA/oz1YPG+9YDHNDpvJDbF5+HN3LIi3QVJ1TxJC5w/IPVgfizrqIpq6NTcez1kn88j2JwfFYKC0909xn4D7ut9/VBYjzXXD56Ku55eKUGyAVS/ZcN1MualTN5tuhqAbXeUBn97LgFLvqlMT8XZgwLpVEOwpip1GNr0suPpYUMKsPWnJYAA",
     "width": 2600,
     "height": 1733
   },
@@ -129,7 +129,7 @@ export const images: Record<string, ImageEntry> = {
       "2048": "/images/photo-hero-temporada-2026-2048.webp"
     },
     "jpg": "/images/photo-hero-temporada-2026-1440.jpg",
-    "placeholder": "data:image/webp;base64,UklGRswAAABXRUJQVlA4IMAAAADwBACdASogABUAPzmIulOvKSWisAgB4CcJZgAIEAMOI2DYXPZfBBB0+97zISPPBAAA/qLVodcAW/nUhdo16VVndm+FiXPB0eBFnoiZnAhgBLpyh4ukE+gSry99KjJSbuJhuvrg/667UabXM5STglR3p7hthonGUtxqBnGJXVp5Lj6si83IloVXvjyRJ6/WNoDGZ9HCrub7nt27ytEhPw/r2YmfgOvjyPkeOY4EaigGLcez4sm5jIcv1o9xWYOAAAA=",
+    "placeholder": "data:image/webp;base64,UklGRr4AAABXRUJQVlA4ILIAAAAQBQCdASogABUAPzmGuVOvKSWisAgB4CcJZgAIEC6MWO5XXWuEdW80Ur8xuinH8ZGAAP68MYzAoqNSJkmDTXgH2MJCz9zfSD9SmaJufKQz9KDuTQbq+F1NuetaPwakG6+uD8kcNrRviCr/PXfvP4aDWX2X888TuvmlxDB7DFRo8x6HnsaEbKwvGa30Z1QkkbY+uGM/1+Yz8aSZccOaNr00I5slxbjJ1vJAp0pM+KeIUAAA",
     "width": 2600,
     "height": 1733
   },
@@ -147,7 +147,7 @@ export const images: Record<string, ImageEntry> = {
       "2048": "/images/photo-numero-91-capo-2048.webp"
     },
     "jpg": "/images/photo-numero-91-capo-1440.jpg",
-    "placeholder": "data:image/webp;base64,UklGRtYAAABXRUJQVlA4IMoAAACQBQCdASogABUAPzmKu1UvKSYjKA1R4CcJZgDFC1XBIBZSbzCicm0WEacv6S9a1H9lCQzEAAD+u2CkXNmGSATVfJrOTg8G5MWhenzzE6BRJCq0uSCDVTkx9G8dfTehADyrdsAQrliQMmgNT2Yfq50CMN0e3imqnKNXNRki3kdXtwtEK667lQ3Rzd7GTbgmLCjq5SyCdf/DPHfeBUO2iHO/CK2veWGGV7INvFyyxkvMgSTudyCTw+zoU9287o+BKrhvms/J0FKUjgIA",
+    "placeholder": "data:image/webp;base64,UklGRsoAAABXRUJQVlA4IL4AAACQBQCdASogABUAPzmOvVgvKaYjqAqp4CcJYgDH5zK4kwtSZQY8bI66WdfAZnu6aCpWu8Lp8AD+uqv/5CV+bJO4lPdOOGbGvVDM3QLCoXV+R8v2l/JgOpSUcjfbb10wgI5Deo8HkxAzCRZTlC52M5YqwAZ3X4LGuYFQ+jPy77UFGm3QcRK4vLoBGDV8iH7klJKbOwfDLSHl0NWmKDTSSd99UdFv2FU2CkCOIgsgV8QY9Atnb9K/Uc4K4SoMxAAA",
     "width": 2600,
     "height": 1733
   },
@@ -165,7 +165,7 @@ export const images: Record<string, ImageEntry> = {
       "2048": "/images/photo-numero-91-trofeus-2048.webp"
     },
     "jpg": "/images/photo-numero-91-trofeus-1440.jpg",
-    "placeholder": "data:image/webp;base64,UklGRtAAAABXRUJQVlA4IMQAAABwBQCdASogABUAPy2Ct1OuqSWisAwB0CWJZgDDcBcE8n0E7UHTLxjd048tfJkhadrktxSgAP0ct3G8EgziBTBG0Pwb57HBThty4y319XEzM5EOtgQD7ZRz3P29WE5C9t9MSdP1pnOBsJZfcW2rmb1I5f6SSc3F5EklvtRz9xtkEuXJyPoc1UQCMLFPx/QSxIcNHUur51PnyB6qB+S5ZVLvpR9/JjJtXmQNecbyxtFSL+c9uf+1aHYi79SrITaEVTcgVYAA",
+    "placeholder": "data:image/webp;base64,UklGRsQAAABXRUJQVlA4ILgAAABwBQCdASogABUAPzl+ulSvJ6WjMBgMAeAnCWIAxnwLSoiFmf5s/CaYYkEswBamiMyZylzAAP0dMa+LcC//CgcXi4GY1WCB1pH4LU7V/969iXov2oiH77itoHgsWb0qDpzIPQZLbQ/XtBib69F1qXPqAR6r/hCymTYdvz18iJEHafs7oirudLn5Yv5A9o/l10nFxF+m0fa9wYIHcEGXtqzfmK6st6h2MplS3Ml9vY923U0W6arHAAAA",
     "width": 2600,
     "height": 1733
   },
@@ -183,7 +183,7 @@ export const images: Record<string, ImageEntry> = {
       "2048": "/images/photo-paddock-conversa-2048.webp"
     },
     "jpg": "/images/photo-paddock-conversa-1440.jpg",
-    "placeholder": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAAAQBQCdASogABUAPzmGuVOvKSWisAgB4CcJYwDPZBuyeuAUfxFKkBN/7cUt0OEPdl5gAPxcpBte3B1/CceKaWgCd9xZAPnZ1dOc4FIWs0lyYTHJUEgF9kc3Cuk1g711pgXw9m+wk/SzP9VczoW46SoJz5dm4pHc0Y08DAwYv11gyROkTwPMAk2DbTqgm65LfKQwPAAA",
+    "placeholder": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAAAQBACdASogABUAPzmGuFOvKSUisAgB4CcJZQAAGBmLon4S7t+OKOxWIADDUz6LCzVVJYpFM8qhnipwVrk3IAa/9pPRbHZquOnI+eD424YgVZ1SHGoVOKDVEoDdoFupHGyy5H/KwJHmPC13Hk4+mS1IbnwVR/RdmukVvLtLOPBB4r1QAAA=",
     "width": 2600,
     "height": 1733
   },
@@ -201,7 +201,7 @@ export const images: Record<string, ImageEntry> = {
       "2048": "/images/photo-pista-dia-curva-2048.webp"
     },
     "jpg": "/images/photo-pista-dia-curva-1440.jpg",
-    "placeholder": "data:image/webp;base64,UklGRsYAAABXRUJQVlA4ILoAAABQBQCdASogABUAPzmGuFOvKSUisAgB4CcJbACzoMgCvelhkqtuVrtrVLQ4EKYGxS+DRWAA+TaQRtG7PgwqMsgdG/mFfkVBR7IG3k538gOb6L1alJHl2sKRXysFCzIT1Mxf8aRXG8xslc/safZlwDQj4MjeO4x2DzLPODhe6keohOfuUQ5wybbBaP3N7clP9cq4Wvmo6EC8T37XdWKSca3++oOpytuYYfEfN1sckUSwgAvkQ9dYCMV4AAA=",
+    "placeholder": "data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAAAwBQCdASogABUAPzmQuVWvKqWjMBgIAeAnCWwAvkgxIskS+miW2nBrIpxep7fefs4AsADOHtmODNR0vacYw2edDxa16C/V356rpUfbM0oaaq6vTRlyl3EMCZjMbDaioCz1YSA5FQN2tjxZezF7e4SkUnqdHXTbUdmTUP8fVu46WRANM26s6DJ82f03U7kzJ1POOOv15K4qStcE/3b4v2SAAAA=",
     "width": 2600,
     "height": 1733
   },
@@ -219,7 +219,7 @@ export const images: Record<string, ImageEntry> = {
       "2048": "/images/photo-pista-disputa-2048.webp"
     },
     "jpg": "/images/photo-pista-disputa-1440.jpg",
-    "placeholder": "data:image/webp;base64,UklGRrIAAABXRUJQVlA4IKYAAABwBQCdASogABUAPzGEtVOuqSUisAwB0CYJbAC1CP8Cu4XXko3JzjmcRgh4unIJuoyDiHMAAPfSm/8dRBGk/FiyFx2hkdekeFCW4gwxTTSr03WxEzYGLlVb4SfI5AwrdQcJj6bKFkZPHuseXz61ZDD+dDZsWBSQarTgIlrkxUM45E5Tw8X16jvCHRyXOb5zR/LEREsJrwHppEbyEpDGoFtu9fZcqgAA",
+    "placeholder": "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAACQBQCdASogABUAPy2At1OuqCWisAwB0CWJZACyzCG/VkfRiUKe/bDbn2fbJ3i+olZBPg+XAADKMv6AZtNBOMeY+zjOylEI88KThuqvOIXYlQiNDDCzbH+ayMcke2KzLUTiSJINQ/moLPv5K6FuEUPDFAPHYMuabH5Ap09iNPRM8uyXdOwFaZtMbheTmBLEPoiAAA==",
     "width": 2600,
     "height": 1733
   },
@@ -237,7 +237,7 @@ export const images: Record<string, ImageEntry> = {
       "2048": "/images/photo-pista-noite-lateral-2048.webp"
     },
     "jpg": "/images/photo-pista-noite-lateral-1440.jpg",
-    "placeholder": "data:image/webp;base64,UklGRqwAAABXRUJQVlA4IKAAAADQBACdASogABUAPzmOulWvKiWjMBgIAeAnCWQAxNg0antmlMOzi2WAK9DB7V0YLAD+4/2uMWCnhob8p9oRyvto4tV0y/G1+x9+P/9oWWLKhI74jPYnWPQGJ+eFxUaEy7B/gBJZgqLlQVZwcep+mHSYPcpEX96zc9iLzTXzYwkHHrBKEC3CQ8kiBGuD0BjgmtKKAaFuCPItxJ/d/AWDVwAA",
+    "placeholder": "data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAABwBACdASogABUAPzmMulWvKaWjMBgIAeAnCWIAwNw0a6ZjItYZ3lYc7ZfwYAD+2jlEANtAffM9SXqTU3oh7N6F3Y+/H+E3I9xZEhWludM3xB7zCb8LtyUsuAFPSxfsre8eJfcSaudvqgTqsXZhzYJhx4GSVYBvBXiepqK2qKfA1tWiQZt6uAoyALto9rwAAAA=",
     "width": 2600,
     "height": 1733
   },
@@ -255,7 +255,7 @@ export const images: Record<string, ImageEntry> = {
       "2048": "/images/photo-pista-noite-zebra-2048.webp"
     },
     "jpg": "/images/photo-pista-noite-zebra-1440.jpg",
-    "placeholder": "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAABwBQCdASogABUAPzmOu1WvKiYjMBgIAeAnCWgAygA0b74Rfj8J6v5Kw2NytWgI5LxblewAAP7ueXBTL38ujiNvC4pEvRyhVVD4YOwOM97pJpdVWvxxae7w0TaV8yVQtgVd6HV446qhfFY7bKKDriCYoViWUKfR6Tdk4qb5nk539q/DpL9Llfv1Cozwn3iclVZKs/tqgAA=",
+    "placeholder": "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAABQBQCdASogABUAPzmKvFYvKSYjsBgIAeAnCWYAxNg0b4oW/lhFG7QSVeuYQ9Tg7Z6vE/AA/uvxGsSM72W4dK9sWn+BEbDQco6xlN9qQ+PqhB1WtAqrX42QGq/AmOHWOQb3YVTtXQ/0mA+8MxHu/GmaMqJilfzCg3UCcdXyN+DoM1kq+gyhQZAGyHgTBYm7JY5vA9THgAA=",
     "width": 2600,
     "height": 1733
   },
@@ -273,7 +273,7 @@ export const images: Record<string, ImageEntry> = {
       "2048": "/images/photo-pista-reta-grid-2048.webp"
     },
     "jpg": "/images/photo-pista-reta-grid-1440.jpg",
-    "placeholder": "data:image/webp;base64,UklGRqgAAABXRUJQVlA4IJwAAAAwBQCdASogABUAPzmGvVavKCYjsBgIAeAnCUAYVB/gMTdoq5/34/efNgDtxjDJRhUKIAD+3vdvPORHa1mtYkXHoi98ICppXdazniGnoKfrX8wygz8SA8V0fz3ZLLoiPh/zEHuY+a1ovUzYGsy1Un8fqQOASgUMeU9ONCh6hPKxdWhqd8Wu6uKE+XOdNRLaX+YwlrZIhQfydroJAAA=",
+    "placeholder": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAAAQBQCdASogABUAPzmKvFYvKSYjsBgIAeAnCWMAxzARSfKEd2SWt3RVRRVwmi5eBujwAP5Su1KT9kuR9Id2H+YINdwyQd79RFJ8LtSRdi8AyrIMbojg4TPAxPtsQ0Z/2YK6BmgGhb5C45i6t2kbsULGfwRU0bdeU1AIiNINFhWnDXAA",
     "width": 2600,
     "height": 1733
   },
@@ -291,7 +291,7 @@ export const images: Record<string, ImageEntry> = {
       "2048": "/images/photo-pista-saida-curva-2048.webp"
     },
     "jpg": "/images/photo-pista-saida-curva-1440.jpg",
-    "placeholder": "data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAADQBACdASogABUAPzmIulOvKSWisAgB4CcJagDE2BAc0Ndgd85Cb/l/J7b3Pxme+AD5444YK1lUBQ6Gsr5S0IrnvUBgzcKyxWIrmTUIh1WnigajR1GeDwWJx92UOq3oGuB1R0QNCzJw8K5aevr8Jkry3igpY/IRWXxgGzRQiXdNaqj62IvaSzho5n0eiQY1YAA=",
+    "placeholder": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAACwBACdASogABUAPzmMu1WvKaYjMBgIAeAnCWYAwNwy4Gd6kRU3gKXY4miZN3sgAP0fcUoLkKTNZYCidLZJgIK0oBdd3HWFTi5k0RwYRnC6Fo5ZQ5Tkjdwfm3K6eHc7lLRxpRCzmSXPQWtLjj5ihJETCLBs9avxKGbuSVC4T9MgwzLPzvaMmLmKG08AAA==",
     "width": 2600,
     "height": 1733
   },
@@ -309,7 +309,7 @@ export const images: Record<string, ImageEntry> = {
       "2048": "/images/photo-pit-dia-2048.webp"
     },
     "jpg": "/images/photo-pit-dia-1440.jpg",
-    "placeholder": "data:image/webp;base64,UklGRuQAAABXRUJQVlA4INgAAACwBQCdASogABUAPzmEuFOvKCUisAgB4CcJaADMIaxlPIgGtkO35qwPhG1QIY18Hf5xRkEcuqAA/nY8o5OgJDJRAQ0NKgvDwojoRY/BV5DS9EkZ3UMge4SFQOaSZM6Te1ZyVimV/e2gWOPrQaa8+ph8j3mWdi1JLmEdkkZ2cEbBvtiC8jaTNixBm6WxAJz+/1lLBbFi9CrmEtpN66w6G8BGOg5hfqh8gPAJR65VaFJwqhifHx6I9943Cu/F9mCzlWhjC0ZAq6N+8GzRK0IxXe3n9vHclboAAAA=",
+    "placeholder": "data:image/webp;base64,UklGRs4AAABXRUJQVlA4IMIAAADQBACdASogABUAPzmEuFOvKCUisAgB4CcJZgDNwCP7n9X1k2GmAguOAdKFnk8lgAD+d1qRJID0VEKivuAvHTb4v42V3gEp93CxFGEYDt2dr9gTzyV927mE+io1jlyp2VUB4CJ/8VObPBYRbgao3DXo7OQedKzpTYSqpw8Saa8oylyoE1gQt9/yX61ILAuAUmQ0BMqXblio3libSaMA+QjlRtAM6Hcf8z4Mq+PCERwOjjt3/3mnh+nKNjNW+DoKSkmAAA==",
     "width": 2600,
     "height": 1733
   },
@@ -327,7 +327,7 @@ export const images: Record<string, ImageEntry> = {
       "2048": "/images/photo-pit-entrada-2048.webp"
     },
     "jpg": "/images/photo-pit-entrada-1440.jpg",
-    "placeholder": "data:image/webp;base64,UklGRrIAAABXRUJQVlA4IKYAAADwBACdASogABUAPzmQv1evKaajqAqp4CcJZADMHBFBvQbm50QDxOI2wpCgeWP4kAgA+kwdhUkKEYNeCEdTeJok27riUl8qFjVVe9ZTteYWPyAR423s87eAhzyhi9ayjt+xJSQBrHHOtpRHGELGFCQKXSTJK/+66Q5ugMGiWVUkbke6cwmGfA7c1tNr8dFQGYmByS4X3WXVO7+77IZussg86CHyAAAA",
+    "placeholder": "data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAACQBACdASogABUAPzmQv1evKaajqAqp4CcJYgDNwAqVyfM2J2i90e+bsSf0MRAA/SGCgSmDRshLkYCWpNSGyE/QIBxOo5S6BL5NzxAatA6w84HezibOi8AEqICU6LZCp+kQNwzrNKlUVLkXE+v8PSCxiL2afTHqrs3Wgwi/e3A9OGaWza/HRJj9owwRzgM5x1TUn/H9OvBMkAAA",
     "width": 2600,
     "height": 1733
   },
@@ -345,7 +345,7 @@ export const images: Record<string, ImageEntry> = {
       "2048": "/images/photo-pit-noite-2048.webp"
     },
     "jpg": "/images/photo-pit-noite-1440.jpg",
-    "placeholder": "data:image/webp;base64,UklGRrYAAABXRUJQVlA4IKoAAABwBACdASogABUAPzmGuVOvKSWisAgB4CcJagDKAzAQoNKBmpu/JNVkGbwhCAD+2W1LM4w6McowDWsEaNCWVTt/69KIwmnEWTeMouXOPGma9KNta5LbxEvcbBJQBcu/bCr4Fqa7/DruP690nWH7On6vBwVKI2bC7mUkEysgMVw642vjjV5PF8SPrjr7zpcezg4srGgX+sDumX7bCJXH5Jk0bSN7Xt24gAAAAA==",
+    "placeholder": "data:image/webp;base64,UklGRqwAAABXRUJQVlA4IKAAAADQBACdASogABUAPzmEuVOvKKWisAgB4CcJZgDI1BR+EXEwAoVXv0o1KMkA12kMAAD+zBLMCZUuo6yitZ1ekC/6ZvCKvIGeHFbWZTQ282FaWm1Jm5PH7GZj7xgYo2784PXCwZtD9I7GoZkkSSQ9J43Mz+f+elLZiMRRDvawqzlO5w4R6ClOGVD8+KdZKBY/rxt92T7TRkX2FruQbSY2buAA",
     "width": 2600,
     "height": 1733
   },
@@ -363,7 +363,7 @@ export const images: Record<string, ImageEntry> = {
       "2048": "/images/photo-podio-trofeu-gt4-2048.webp"
     },
     "jpg": "/images/photo-podio-trofeu-gt4-1440.jpg",
-    "placeholder": "data:image/webp;base64,UklGRsgAAABXRUJQVlA4ILwAAAAQBQCdASogABUAPzmGuVOvKSWisAgB4CcJQBlAZYAsTBfHASJdfaR8m6Cd56CrR+iMAP7jRFPI7b6mfaC0jCMCIOuqd1E1QD5cMLEBCzpOuzrn4yFVW15C6td4t8UDyxc9lr9LEnV7QXRKvA1AtcqgJwTgWkA/6nNodRLUGN6iQ7EwxEB/+B6LdPChcFgqvinDLLzxFmSIJQw3nzVmitZznKj9rb5PNzWEABbH23b2b0Vkxw5GJz0beAAAAA==",
+    "placeholder": "data:image/webp;base64,UklGRrwAAABXRUJQVlA4ILAAAACQBACdASogABUAPzmGuVOvKSWisAgB4CcJQBibBS0spnG2K+PKXR3mgCwyzoAA/umdugtKTJUPyLEIuFSzQ2w6JlT/QhextGUw7qqt9fGFMK9HGPAMpTs6rlhs8/QiLup+N1uvElJxoCz0CPp4RYMRla0tz1juHDmN8M52JhiVMWumzAWVpLVD1taNMAAScJ0D+Gdr+elNNRaoJe2XqFz9pOQXxDC/SokprhWpB4AAAA==",
     "width": 2600,
     "height": 1733
   },
@@ -381,7 +381,7 @@ export const images: Record<string, ImageEntry> = {
       "2048": "/images/photo-podio-trofeu-2048.webp"
     },
     "jpg": "/images/photo-podio-trofeu-1440.jpg",
-    "placeholder": "data:image/webp;base64,UklGRt4AAABXRUJQVlA4INIAAAAwBQCdASogABUAPzmIulOvKSWisAgB4CcJQBl05YA2SO2BagpZe3J/fd3cDW2s4p/DgAD+n9oTEr492oaROIlRJ2KpQRUb2ZRG3HF/v2TjCa9ervnVhEUAV6pB+Djf+Y4oG4cjBSUjYNBL9kQz3MQhdU4abiNqEe2vbBqkCqctvucSX96ZSUErc3a9AarNpGUgm1Wfhql00QpD+wvcltH0TG0kFiKWQpE/YVR8z8q6P99RUiF4rlhbTAD30LZrF137S/OSIkYsmWXI+AGQtyUsAAA=",
+    "placeholder": "data:image/webp;base64,UklGRs4AAABXRUJQVlA4IMIAAADQBACdASogABUAPzmKulOvKaWisAgB4CcJQBm/5YA2mZSKCQwwiyMAR9ZSKikoAAD+unti+GNdCkhFJ9cIJ9gNndVP60vO8ZUa0w5pX1Qsc7a9rV66AGpWvBVRuiwb+PWWtXwti82AHR/Ydpoo1IUVirQyIae0cJROC9eq1r8YQdMwMSK4pRW7UycAgkOUjS2StWX91FIJVn5+jVQcfz2JQjetbKOQgeVLzMOmRSKPJXJ4HYAMEs95cReX+BAgTngAAA==",
     "width": 2600,
     "height": 1733
   },
@@ -399,7 +399,7 @@ export const images: Record<string, ImageEntry> = {
       "2048": "/images/photo-preparacao-box-2048.webp"
     },
     "jpg": "/images/photo-preparacao-box-1440.jpg",
-    "placeholder": "data:image/webp;base64,UklGRuYAAABXRUJQVlA4INoAAADQBQCdASogABUAPzGCslOuqKQisAwB0CYJZADDNYzQ3KopJt0SL1+sYPvDXy5oBT+Y6DsYm5LAAP7aSz+vUkEnw+Wt2aCgSeLRvSG1ykWIjljJWEIX0ZtQGxThuFwNT8uzOy5cqiUpxnaf4UwHhYBr4fC/8ORdzIwBAbcerh9Z58nR3E8ewPizWNTeXGkvo0SPdrM6mAztKZIBK7NxtKZASxd6Dglc6CLve52f3QFOJJpuyFctw5vmuoH5jXbjtM3OFElONRVf7a4yfh/yP7mGybqAWIf4HyAAAA==",
+    "placeholder": "data:image/webp;base64,UklGRt4AAABXRUJQVlA4INIAAABQBQCdASogABUAPzGEslOuqKQisAwB0CYJYgC/OCF5H/ArdMGtYAocvQHCghTkv8jbgJ4A/tpQ8z5DI3CGruRT3wvjqbr3nr5IlwetQg1uMhz7vMFL3doH2uEQCnSj+1QtSLM+9l7Vy8pZEnMnzKK0+rnZToY+GGMM5yTBiBjXTaPJzygfxIjqNLW0w13pkfA9xy6kbanibw2CO64EON2sMUW3dShMRH8tiy4jTJotftLtjs0aborg6q033/F03tv97PAV8/5H9zDZNyw3N/4HyAA=",
     "width": 2600,
     "height": 1733
   },
@@ -417,7 +417,7 @@ export const images: Record<string, ImageEntry> = {
       "2048": "/images/photo-radio-noite-2048.webp"
     },
     "jpg": "/images/photo-radio-noite-1440.jpg",
-    "placeholder": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAABwBACdASogABUAPzmKvVYvKSajsBgIAeAnCWUAAI91nkitLeUtAvwrvq5IAAD+8McNVQ+XHYoLcFkOBXD8JtLAn45nH8u0SwGhKx4/IJhr86D5+pgb82j3/F6AAA==",
+    "placeholder": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAAAwBQCdASogABUAPzmKvFYvKSYjsBgIAeAnCWUAAI+DBaEfQV7dkcor9mlSPCvw3VHFYAD+7oDAafljrjsUFuC+GpAdgmmXGDElbuOpWR7Ns1XimPtwB/KqacAAAA==",
     "width": 2600,
     "height": 1733
   },
@@ -433,7 +433,7 @@ export const images: Record<string, ImageEntry> = {
       "1440": "/images/photo-trofeu-fundo-amg-1440.webp"
     },
     "jpg": "/images/photo-trofeu-fundo-amg-1440.jpg",
-    "placeholder": "data:image/webp;base64,UklGRrQBAABXRUJQVlA4IKgBAACQCACdASogADAAPzmMulavKSUjqqoB4CcJZgC9XbRlJ9xGqxbost4ETAftQSnjfqxCfXGTtPP3mJqv1xORD1NBnGUKLDKL6I04/aMqAAD+8MfdeJdK82Zp4LFX1xD+tpnTT5dfjjicHZG23iZDBIm2Cq0zpYTb87Mb0z9xfoBEh+zlS5lPpPhfmak/sDB4gCaABh+zYuIDd6ce4PWfpwpDpS+HIkYuZO/UzC9G2S7Ujo15nyLlLnuVRdVDRAeAvRoQPHwUKlzUqoQplyy0Moc28SyMr+h7eUZuRBHk35AkYaHlulYM2/PkAC/vNI6l3pNYpTfYi6UZeiMLmJj2CaNDLNZVniX9M5MP13AfmNXjxFFNpRpltUmgdgU2eGzPVrbm9X4Sj3y9f5JpBm2HPv2n44o671WjfaZsB8VLz2qoV8NCAZUjfnxH2l4S5NSNlCblNoSef795J8aEVfue9sSpIO8kvEz/5CgFj7krQRYdFDqXU0k4VC1N46NX1iVNmmH8LEPL1bbc7HQfwwaSMVZ2oNotEEhJJjWmmni1B2lnkAt6umcYAAAA",
+    "placeholder": "data:image/webp;base64,UklGRowBAABXRUJQVlA4IIABAAAwCACdASogADAAPzmMvFevKSWjqqgB4CcJZADNiAx9laZ2rH7n7RT1d20TOd/M7kzRurfOtuVecJ7JHZRWXIYSYdZ2Elu578TdAAD+8MlrgBIclNal7G/n0ADWNi9PeX8h9MIcn+sZx2eY8+V+dkvlVJPOJExbDwPJ1DbfQo+Sr+cb8pOPLQbtapGa/ntSZJOulFbo7bFpgJRwdAuht1b3LOjx2NZq4bowp9jlo8QZ0HuYxr/PFf01SCJyNdaHJ93CHgVmYKlaAclnUBXfUHRjcgn68+JifRtCxmBMsdJkNkkAxEyN0ogZREbRBJHcrc9u9GAjb9dycOerK6MFuPs2EyJT62ZL+LqYFeJ4QhaRk5NfhZG0sZ08tXoXR1KMUM7ThJLV356XirTh0a+aC1D/dg+L1iOwbUttfAsEWlDRhOqLu19eTsnbqo7PUuAg1pAXsgZ0HGIySqm+8P4V6MUAFEit0+RA09rQH595M6PJz4Suz7FeyJtWK29vmA2SQAA=",
     "width": 1733,
     "height": 2600
   },
@@ -451,7 +451,7 @@ export const images: Record<string, ImageEntry> = {
       "2048": "/images/photo-trofeus-capo-2048.webp"
     },
     "jpg": "/images/photo-trofeus-capo-1440.jpg",
-    "placeholder": "data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAACQBACdASogABUAPzmOvlevKaYjqAqp4CcJQBlWhZ/Sc4zjlQiVEsVUdwxY7gAA/p7F6tSaQ5j+KCLsMSDo/jMaxdW17m6DEBnIcmYgShVZ94IdlzW1FJ8eIi+S6JiLxDlOTKcV1IGj7RTH8QIxPQtp/yrpQrYXtiK8A5Re82tvJXKmdPPf3L+2p6D2PoSvqKNP1MyejUQ0zh6IhcwAAA==",
+    "placeholder": "data:image/webp;base64,UklGRrAAAABXRUJQVlA4IKQAAADwBACdASogABUAPzmQvVgvKaYjqAqp4CcJYwDMWDTUvmZjwWx9Qeo5vnTT7wNLpIAA/p1l7WTXrQG+A+i5hAv7A4dh+r/9OM6FLyoCyAyRIOuhdNhVbVoJ+NqiJ4sB+tWX799KqUkAdmEK9Jm+MPA6VkV0aJtVXYw1X6X+lCxtoR+hcQTMcZt0IT/slRVQDsbr+NzBb4RxNZV2JdyXqCbyQALIAA==",
     "width": 2600,
     "height": 1733
   }
