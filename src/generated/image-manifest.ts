@@ -147,7 +147,7 @@ export const images: Record<string, ImageEntry> = {
       "2048": "/images/photo-numero-91-trofeus-2048.webp"
     },
     "jpg": "/images/photo-numero-91-trofeus-1440.jpg",
-    "placeholder": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAAAwBACdASogABUAPzmMwVcvKSejqAqp4CcJQBWAAb2OH34dguchL7d46gAA/uNNQ0VQfNzNmAOggZmG3XZ6YTL3HgxfWOgKfXqpAch5tFbh0FHg0qFFxuvOx/0q3Lz+of2Wl4t/KurnbwZfjxy4lVxnPa1QYFc0/W1dYnYAAAA=",
+    "placeholder": "data:image/webp;base64,UklGRsoAAABXRUJQVlA4IL4AAADQBQCdASogABUAPzmEuVOvKKWisBgMAeAnCWgAnTLNVmYCFmoJ1SMaSVWShn1slfqeYxsgb5pwAP5xanfrFT0BaiUz9DsDBZZhrvRP8Znbyaq6W9K/qEZEVQYRVgnVEsjAIPU108JjEJ+IvvlOJhQLLAJXISAt9fyT8fl6OYrwRE6OQNbq00qBaKdNn+vhX8w0Cdt74wXB6OSh3sZMSEP+wpagHpGJ1oisOXHAH9xRx5swSW6eRvdcnlrtwUgA",
     "width": 2600,
     "height": 1733
   },
