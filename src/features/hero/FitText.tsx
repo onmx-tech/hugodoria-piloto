@@ -42,8 +42,6 @@ export function FitText({ className = "" }: { className?: string }) {
       >
         {/* No desktop o nome empilha para ocupar a coluna ao lado da foto */}
         <span className="font-light">HUGO </span>
-        {/* <br> e não span em bloco: em bloco o transform da entrada (GSAP) entra na medida e o nome encolhe */}
-        <br className="hidden md:inline" />
         <span className="font-extrabold text-[#d86527]">NETTO</span>
       </h1>
     </div>

@@ -331,22 +331,22 @@ export const images: Record<string, ImageEntry> = {
     "width": 2600,
     "height": 1733
   },
-  "photo-podio-primeiro-lugar": {
+  "photo-podio-primeiro-lugar-amplo": {
     "avif": {
-      "480": "/images/photo-podio-primeiro-lugar-480.avif",
-      "768": "/images/photo-podio-primeiro-lugar-768.avif",
-      "1440": "/images/photo-podio-primeiro-lugar-1440.avif",
-      "2048": "/images/photo-podio-primeiro-lugar-2048.avif"
+      "480": "/images/photo-podio-primeiro-lugar-amplo-480.avif",
+      "768": "/images/photo-podio-primeiro-lugar-amplo-768.avif",
+      "1440": "/images/photo-podio-primeiro-lugar-amplo-1440.avif",
+      "2048": "/images/photo-podio-primeiro-lugar-amplo-2048.avif"
     },
     "webp": {
-      "480": "/images/photo-podio-primeiro-lugar-480.webp",
-      "768": "/images/photo-podio-primeiro-lugar-768.webp",
-      "1440": "/images/photo-podio-primeiro-lugar-1440.webp",
-      "2048": "/images/photo-podio-primeiro-lugar-2048.webp"
+      "480": "/images/photo-podio-primeiro-lugar-amplo-480.webp",
+      "768": "/images/photo-podio-primeiro-lugar-amplo-768.webp",
+      "1440": "/images/photo-podio-primeiro-lugar-amplo-1440.webp",
+      "2048": "/images/photo-podio-primeiro-lugar-amplo-2048.webp"
     },
-    "jpg": "/images/photo-podio-primeiro-lugar-1440.jpg",
-    "placeholder": "data:image/webp;base64,UklGRtwAAABXRUJQVlA4INAAAADwBACdASogABUAPzmOulWvKiWjMBgIAeAnCWYAwOgTYEXOQgxYJvVx/l8xOE+hrAAA+UUIFHzNJEMKaYNgmEA2/V4/gh+VIJIWe1E3n/83BLL/7NHDVv2jJZbloaSksxti+yTQ9+K9IxFKIUHDuxI5CG+VgIu/ux8Nvzsw4z7bg0AT5ZbsNkFV+TkRz4fY0Ys9+qvPm1VbD7kHIAGOoa2buiem7hGynIEb2X//aNOPbpGz2gcEEor/c/Q0nvBO9t1UG6ABPhb3LSh/GdCzAAAA",
-    "width": 4160,
+    "jpg": "/images/photo-podio-primeiro-lugar-amplo-1440.jpg",
+    "placeholder": "data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAADwAwCdASogABEAPzmGuVOvKSWisAgB4CcJbADDNCLkF/4RVespsedAAP5l/FdwvQhl0Gi6MwX3mLwaFdV66GcWkkQJHgkr/iSEtm4Ac6drp21NA+Kk1PE5c7z6t0oTwCQBrrOHtHMipsq4IACwI+juXjl6fGtByCQqIn9f1BCEEtjP4TCpgEXtEPi9AGeeAAA=",
+    "width": 5294,
     "height": 2773
   },
   "photo-podio-trofeu-gt4": {
