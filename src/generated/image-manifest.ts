@@ -349,6 +349,24 @@ export const images: Record<string, ImageEntry> = {
     "width": 5294,
     "height": 2773
   },
+  "photo-podio-primeiro-lugar-mobile": {
+    "avif": {
+      "480": "/images/photo-podio-primeiro-lugar-mobile-480.avif",
+      "768": "/images/photo-podio-primeiro-lugar-mobile-768.avif",
+      "1440": "/images/photo-podio-primeiro-lugar-mobile-1440.avif",
+      "2048": "/images/photo-podio-primeiro-lugar-mobile-2048.avif"
+    },
+    "webp": {
+      "480": "/images/photo-podio-primeiro-lugar-mobile-480.webp",
+      "768": "/images/photo-podio-primeiro-lugar-mobile-768.webp",
+      "1440": "/images/photo-podio-primeiro-lugar-mobile-1440.webp",
+      "2048": "/images/photo-podio-primeiro-lugar-mobile-2048.webp"
+    },
+    "jpg": "/images/photo-podio-primeiro-lugar-mobile-1440.jpg",
+    "placeholder": "data:image/webp;base64,UklGRkgBAABXRUJQVlA4IDwBAADQBwCdASogAEgAPzmGuFYvKCUjrNv6qeAnCWQAzokHTdUI063WAuTcl6ADPe99uMdLcaC5O79XlZ/zUZgszLw/oO9ZsW/6AAD+7a2ptGU9ZEzWXbKmPBMsO3yRg3N5TZtxooI82ILJQHZj7nQxffsCDwoxY5I4JdZspeeYLtrW/LHvEWGFn1lDyCZzan7dOpT8R7Cbr2YGZVQ4fY6nnYi1/hkcVPxG26oYm3xlmMm5ORY/2k1CsaApI9UQ2qpbwUthqPg8WMtpEIiaUvG6KQqeDcNO1nWtzIr5UYy9Jqwn69JbWRhBsAcDtDWrfo0Uwoe1k93ORS5PS93CIr1iCRHmYiLrszo2JPK9MEP3UCCIxBpWs22ULaDjgJt9+sRf096LjF8HQ/1rhoH2Q+k2hNLYmUshDsxeqSw1oAAA",
+    "width": 2260,
+    "height": 5052
+  },
   "photo-podio-trofeu-gt4": {
     "avif": {
       "480": "/images/photo-podio-trofeu-gt4-480.avif",

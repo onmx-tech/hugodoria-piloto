@@ -9,6 +9,8 @@ interface OptimizedImageProps {
   imgClassName?: string;
   priority?: boolean;
   onLoad?: () => void;
+  /** Recorte próprio para celular (até 767px): o <picture> troca a fonte, sem baixar as duas. */
+  mobileName?: string;
 }
 
 function buildSrcSet(urls: Record<number, string>): string {
@@ -26,9 +28,11 @@ export function OptimizedImage({
   imgClassName = "",
   priority = false,
   onLoad,
+  mobileName,
 }: OptimizedImageProps) {
   const [loaded, setLoaded] = useState(false);
   const entry: ImageEntry | undefined = images[name];
+  const mobile: ImageEntry | undefined = mobileName ? images[mobileName] : undefined;
 
   const handleLoad = useCallback(() => {
     setLoaded(true);
@@ -45,6 +49,12 @@ export function OptimizedImage({
 
   return (
     <picture className={`optimized-image ${loaded ? "is-loaded" : ""} ${className}`}>
+      {mobile && (
+        <>
+          <source media="(max-width: 767px)" type="image/avif" srcSet={buildSrcSet(mobile.avif)} sizes="100vw" />
+          <source media="(max-width: 767px)" type="image/webp" srcSet={buildSrcSet(mobile.webp)} sizes="100vw" />
+        </>
+      )}
       {avifSrcSet && (
         <source type="image/avif" srcSet={avifSrcSet} sizes={sizes} />
       )}
