@@ -115,24 +115,6 @@ export const images: Record<string, ImageEntry> = {
     "width": 2600,
     "height": 1733
   },
-  "photo-hero-temporada-2026": {
-    "avif": {
-      "480": "/images/photo-hero-temporada-2026-480.avif",
-      "768": "/images/photo-hero-temporada-2026-768.avif",
-      "1440": "/images/photo-hero-temporada-2026-1440.avif",
-      "2048": "/images/photo-hero-temporada-2026-2048.avif"
-    },
-    "webp": {
-      "480": "/images/photo-hero-temporada-2026-480.webp",
-      "768": "/images/photo-hero-temporada-2026-768.webp",
-      "1440": "/images/photo-hero-temporada-2026-1440.webp",
-      "2048": "/images/photo-hero-temporada-2026-2048.webp"
-    },
-    "jpg": "/images/photo-hero-temporada-2026-1440.jpg",
-    "placeholder": "data:image/webp;base64,UklGRr4AAABXRUJQVlA4ILIAAAAQBQCdASogABUAPzmGuVOvKSWisAgB4CcJZgAIEC6MWO5XXWuEdW80Ur8xuinH8ZGAAP68MYzAoqNSJkmDTXgH2MJCz9zfSD9SmaJufKQz9KDuTQbq+F1NuetaPwakG6+uD8kcNrRviCr/PXfvP4aDWX2X888TuvmlxDB7DFRo8x6HnsaEbKwvGa30Z1QkkbY+uGM/1+Yz8aSZccOaNr00I5slxbjJ1vJAp0pM+KeIUAAA",
-    "width": 2600,
-    "height": 1733
-  },
   "photo-numero-91-capo": {
     "avif": {
       "480": "/images/photo-numero-91-capo-480.avif",
@@ -348,6 +330,24 @@ export const images: Record<string, ImageEntry> = {
     "placeholder": "data:image/webp;base64,UklGRqwAAABXRUJQVlA4IKAAAADQBACdASogABUAPzmEuVOvKKWisAgB4CcJZgDI1BR+EXEwAoVXv0o1KMkA12kMAAD+zBLMCZUuo6yitZ1ekC/6ZvCKvIGeHFbWZTQ282FaWm1Jm5PH7GZj7xgYo2784PXCwZtD9I7GoZkkSSQ9J43Mz+f+elLZiMRRDvawqzlO5w4R6ClOGVD8+KdZKBY/rxt92T7TRkX2FruQbSY2buAA",
     "width": 2600,
     "height": 1733
+  },
+  "photo-podio-primeiro-lugar": {
+    "avif": {
+      "480": "/images/photo-podio-primeiro-lugar-480.avif",
+      "768": "/images/photo-podio-primeiro-lugar-768.avif",
+      "1440": "/images/photo-podio-primeiro-lugar-1440.avif",
+      "2048": "/images/photo-podio-primeiro-lugar-2048.avif"
+    },
+    "webp": {
+      "480": "/images/photo-podio-primeiro-lugar-480.webp",
+      "768": "/images/photo-podio-primeiro-lugar-768.webp",
+      "1440": "/images/photo-podio-primeiro-lugar-1440.webp",
+      "2048": "/images/photo-podio-primeiro-lugar-2048.webp"
+    },
+    "jpg": "/images/photo-podio-primeiro-lugar-1440.jpg",
+    "placeholder": "data:image/webp;base64,UklGRtwAAABXRUJQVlA4INAAAADwBACdASogABUAPzmOulWvKiWjMBgIAeAnCWYAwOgTYEXOQgxYJvVx/l8xOE+hrAAA+UUIFHzNJEMKaYNgmEA2/V4/gh+VIJIWe1E3n/83BLL/7NHDVv2jJZbloaSksxti+yTQ9+K9IxFKIUHDuxI5CG+VgIu/ux8Nvzsw4z7bg0AT5ZbsNkFV+TkRz4fY0Ys9+qvPm1VbD7kHIAGOoa2buiem7hGynIEb2X//aNOPbpGz2gcEEor/c/Q0nvBO9t1UG6ABPhb3LSh/GdCzAAAA",
+    "width": 4160,
+    "height": 2773
   },
   "photo-podio-trofeu-gt4": {
     "avif": {

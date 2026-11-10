@@ -6,8 +6,8 @@ import { Kicker } from "../../components/ui/Kicker";
 import { FitText } from "./FitText";
 import { CTAButton } from "../../components/navigation/CTAButton";
 
-const HERO_PHOTO = "photo-hero-temporada-2026";
-const HERO_ALT = "Hugo Netto de macacão preto com o troféu, diante do painel da AMG Cup Brasil";
+const HERO_PHOTO = "photo-podio-primeiro-lugar";
+const HERO_ALT = "Hugo Netto no degrau mais alto do pódio da AMG Cup Brasil, entre os cinco primeiros colocados";
 
 const META = [
   { k: "Equipe", v: "Mercedes-AMG GT" },
@@ -47,14 +47,14 @@ export function HeroSection() {
       className="relative h-[100svh] min-h-[640px] md:min-h-screen overflow-hidden flex flex-col"
       style={{ position: "sticky", top: 0, zIndex: 0, background: "#041221" }}
     >
-      {/* Macacão preto com o CDN e o troféu no painel da AMG, a foto que a assessoria apontou */}
+      {/* O pódio inteiro com ele no 1, pedido da assessoria em 10/11/2026: a foto anterior era "muito foco nele" */}
       <div className="hero_background absolute inset-0 scale-[1.02]">
         <OptimizedImage
           name={HERO_PHOTO}
           alt={HERO_ALT}
           sizes="max(100vw, 150svh)"
           priority
-          imgClassName="absolute inset-0 object-cover size-full object-[50%_30%]"
+          imgClassName="absolute inset-0 object-cover size-full object-[50%_20%]"
         />
         {/* Escurecimento geral neutro: toma o céu claro sem tingir */}
         <div className="absolute inset-0 bg-[#041221]/10" />
