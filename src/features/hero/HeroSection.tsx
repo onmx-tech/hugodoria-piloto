@@ -10,7 +10,7 @@ const HERO_PHOTO = "photo-podio-primeiro-lugar";
 // Celular (11/11/2026): os cinco do pódio; céu e treliça estendidos por IA em cima (sob o menu); a foto termina nos números.
 // O Dr. Hugo pediu tirar o chão ("ar pobre, não parece um palanque elegante"): o nome vem abaixo, no azul.
 // Pilotos, troféus e números são os pixels originais. O desktop segue como estava.
-const HERO_PHOTO_MOBILE = "photo-podio-primeiro-lugar-mobile";
+const HERO_PHOTO_MOBILE = "photo-podio-cinco-mobile";
 const HERO_ALT = "Hugo Netto no degrau mais alto do pódio da AMG Cup Brasil, entre os cinco primeiros colocados";
 
 const META = [

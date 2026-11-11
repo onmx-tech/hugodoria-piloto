@@ -331,20 +331,20 @@ export const images: Record<string, ImageEntry> = {
     "width": 2600,
     "height": 1733
   },
-  "photo-podio-primeiro-lugar-mobile": {
+  "photo-podio-cinco-mobile": {
     "avif": {
-      "480": "/images/photo-podio-primeiro-lugar-mobile-480.avif",
-      "768": "/images/photo-podio-primeiro-lugar-mobile-768.avif",
-      "1440": "/images/photo-podio-primeiro-lugar-mobile-1440.avif",
-      "2048": "/images/photo-podio-primeiro-lugar-mobile-2048.avif"
+      "480": "/images/photo-podio-cinco-mobile-480.avif",
+      "768": "/images/photo-podio-cinco-mobile-768.avif",
+      "1440": "/images/photo-podio-cinco-mobile-1440.avif",
+      "2048": "/images/photo-podio-cinco-mobile-2048.avif"
     },
     "webp": {
-      "480": "/images/photo-podio-primeiro-lugar-mobile-480.webp",
-      "768": "/images/photo-podio-primeiro-lugar-mobile-768.webp",
-      "1440": "/images/photo-podio-primeiro-lugar-mobile-1440.webp",
-      "2048": "/images/photo-podio-primeiro-lugar-mobile-2048.webp"
+      "480": "/images/photo-podio-cinco-mobile-480.webp",
+      "768": "/images/photo-podio-cinco-mobile-768.webp",
+      "1440": "/images/photo-podio-cinco-mobile-1440.webp",
+      "2048": "/images/photo-podio-cinco-mobile-2048.webp"
     },
-    "jpg": "/images/photo-podio-primeiro-lugar-mobile-1440.jpg",
+    "jpg": "/images/photo-podio-cinco-mobile-1440.jpg",
     "placeholder": "data:image/webp;base64,UklGRu4AAABXRUJQVlA4IOIAAADwBQCdASogABwAPzmIuVOvKSWisAgB4CcJbADH6bNEsrIzEtsbS/gxELRyFN6QjdFAakquW5s0AAD+9z3paJPx14dIgzCuznRTyV2UxhFZ2CBePUzOg9ispO5isHV2xNEkUqdalfIEhATLPOC4BZpPqYyon65ZRx/L4anp8SmSjsSggflpsTI4GMu2QjrG78YKTaa56lpEeMVFAtG8cg0J/a8MdwQkWU81jeWrj2nTL1MuzDnVasJW9aD/SgR5X/G/5CsH6otp6+DH8DJPwu+PBEB6v0NPJJ52cXJtN2IicAAA",
     "width": 3993,
     "height": 3546
