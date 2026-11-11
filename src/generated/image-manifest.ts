@@ -345,9 +345,9 @@ export const images: Record<string, ImageEntry> = {
       "2048": "/images/photo-podio-primeiro-lugar-mobile-2048.webp"
     },
     "jpg": "/images/photo-podio-primeiro-lugar-mobile-1440.jpg",
-    "placeholder": "data:image/webp;base64,UklGRuwAAABXRUJQVlA4IOAAAABwBQCdASogABUAPzmOwFevKacjqAqp4CcJbADH8iK/QA6UkEYtQTmbmdpFBXhiFaL9/FOAAM35DwnEHQyqzbfMSAkjXnmgz31W34i/us2Dud8IfZQyGJM6gN4aOlbhkIlMc7jrx4NZ0cXYgrmic+q41+pbjTG4poj1jQ5NFm4z/Pc9MkEWSWdDR6CLDSKBCTn+iTLQvREzLBtHfdh8Mi5D8Fl2soPkJrxc5PRVn8EVrvLoCALDp8qf7jZlDSW7DJMwmy35nCICv+x/Fz8bCAX+LR+8/9beSqi78f8F/ygAAA==",
+    "placeholder": "data:image/webp;base64,UklGRu4AAABXRUJQVlA4IOIAAADwBQCdASogABwAPzmIuVOvKSWisAgB4CcJbADH6bNEsrIzEtsbS/gxELRyFN6QjdFAakquW5s0AAD+9z3paJPx14dIgzCuznRTyV2UxhFZ2CBePUzOg9ispO5isHV2xNEkUqdalfIEhATLPOC4BZpPqYyon65ZRx/L4anp8SmSjsSggflpsTI4GMu2QjrG78YKTaa56lpEeMVFAtG8cg0J/a8MdwQkWU81jeWrj2nTL1MuzDnVasJW9aD/SgR5X/G/5CsH6otp6+DH8DJPwu+PBEB6v0NPJJ52cXJtN2IicAAA",
     "width": 3993,
-    "height": 2598
+    "height": 3546
   },
   "photo-podio-primeiro-lugar": {
     "avif": {

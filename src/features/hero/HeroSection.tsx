@@ -7,9 +7,9 @@ import { FitText } from "./FitText";
 import { CTAButton } from "../../components/navigation/CTAButton";
 
 const HERO_PHOTO = "photo-podio-primeiro-lugar";
-// Celular (11/11/2026): os cinco do pódio, recorte da foto do desktop abaixo do menu; a foto termina nos números.
+// Celular (11/11/2026): os cinco do pódio; céu e treliça estendidos por IA em cima (sob o menu); a foto termina nos números.
 // O Dr. Hugo pediu tirar o chão ("ar pobre, não parece um palanque elegante"): o nome vem abaixo, no azul.
-// Sem IA: pixels originais. O desktop segue como estava.
+// Pilotos, troféus e números são os pixels originais. O desktop segue como estava.
 const HERO_PHOTO_MOBILE = "photo-podio-primeiro-lugar-mobile";
 const HERO_ALT = "Hugo Netto no degrau mais alto do pódio da AMG Cup Brasil, entre os cinco primeiros colocados";
 
@@ -25,7 +25,9 @@ export function HeroSection() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ delay: 0.15 });
-      tl.from(".hero_background img", { scale: 1.25, duration: 2, ease: "power2.out" }, 0)
+      // Celular sem zoom de entrada: a 125% os troféus passam por baixo do menu.
+      if (window.innerWidth >= 768) tl.from(".hero_background img", { scale: 1.25, duration: 2, ease: "power2.out" }, 0);
+      tl
         .from(".hero_kicker", { y: -20, opacity: 0, duration: 0.9, ease: "power3.out", clearProps: "all" }, 0.4)
         .from(".hero_subheading", { y: 24, opacity: 0, duration: 0.9, ease: "power3.out", clearProps: "all" }, 0.6)
         .from(".hero_heading .font-light", { x: -140, opacity: 0, duration: 1.3, ease: "expo.out", clearProps: "all" }, 0.5)
@@ -52,7 +54,7 @@ export function HeroSection() {
       style={{ zIndex: 0, background: "#041221" }}
     >
       {/* O pódio inteiro com ele no 1, pedido da assessoria em 10/11/2026: a foto anterior era "muito foco nele" */}
-      <div className="hero_background absolute inset-x-0 top-20 aspect-[3993/2598] overflow-hidden md:top-0 md:inset-0 md:aspect-auto scale-[1.02]">
+      <div className="hero_background absolute inset-x-0 top-0 aspect-[3993/3546] overflow-hidden md:inset-0 md:aspect-auto scale-[1.02]">
         <OptimizedImage
           name={HERO_PHOTO}
           mobileName={HERO_PHOTO_MOBILE}
@@ -75,7 +77,7 @@ export function HeroSection() {
       {/* Conteúdo */}
       {/* No celular a foto ocupa o topo com a altura dela; o texto vem logo abaixo */}
       <div className="relative z-[2] flex flex-col h-auto md:h-full w-full px-5 md:px-10 lg:px-14">
-        <div className="md:hidden -mx-5 mt-20 aspect-[3993/2598]" />
+        <div className="md:hidden -mx-5 aspect-[3993/3546]" />
         <Kicker label="Piloto Profissional" sub="AMG Cup Brasil · #91" className="hero_kicker hidden md:flex pt-28" />
 
         <div className="mt-auto w-full pt-8 md:pt-0 pb-16 md:pb-12">
