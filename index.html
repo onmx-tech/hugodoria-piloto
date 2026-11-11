@@ -47,8 +47,18 @@
       rel="preload"
       as="image"
       type="image/avif"
-      imagesrcset="/images/photo-podio-primeiro-lugar-amplo-480.avif 480w, /images/photo-podio-primeiro-lugar-amplo-768.avif 768w, /images/photo-podio-primeiro-lugar-amplo-1440.avif 1440w, /images/photo-podio-primeiro-lugar-amplo-2048.avif 2048w"
+      media="(min-width: 768px)"
+      imagesrcset="/images/photo-podio-primeiro-lugar-480.avif 480w, /images/photo-podio-primeiro-lugar-768.avif 768w, /images/photo-podio-primeiro-lugar-1440.avif 1440w, /images/photo-podio-primeiro-lugar-2048.avif 2048w"
       imagesizes="max(100vw, 150svh)"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      type="image/avif"
+      media="(max-width: 767px)"
+      imagesrcset="/images/photo-podio-primeiro-lugar-mobile-480.avif 480w, /images/photo-podio-primeiro-lugar-mobile-768.avif 768w, /images/photo-podio-primeiro-lugar-mobile-1440.avif 1440w, /images/photo-podio-primeiro-lugar-mobile-2048.avif 2048w"
+      imagesizes="100vw"
       fetchpriority="high"
     />
 
