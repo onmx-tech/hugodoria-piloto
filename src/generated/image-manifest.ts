@@ -345,9 +345,9 @@ export const images: Record<string, ImageEntry> = {
       "2048": "/images/photo-podio-primeiro-lugar-mobile-2048.webp"
     },
     "jpg": "/images/photo-podio-primeiro-lugar-mobile-1440.jpg",
-    "placeholder": "data:image/webp;base64,UklGRkgBAABXRUJQVlA4IDwBAADQBwCdASogAEgAPzmGuFYvKCUjrNv6qeAnCWQAzokHTdUI063WAuTcl6ADPe99uMdLcaC5O79XlZ/zUZgszLw/oO9ZsW/6AAD+7a2ptGU9ZEzWXbKmPBMsO3yRg3N5TZtxooI82ILJQHZj7nQxffsCDwoxY5I4JdZspeeYLtrW/LHvEWGFn1lDyCZzan7dOpT8R7Cbr2YGZVQ4fY6nnYi1/hkcVPxG26oYm3xlmMm5ORY/2k1CsaApI9UQ2qpbwUthqPg8WMtpEIiaUvG6KQqeDcNO1nWtzIr5UYy9Jqwn69JbWRhBsAcDtDWrfo0Uwoe1k93ORS5PS93CIr1iCRHmYiLrszo2JPK9MEP3UCCIxBpWs22ULaDjgJt9+sRf096LjF8HQ/1rhoH2Q+k2hNLYmUshDsxeqSw1oAAA",
+    "placeholder": "data:image/webp;base64,UklGRkABAABXRUJQVlA4IDQBAAAwBwCdASogACsAPzmCvFOvKCaisBqqqeAnCWoAy4kGOrxn+mkFKKux2plcSA10DKJTlnHJgi76KCF2cpRw+eHp8AAA/vOvp+QgkxLzRTOaQ5dmRZeuoLijYR6H/Sjr7o6LpR3kHoCLMKq+JWK689KBIWkOxapZcxZ1vnKiwtOyIJx86/RNurdMr/c2PYPY6qY/LkWTs0OOvJQwvSR11NCtELdY95LjmWKtJgi0Fh0wWP25GQw+5bEPy/YjPmBq//eKSod6xFs5stbQAW7X7YGUkTEBcOMoEYsQlBIwPXBe2wrGUhctdr7dD5BUswmVsD8ufadFri1oTASS3efRBZ0jPGdK6dEHmy9OcC7y/QOvVrFohQGchsRHdYWbJ8rtwl6P3HaYJco18jgbR3dvjY+rSgAAAA==",
     "width": 2260,
-    "height": 5052
+    "height": 3060
   },
   "photo-podio-primeiro-lugar": {
     "avif": {
