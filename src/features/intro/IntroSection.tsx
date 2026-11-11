@@ -45,7 +45,11 @@ export function IntroSection() {
           <p className="font-['Inter',sans-serif] text-[15px] md:text-base text-[rgba(238,235,228,0.78)] leading-[1.65] mt-5">
             Neurosurgic é o projeto de fellowships voltado à formação, ao intercâmbio científico e à conexão entre especialistas.
           </p>
-          <div className="flex flex-wrap gap-x-6 gap-y-2 mt-8 pt-6 border-t border-white/12 font-['Inter',sans-serif] text-[14px] font-medium text-[#eeebe4]">
+          {/* Dr. Hugo, 11/11/2026: "em cima dos @ podemos colocar clique e saiba mais". */}
+          <p className="mt-8 pt-6 border-t border-white/12 font-['Inter',sans-serif] text-[12px] uppercase tracking-[0.12em] text-[rgba(238,235,228,0.62)]">
+            Clique e saiba mais
+          </p>
+          <div className="flex flex-wrap gap-x-6 gap-y-2 mt-3 font-['Inter',sans-serif] text-[14px] font-medium text-[#eeebe4]">
             <a href={INSTAGRAM_PILOTO} target="_blank" rel="noopener noreferrer" className="hover:text-[#d86527] transition-colors">@pilotohugonetto</a>
             <a href={INSTAGRAM_MEDICO} target="_blank" rel="noopener noreferrer" className="hover:text-[#d86527] transition-colors">@drhugodoria</a>
             <a href={SITE_MEDICO} target="_blank" rel="noopener noreferrer" className="hover:text-[#d86527] transition-colors">hugodoria.com.br</a>
