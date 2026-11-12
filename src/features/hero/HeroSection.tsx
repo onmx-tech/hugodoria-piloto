@@ -32,6 +32,7 @@ export function HeroSection() {
         .from(".hero_subheading", { y: 24, opacity: 0, duration: 0.9, ease: "power3.out", clearProps: "all" }, 0.6)
         .from(".hero_heading .font-light", { x: -140, opacity: 0, duration: 1.3, ease: "expo.out", clearProps: "all" }, 0.5)
         .from(".hero_heading .text-\\[\\#d86527\\]", { x: 140, opacity: 0, duration: 1.3, ease: "expo.out", clearProps: "all" }, 0.5)
+        .from(".hero_role", { y: 16, opacity: 0, duration: 0.9, ease: "power3.out", clearProps: "all" }, 0.8)
         .from(".hero_meta > *", { y: 20, opacity: 0, duration: 0.8, stagger: 0.08, ease: "power3.out", clearProps: "all" }, 0.9)
         .from(".hero_description", { y: 20, opacity: 0, duration: 0.9, ease: "power3.out", clearProps: "all" }, 0.95);
 
@@ -97,6 +98,10 @@ export function HeroSection() {
           </div>
 
           <FitText className="hero_heading" />
+          {/* Celular: o kicker e a ficha somem, então quem ele é vem logo abaixo do nome (pedido do Dr. Hugo, 12/11/2026). */}
+          <p className="hero_role md:hidden mt-3 font-archivo-expanded font-bold text-[#e1dcd0] text-[clamp(12px,3.4vw,15px)] uppercase tracking-[0.12em] leading-none">
+            Piloto AMG Cup <span className="text-[#d86527]">·</span> Mercedes
+          </p>
 
           <div className="hero_meta mt-6 md:mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 md:gap-x-8 border-t border-white/10 pt-5">
             {META.map((m) => (
