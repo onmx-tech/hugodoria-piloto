@@ -1,17 +1,16 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { OptimizedImage } from "../../components/media/OptimizedImage";
 import { Kicker } from "../../components/ui/Kicker";
 import { FitText } from "./FitText";
 import { CTAButton } from "../../components/navigation/CTAButton";
 
-const HERO_PHOTO = "photo-podio-primeiro-lugar";
-// Celular (11/11/2026): os cinco do pódio; céu e treliça estendidos por IA em cima (sob o menu); a foto termina nos números.
-// O Dr. Hugo pediu tirar o chão ("ar pobre, não parece um palanque elegante"): o nome vem abaixo, no azul.
-// Pilotos, troféus e números são os pixels originais. O desktop segue como estava.
-const HERO_PHOTO_MOBILE = "photo-podio-cinco-mobile";
-const HERO_ALT = "Hugo Netto no degrau mais alto do pódio da AMG Cup Brasil, entre os cinco primeiros colocados";
+// Entrada em vídeo, pedido do Dr. Hugo em 13/11/2026 (referência: enzogianfratti.com).
+// Fonte: reel DSLpL51jdCH da Flavia Aiala Assessoria, sem áudio. O celular recebe um recorte
+// vertical do centro do mesmo vídeo: 3 MB em vez de 6 MB, e sem ampliar 1280px até a altura da tela.
+const HERO_VIDEO = "/video/entrada-1280-v1.mp4";
+const HERO_VIDEO_MOBILE = "/video/entrada-mobile-v1.mp4";
+const HERO_POSTER = "/video/entrada-1280-v1.webp";
 
 const META = [
   { k: "Equipe", v: "Mercedes-AMG GT" },
@@ -21,12 +20,23 @@ const META = [
 
 export function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  // Movimento reduzido: fica o pôster parado.
+  const reduceMotion = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v || reduceMotion) return;
+    // O React não grava `muted` como atributo; o Safari do iPhone só toca sozinho se a propriedade estiver ligada.
+    v.muted = true;
+    v.play().catch(() => {});
+  }, [reduceMotion]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ delay: 0.15 });
       // Celular sem zoom de entrada: a 125% os troféus passam por baixo do menu.
-      if (window.innerWidth >= 768) tl.from(".hero_background img", { scale: 1.25, duration: 2, ease: "power2.out" }, 0);
+      if (window.innerWidth >= 768) tl.from(".hero_background video", { scale: 1.25, duration: 2, ease: "power2.out" }, 0);
       tl
         .from(".hero_kicker", { y: -20, opacity: 0, duration: 0.9, ease: "power3.out", clearProps: "all" }, 0.4)
         .from(".hero_subheading", { y: 24, opacity: 0, duration: 0.9, ease: "power3.out", clearProps: "all" }, 0.6)
@@ -51,34 +61,39 @@ export function HeroSection() {
     <section
       id="inicio"
       ref={heroRef}
-      className="relative md:sticky md:top-0 md:h-[100svh] md:min-h-screen overflow-hidden flex flex-col"
+      className="relative md:sticky md:top-0 h-[100svh] md:min-h-screen overflow-hidden flex flex-col"
       style={{ zIndex: 0, background: "#041221" }}
     >
-      {/* O pódio inteiro com ele no 1, pedido da assessoria em 10/11/2026: a foto anterior era "muito foco nele" */}
-      <div className="hero_background absolute inset-x-0 top-0 aspect-[3993/3546] overflow-hidden md:inset-0 md:aspect-auto scale-[1.02]">
-        <OptimizedImage
-          name={HERO_PHOTO}
-          mobileName={HERO_PHOTO_MOBILE}
-          alt={HERO_ALT}
-          sizes="max(100vw, 150svh)"
-          priority
-          imgClassName="absolute inset-0 object-cover size-full object-[50%_0%] md:object-[50%_20%]"
-        />
-        {/* Escurecimento geral neutro: toma o céu claro sem tingir */}
-        <div className="absolute inset-0 hidden md:block bg-[#041221]/10" />
-        {/* Vinheta neutra para fechar as bordas amadoras */}
-        <div className="absolute inset-0 hidden md:block" style={{ background: "radial-gradient(120% 100% at 50% 32%, rgba(4,18,33,0) 38%, rgba(4,18,33,0.3) 74%, rgba(4,18,33,0.7) 100%)" }} />
+      <div className="hero_background absolute inset-0 overflow-hidden scale-[1.02]">
+        <video
+          ref={videoRef}
+          className="absolute inset-0 size-full object-cover"
+          poster={HERO_POSTER}
+          muted
+          loop
+          playsInline
+          autoPlay={!reduceMotion}
+          preload={reduceMotion ? "none" : "auto"}
+          aria-hidden="true"
+          tabIndex={-1}
+          disablePictureInPicture
+        >
+          <source src={HERO_VIDEO_MOBILE} type="video/mp4" media="(max-width: 767px)" />
+          <source src={HERO_VIDEO} type="video/mp4" />
+        </video>
+        {/* Escurecimento geral neutro: o vídeo tem muita tenda branca e céu claro */}
+        <div className="absolute inset-0 bg-[#041221]/25" />
+        {/* Vinheta neutra para fechar as bordas */}
+        <div className="absolute inset-0" style={{ background: "radial-gradient(120% 100% at 50% 32%, rgba(4,18,33,0) 38%, rgba(4,18,33,0.3) 74%, rgba(4,18,33,0.7) 100%)" }} />
       </div>
 
       {/* Scrims para a tipografia */}
-      <div className="absolute inset-x-0 bottom-0 h-[64%] z-[1] hidden md:block pointer-events-none" style={{ background: "linear-gradient(180deg, rgba(4,18,33,0) 0%, rgba(4,18,33,0.74) 46%, #041221 100%)" }} />
+      <div className="absolute inset-x-0 bottom-0 h-[64%] z-[1] pointer-events-none" style={{ background: "linear-gradient(180deg, rgba(4,18,33,0) 0%, rgba(4,18,33,0.74) 46%, #041221 100%)" }} />
       {/* Topo forte para o menu ficar legível sobre o céu */}
-      <div className="absolute inset-x-0 top-0 h-[36%] z-[1] hidden md:block pointer-events-none" style={{ background: "linear-gradient(180deg, rgba(4,18,33,0.9) 0%, rgba(4,18,33,0.45) 40%, rgba(4,18,33,0) 100%)" }} />
+      <div className="absolute inset-x-0 top-0 h-[36%] z-[1] pointer-events-none" style={{ background: "linear-gradient(180deg, rgba(4,18,33,0.9) 0%, rgba(4,18,33,0.45) 40%, rgba(4,18,33,0) 100%)" }} />
 
       {/* Conteúdo */}
-      {/* No celular a foto ocupa o topo com a altura dela; o texto vem logo abaixo */}
-      <div className="relative z-[2] flex flex-col h-auto md:h-full w-full px-5 md:px-10 lg:px-14">
-        <div className="md:hidden -mx-5 aspect-[3993/3546]" />
+      <div className="relative z-[2] flex flex-col h-full w-full px-5 md:px-10 lg:px-14">
         <Kicker label="Piloto Profissional" sub="AMG Cup Brasil · #91" className="hero_kicker hidden md:flex pt-28" />
 
         <div className="mt-auto w-full pt-8 md:pt-0 pb-16 md:pb-12">

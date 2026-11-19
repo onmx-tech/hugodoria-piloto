@@ -7,6 +7,7 @@ import { useLenis } from "./hooks/useLenis";
 const IntroSection = lazy(() => import("./features/intro/IntroSection").then(m => ({ default: m.IntroSection })));
 const AboutSection = lazy(() => import("./features/about/AboutSection").then(m => ({ default: m.AboutSection })));
 const SuperFinalSection = lazy(() => import("./features/superfinal/SuperFinalSection").then(m => ({ default: m.SuperFinalSection })));
+const ExperienciaSection = lazy(() => import("./features/experiencia/ExperienciaSection").then(m => ({ default: m.ExperienciaSection })));
 const BastidoresSection = lazy(() => import("./features/bastidores/BastidoresSection").then(m => ({ default: m.BastidoresSection })));
 const StatsSection = lazy(() => import("./features/stats/StatsSection").then(m => ({ default: m.StatsSection })));
 const GallerySection = lazy(() => import("./features/gallery/GallerySection").then(m => ({ default: m.GallerySection })));
@@ -24,10 +25,12 @@ export default function App() {
       <Suspense>
         {/* Patrocínio é o objetivo (Dr. Hugo, 05/10): resultado de 2026, a Super Final
             com as cotas, quem já corre junto, e só depois o piloto e os bastidores.
-            A apresentação do Dr. Hugo abre a página: pedido da assessoria em 10/11/2026. */}
+            A apresentação do Dr. Hugo abre a página: pedido da assessoria em 10/11/2026.
+            O vídeo da final de 2025 vem logo depois das cotas: mostra o que elas compram (Dr. Hugo, 13/11/2026). */}
         <IntroSection />
         <StatsSection />
         <SuperFinalSection />
+        <ExperienciaSection />
         <SponsorsSection />
         <AboutSection />
         <BastidoresSection />
