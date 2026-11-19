@@ -115,6 +115,36 @@ export const images: Record<string, ImageEntry> = {
     "width": 2600,
     "height": 1733
   },
+  "photo-dr-centro-cirurgico": {
+    "avif": {
+      "480": "/images/photo-dr-centro-cirurgico-480.avif",
+      "768": "/images/photo-dr-centro-cirurgico-768.avif",
+      "1440": "/images/photo-dr-centro-cirurgico-1440.avif"
+    },
+    "webp": {
+      "480": "/images/photo-dr-centro-cirurgico-480.webp",
+      "768": "/images/photo-dr-centro-cirurgico-768.webp",
+      "1440": "/images/photo-dr-centro-cirurgico-1440.webp"
+    },
+    "jpg": "/images/photo-dr-centro-cirurgico-1440.jpg",
+    "placeholder": "data:image/webp;base64,UklGRjoBAABXRUJQVlA4IC4BAACQBwCdASogACcAPzF6tFOupyUitVv4AdAmCWoAyBeUBuWfUssFg0qk6if4sCmua+JyFMv0LgS7tIxKzYAxWYKmngDGo7gA4jk3vcE5+Hs4CEGuEl4eFtHzjt6pb7rYgBXvR7QNUaNV9nM06ly36uGIR+bQ+EhBIJ4mRak4p9YY67rmewx8GfeAqeABfoO481mQvZ9YePpYKJddSxtTcqGL0meSdCYUkauu5AKC3hXLkKTHRaeDcEJVpP7Q3+ePRhdZ2525/IV3GcKVHST1Kn9Fs3rKy3xK4hiuakCKPl1IiVcwPGqM9Gx4i1WltGVYiQ5fBw40qA1bCe8GVgYfh/EFgK6tKvykYkpwJjO05hQwcJh7TekLIsok2+J4vTIUId0lanFSeDTpckikGQAAAA==",
+    "width": 1500,
+    "height": 1801
+  },
+  "photo-dr-consultorio": {
+    "avif": {
+      "480": "/images/photo-dr-consultorio-480.avif",
+      "768": "/images/photo-dr-consultorio-768.avif"
+    },
+    "webp": {
+      "480": "/images/photo-dr-consultorio-480.webp",
+      "768": "/images/photo-dr-consultorio-768.webp"
+    },
+    "jpg": "/images/photo-dr-consultorio-1000.jpg",
+    "placeholder": "data:image/webp;base64,UklGRv4AAABXRUJQVlA4IPIAAAAwBgCdASogABgAPzmCtlOvKCSisAgB4CcJbACdMySsfNQR2fSR63kdnJBv+2bKzL0/VV2fmgua1YKAAP7PqYfvIaby6pymWL+2VNGezhbMn+PyC7NxTbNiNabKrsr8ryAtImjkn6MaNttHeGOXQAJ7kKQOm5x2chUN0uCk2zqCkSmRysLx2B5r/4khruGZ6Y9rx0ObAgbmKh02ZNXdJeqMgiE0RcZIksrT4RqMmImqwJOyQ4WJE5Dim9mx5C5H5lLcYUw5IdjZ8L+Vm+xOKsE4/vPpSLhbCyAHK4YZ7FK86+MZ8/UhuXY+rIPubDqJ+KAAAA==",
+    "width": 1000,
+    "height": 750
+  },
   "photo-numero-91-capo": {
     "avif": {
       "480": "/images/photo-numero-91-capo-480.avif",

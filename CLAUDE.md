@@ -15,7 +15,7 @@ Repo: `onmx-tech/hugodoria-piloto`. Apesar do nome do repo, o piloto na tela é 
 - `npm run build` — `optimize` + `vite build`
 
 ## Estrutura
-- `src/App.tsx` monta as seções: hero (vídeo) → apresentação → stats → superfinal (cotas) → experiência (vídeo 2025) → sponsors → about → bastidores → gallery → follow
+- `src/App.tsx` monta as seções: hero (vídeo) → apresentação → stats → superfinal (cotas) → experiência (vídeo 2025) → sponsors → gallery → about → bastidores → follow
 - Vídeos ficam em `public/video/` (fora do pipeline de imagens): mp4 H.264 com `+faststart` e pôster `.webp` do mesmo nome. Fonte dos reels: `~/dev/_inbox/flavia-reels-2026-11-13/`. Arquivo trocado ganha sufixo novo (`-v2`): o nginx guarda `/video/` por 30 dias.
 - Seções em `src/features/<nome>/`; UI compartilhada em `src/components/`
 

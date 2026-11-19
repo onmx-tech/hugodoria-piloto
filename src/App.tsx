@@ -32,9 +32,10 @@ export default function App() {
         <SuperFinalSection />
         <ExperienciaSection />
         <SponsorsSection />
+        {/* Galeria antes do Sobre: pedido do Thalyson em 19/11/2026. */}
+        <GallerySection />
         <AboutSection />
         <BastidoresSection />
-        <GallerySection />
         <FollowSection />
       </Suspense>
     </main>

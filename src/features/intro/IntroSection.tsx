@@ -1,10 +1,18 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { Kicker } from "../../components/ui/Kicker";
+import { OptimizedImage } from "../../components/media/OptimizedImage";
 import { INSTAGRAM_MEDICO, INSTAGRAM_PILOTO, SITE_MEDICO } from "../../data/contact";
 
 // Assessoria, 10/11/2026: a apresentação dele vem logo no começo da página.
 // Fonte: proposta da Super Final. CFM: neurocirurgião sempre com CRM e RQE.
+// Thalyson, 19/11/2026: fotos no vazio sob o nome. As duas vêm do site da clínica (onmx-tech/cdn).
+// O consultório mostra o traçado de Interlagos e capacetes na estante: o médico e o piloto na mesma foto.
+const PHOTOS = [
+  { name: "photo-dr-centro-cirurgico", alt: "Dr. Hugo Doria de pijama cirúrgico no centro cirúrgico", caption: "Centro cirúrgico", pos: "object-[50%_30%]" },
+  { name: "photo-dr-consultorio", alt: "Dr. Hugo Doria no consultório, com o traçado de Interlagos e capacetes na estante", caption: "Consultório", pos: "object-[48%_50%]" },
+];
+
 export function IntroSection() {
   const ref = useRef<HTMLElement>(null);
 
@@ -36,6 +44,22 @@ export function IntroSection() {
           <p className="font-['Inter',sans-serif] text-[12px] text-[rgba(238,235,228,0.62)] tracking-[0.04em] mt-4">
             CRM-SP 118350, RQE 48918
           </p>
+          <div className="grid grid-cols-2 gap-3 md:gap-4 mt-10 md:mt-12 max-w-[520px]">
+            {PHOTOS.map((p) => (
+              <div key={p.name} className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-[#0a2138]">
+                <OptimizedImage
+                  name={p.name}
+                  alt={p.alt}
+                  sizes="(max-width: 768px) 46vw, 260px"
+                  imgClassName={`absolute inset-0 object-cover size-full ${p.pos}`}
+                />
+                <div className="absolute inset-x-0 bottom-0 h-1/3 pointer-events-none" style={{ background: "linear-gradient(180deg, rgba(4,18,33,0) 0%, rgba(4,18,33,0.85) 100%)" }} />
+                <span className="absolute left-3 bottom-3 md:left-4 md:bottom-4 whitespace-nowrap font-archivo-expanded font-bold text-[#e1dcd0] text-[9px] md:text-[11px] tracking-[0.14em] uppercase leading-none">
+                  {p.caption}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="intro_reveal md:col-span-6 md:col-start-7 md:pt-12">
