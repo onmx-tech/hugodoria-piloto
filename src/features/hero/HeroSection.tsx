@@ -6,11 +6,13 @@ import { FitText } from "./FitText";
 import { CTAButton } from "../../components/navigation/CTAButton";
 
 // Entrada em vídeo, pedido do Dr. Hugo em 13/11/2026 (referência: enzogianfratti.com).
-// Fonte: reel DSLpL51jdCH da Flavia Aiala Assessoria, sem áudio. O celular recebe um recorte
-// vertical do centro do mesmo vídeo: 3 MB em vez de 6 MB, e sem ampliar 1280px até a altura da tela.
-const HERO_VIDEO = "/video/entrada-1280-v1.mp4";
-const HERO_VIDEO_MOBILE = "/video/entrada-mobile-v1.mp4";
-const HERO_POSTER = "/video/entrada-1280-v1.webp";
+// Fonte: reel DRzi3xODhUp da Flavia Aiala Assessoria, sem áudio. Em 19/11 ele trocou de lugar com o
+// da seção #experiencia: aqui o piloto aparece em 1,6 s (no outro, só em 23 s).
+// Cortes no loop: sai o "21 DEZ 2025" (21,2–23,7 s), que brigava com a Super Final de 2026 logo abaixo,
+// e sai a cartela preta do fim (44,6 s em diante). O celular recebe um recorte vertical do centro.
+const HERO_VIDEO = "/video/entrada-1280-v2.mp4";
+const HERO_VIDEO_MOBILE = "/video/entrada-mobile-v2.mp4";
+const HERO_POSTER = "/video/entrada-1280-v2.webp";
 
 const META = [
   { k: "Equipe", v: "Mercedes-AMG GT" },

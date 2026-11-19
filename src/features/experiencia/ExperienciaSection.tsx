@@ -2,11 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { Kicker } from "../../components/ui/Kicker";
 
-// Pedido do Dr. Hugo em 13/11/2026: o reel DRzi3xODhUp "rodando na home, embaixo".
-// O vídeo é o convite da final de 2025 e mostra "21 DEZ 2025" na tela: por isso o kicker diz 2025.
-// Se a assessoria mandar a versão 2026, trocar o arquivo por um nome novo (-v2): o nginx guarda /video/ por 30 dias.
-const VIDEO = "/video/experiencia-2025-v1.mp4";
-const POSTER = "/video/experiencia-2025-v1.webp";
+// Pedido do Dr. Hugo em 13/11/2026: um reel "rodando na home, embaixo".
+// Desde 19/11 é o DSLpL51jdCH (camarote, paddock e pista em Interlagos, 2025): trocou de lugar com o do hero
+// a pedido da Flavia. O reel é de 12/12/2025, antes da final: por isso o texto diz 2025, não "a final".
+// O próximo arquivo trocado ganha nome novo (-v3): o nginx guarda /video/ por 30 dias.
+const VIDEO = "/video/experiencia-2025-v2.mp4";
+const POSTER = "/video/experiencia-2025-v2.webp";
 
 export function ExperienciaSection() {
   const ref = useRef<HTMLElement>(null);
@@ -62,14 +63,14 @@ export function ExperienciaSection() {
       <div className="w-full max-w-[1400px] mx-auto px-5 md:px-10 lg:px-14 pt-20 md:pt-28">
         <div className="experiencia_reveal grid md:grid-cols-12 gap-6 md:gap-8 mb-10 md:mb-14">
           <div className="md:col-span-6">
-            <Kicker label="Interlagos" sub="Final de 2025" className="mb-7" />
+            <Kicker label="Interlagos" sub="Temporada 2025" className="mb-7" />
             <h2 className="font-archivo-expanded font-extrabold text-[#e1dcd0] text-[clamp(30px,4.35vw,68px)] tracking-[-0.03em] uppercase leading-[0.98]">
               Por dentro
               <span className="block text-[#d86527]">do #91.</span>
             </h2>
           </div>
           <p className="md:col-span-5 md:col-start-8 self-end font-['Inter',sans-serif] text-[15px] md:text-lg text-[rgba(238,235,228,0.86)] leading-[1.6]">
-            Em 2025, parceiros e convidados viveram a última etapa no camarote e no paddock do #91. A Super Final de 20 de dezembro tem convites VIP, Experiência Paddock + Box e ativação no camarote.
+            Em 2025, parceiros e convidados viveram Interlagos no camarote e no paddock do #91. A Super Final de 20 de dezembro tem convites VIP, Experiência Paddock + Box e ativação no camarote.
           </p>
         </div>
 
@@ -87,7 +88,7 @@ export function ExperienciaSection() {
               preload="none"
               controls={reduceMotion}
               disablePictureInPicture
-              aria-label="Vídeo da final de 2025 em Interlagos: pista, camarote e paddock do #91"
+              aria-label="Vídeo de 2025 em Interlagos: camarote, paddock e pista do #91"
             />
           </div>
           {!reduceMotion && (
